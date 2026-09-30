@@ -117,7 +117,9 @@ def parse_product(raw: dict[str, Any]) -> ProductRow:
         sku=str(raw.get("sku") or ""),
         permalink=str(raw.get("permalink") or ""),
         image_url=pick_image(images[0]) if images else "",
-        image_thumb=str(images[0].get("thumbnail") or images[0].get("src") or "") if images else "",
+        # миниатюра из srcset: там только размеры с исходными пропорциями,
+        # а поле thumbnail — квадрат с обрезкой (у вытянутых фото срезается устройство)
+        image_thumb=(pick_image(images[0], 300) or str(images[0].get("thumbnail") or "")) if images else "",
         price=parse_price(prices.get("price"), minor),
         regular_price=parse_price(prices.get("regular_price"), minor),
         sale_price=parse_price(prices.get("sale_price"), minor),

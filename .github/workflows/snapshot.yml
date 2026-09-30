@@ -37,6 +37,25 @@ jobs:
             curl -sSL -A "$UA" --max-time 30 "$url" -o "snapshot/css/$i.css" || true
           done < snapshot/css-urls.txt
           ls -la snapshot snapshot/css
+      - name: Страницы трейд-ина, ремонта и контактов
+        run: |
+          UA="IPapaPriceBot/1.0"
+          SITE="https://xn--80aaa8a4ab.xn--p1ai"
+          mkdir -p snapshot/pages snapshot/js
+          for page in trade-in repair contacts; do
+            sleep 1
+            curl -sSL -A "$UA" --max-time 30 "$SITE/$page/" -o "snapshot/pages/$page.html" || true
+          done
+          # скрипты калькуляторов (trade/repair/ti в имени)
+          cat snapshot/pages/*.html | grep -oE "src=['\"][^'\"]+\.js[^'\"]*['\"]" \
+            | sed -E "s/^src=['\"]//; s/['\"]$//" | grep -iE "trade|repair|ti-|ipapa" | sort -u | head -15 > snapshot/js-urls.txt || true
+          i=0
+          while read -r url; do
+            i=$((i+1)); sleep 1
+            case "$url" in //*) url="https:$url";; /*) url="$SITE$url";; esac
+            curl -sSL -A "$UA" --max-time 30 "$url" -o "snapshot/js/$i.js" || true
+          done < snapshot/js-urls.txt
+          ls -la snapshot/pages snapshot/js
       - name: Коммит в ветку site-snapshot
         run: |
           mkdir /tmp/out && cp -r tests/fixtures snapshot fixtures.log /tmp/out/
