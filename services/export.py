@@ -36,9 +36,12 @@ async def build_catalog(conn: aiosqlite.Connection) -> dict[str, Any]:
             variations.setdefault(parent, []).append([vid, label, price, reg, stock, img, thumb])
 
     async with conn.execute(
-        """SELECT id, type, name, permalink, image_url, image_thumb, category_ids, price,
-                  regular_price, in_stock, sku
-             FROM products WHERE type != 'variation' AND is_active = 1 ORDER BY name"""
+        """SELECT p.id, p.type, p.name, p.permalink,
+                  COALESCE(NULLIF(p.image_url, ''), m.image_url, ''),
+                  COALESCE(NULLIF(p.image_thumb, ''), m.thumb_url, ''),
+                  p.category_ids, p.price, p.regular_price, p.in_stock, p.sku
+             FROM products p LEFT JOIN image_matches m ON m.product_id = p.id
+            WHERE p.type != 'variation' AND p.is_active = 1 ORDER BY p.name"""
     ) as cur:
         products = []
         for pid, ptype, name, url, img, thumb, cats, price, reg, stock, sku in await cur.fetchall():

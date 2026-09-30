@@ -92,7 +92,14 @@ class Repo:
         return rows, total or 0
 
     async def get_product(self, product_id: int) -> aiosqlite.Row | None:
-        return await self._one("SELECT * FROM products WHERE id = ?", (product_id,))
+        """Товар; пустая картинка заменяется подобранной автоматически (image_matches)."""
+        return await self._one(
+            # подобранная картинка идёт первой: sqlite3.Row отдаёт первую колонку с таким именем
+            """SELECT COALESCE(NULLIF(p.image_url, ''), m.image_url, '') AS image_url, p.*
+                 FROM products p LEFT JOIN image_matches m ON m.product_id = p.id
+                WHERE p.id = ?""",
+            (product_id,),
+        )
 
     async def get_product_summary(self, product_id: int) -> aiosqlite.Row | None:
         return await self._one(f"{_PRODUCT_SUMMARY} WHERE p.id = ?", (product_id,))

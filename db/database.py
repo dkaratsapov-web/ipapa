@@ -66,6 +66,15 @@ CREATE TABLE IF NOT EXISTS subscriptions (
 );
 CREATE INDEX IF NOT EXISTS ix_subs_product ON subscriptions(product_id);
 
+CREATE TABLE IF NOT EXISTS image_matches (
+    product_id INTEGER PRIMARY KEY,
+    query      TEXT NOT NULL,
+    image_url  TEXT NOT NULL DEFAULT '',   -- пусто — не нашли
+    thumb_url  TEXT NOT NULL DEFAULT '',
+    source     TEXT NOT NULL DEFAULT '',   -- catalog:<id> / wikipedia:<статья>
+    checked_at TEXT NOT NULL
+);
+
 CREATE TABLE IF NOT EXISTS sync_log (
     id               INTEGER PRIMARY KEY AUTOINCREMENT,
     started_at       TEXT NOT NULL,

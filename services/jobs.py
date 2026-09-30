@@ -8,6 +8,7 @@ from bot.formatting import sync_summary
 from config import Config
 from db.repo import Repo
 from services.export import export_catalog, run_publish_cmd
+from services.images import ImageMatcher
 from services.notifier import Notifier
 from services.reports import daily_digest
 from services.sync import SyncResult, SyncService
@@ -26,11 +27,23 @@ class Jobs:
         result = await self.sync.run()
         if result.ok:
             await self.notifier.process_queue()
+            await self.match_images()
             await self.export()
         elif alert_admins:
             await self.notifier.to_admins(self.config.admin_ids,
                                           "⚠️ " + sync_summary(result, self.config.tz))
         return result
+
+    async def match_images(self) -> None:
+        matcher = ImageMatcher(self.repo.conn)
+        try:
+            found = await matcher.run()
+            if found:
+                log.info("Подобрано картинок: %d", found)
+        except Exception:  # noqa: BLE001 — подбор картинок не должен ломать синхронизацию
+            log.exception("Ошибка подбора картинок")
+        finally:
+            await matcher.close()
 
     async def export(self) -> None:
         if not self.config.export_path:
