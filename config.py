@@ -30,6 +30,7 @@ class Config:
     db_path: str = "data/ipapa.db"
     log_path: str = "data/bot.log"
     site_api_url: str = DEFAULT_API_URL
+    run_duration_min: int = 0  # 0 — работать бессрочно; >0 — остановиться через N минут
 
     @property
     def tz(self) -> ZoneInfo:
@@ -50,4 +51,5 @@ def load_config() -> Config:
         db_path=os.getenv("DB_PATH", "data/ipapa.db"),
         log_path=os.getenv("LOG_PATH", "data/bot.log"),
         site_api_url=os.getenv("SITE_API_URL", DEFAULT_API_URL).rstrip("/"),
+        run_duration_min=int(os.getenv("RUN_DURATION_MIN", "0") or 0),
     )

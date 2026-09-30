@@ -1,0 +1,57 @@
+# Бот в GitHub Actions: каждый запуск работает ~5 ч 40 мин и штатно завершается.
+# Cron каждый час ставит следующий запуск в очередь; concurrency не даёт
+# двум экземплярам работать одновременно, поэтому очередной стартует сразу
+# после завершения предыдущего. База SQLite переносится между запусками через кэш.
+name: bot
+
+on:
+  schedule:
+    - cron: "17 * * * *"
+  workflow_dispatch:
+
+concurrency:
+  group: telegram-bot
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 355
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - name: Восстановить базу
+        uses: actions/cache/restore@v4
+        with:
+          path: data
+          key: bot-db-${{ github.run_id }}
+          restore-keys: bot-db-
+
+      - name: Запустить бота
+        env:
+          BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+          ADMIN_IDS: ${{ secrets.ADMIN_IDS }}
+          SYNC_INTERVAL_MIN: ${{ vars.SYNC_INTERVAL_MIN || '60' }}
+          DIGEST_TIME: ${{ vars.DIGEST_TIME || '10:00' }}
+          TZ: Europe/Moscow
+          DB_PATH: data/ipapa.db
+          LOG_PATH: data/bot.log
+          RUN_DURATION_MIN: "340"
+        run: python main.py
+
+      - name: Сохранить базу
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: data
+          key: bot-db-${{ github.run_id }}-${{ github.run_attempt }}

@@ -90,11 +90,27 @@ async def main() -> None:
 
     log.info("Бот запущен: синхронизация каждые %d мин, сводка в %s (%s)",
              config.sync_interval_min, config.digest_time.strftime("%H:%M"), config.tz_name)
+    async def stop_after(minutes: int) -> None:
+        await asyncio.sleep(minutes * 60)
+        log.info("Истекло RUN_DURATION_MIN=%d — останавливаемся", minutes)
+        await dp.stop_polling()
+
+    stopper = None
+    if config.run_duration_min > 0:
+        stopper = asyncio.create_task(stop_after(config.run_duration_min))
     try:
-        await set_commands(bot, config)
-        await dp.start_polling(bot)
+        try:
+            await set_commands(bot, config)
+        except Exception as exc:  # noqa: BLE001 — меню команд не критично
+            log.warning("Не удалось задать меню команд: %s", exc)
+        await dp.start_polling(bot, handle_signals=True)
     finally:
+        if stopper:
+            stopper.cancel()
         scheduler.shutdown(wait=False)
+        # дождаться идущей синхронизации, чтобы не оборвать транзакцию
+        async with jobs.sync._lock:
+            pass
         await client.close()
         await conn.close()
         await bot.session.close()
