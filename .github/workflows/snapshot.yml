@@ -56,6 +56,18 @@ jobs:
             curl -sSL -A "$UA" --max-time 30 "$url" -o "snapshot/js/$i.js" || true
           done < snapshot/js-urls.txt
           ls -la snapshot/pages snapshot/js
+      - name: Логотипы
+        run: |
+          UA="IPapaPriceBot/1.0"
+          BASE="https://xn--80aaa8a4ab.xn--p1ai/wp-content"
+          mkdir -p snapshot/brand
+          for f in themes/hello-elementor-child/assets/images/ipapa-logo-desktop-domain.png \
+                   themes/hello-elementor-child/assets/images/site-icon.png \
+                   plugins/ipapa-repair-service/assets/img/logo-web.png; do
+            sleep 1
+            curl -sSL -A "$UA" --max-time 30 "$BASE/$f" -o "snapshot/brand/$(basename $f)" || true
+          done
+          file snapshot/brand/* || true
       - name: Коммит в ветку site-snapshot
         run: |
           mkdir /tmp/out && cp -r tests/fixtures snapshot fixtures.log /tmp/out/
