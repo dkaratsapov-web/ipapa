@@ -1,4 +1,4 @@
-import type { Catalog, Category, Product, RawProduct, Variation } from "./types";
+import type { Catalog, Category, Product, RawProduct, TradeIn, Variation } from "./types";
 
 const DEFAULT_DATA_URL =
   "https://raw.githubusercontent.com/dkaratsapov-web/ipapa/webapp-data/catalog.json";
@@ -129,6 +129,8 @@ function buildProduct(raw: RawProduct): Product {
     variations,
     attrNames: sortAttrNames([...names]),
     search: normalize([raw.name, raw.sku ?? "", ...variations.map((v) => v.label)].join(" ")),
+    specs: raw.specs ?? [],
+    specsSrc: raw.specs_src ?? "",
   };
 }
 
@@ -138,6 +140,7 @@ export class Store {
   readonly variationById = new Map<number, Variation>();
   readonly categories: Category[];
   readonly updatedAt: Date | null;
+  readonly tradein: TradeIn | null;
 
   constructor(catalog: Catalog) {
     this.products = catalog.products.map(buildProduct);
@@ -147,6 +150,7 @@ export class Store {
     }
     this.categories = catalog.categories;
     this.updatedAt = catalog.updated_at ? new Date(catalog.updated_at) : null;
+    this.tradein = catalog.tradein ?? null;
   }
 
   topCategories(): Category[] {

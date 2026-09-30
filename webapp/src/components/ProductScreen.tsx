@@ -3,10 +3,11 @@ import { useMemo, useState, type KeyboardEvent } from "react";
 import { isColorAttr, swatch } from "../colors";
 import type { Store } from "../data";
 import { rub, updatedLabel } from "../format";
+import { lists, useLists } from "../state";
 import { botName, haptic, openExternal, shareProduct } from "../telegram";
 import type { Product, Variation } from "../types";
 import { AnimatedPrice } from "./AnimatedPrice";
-import { IconBack, IconBell, IconChevron, IconExternal, IconShare } from "./Icons";
+import { IconBack, IconBag, IconBell, IconCheck, IconChevron, IconCompare, IconExternal, IconHeart, IconShare } from "./Icons";
 
 /** Вариант по умолчанию: в наличии и самый дешёвый. */
 function defaultVariation(p: Product, vid?: number): Variation | undefined {
@@ -42,7 +43,9 @@ export function ProductScreen({
   subs,
   onToggleSub,
   onBack,
-  onShared,
+  toast,
+  onCart,
+  onCompare,
 }: {
   store: Store;
   id: number;
@@ -50,8 +53,11 @@ export function ProductScreen({
   subs: Set<number>;
   onToggleSub: (id: number) => void;
   onBack?: () => void;
-  onShared: () => void;
+  toast: (m: string) => void;
+  onCart: () => void;
+  onCompare: () => void;
 }) {
+  const saved = useLists();
   const product = store.byId.get(id)!;
   const [current, setCurrent] = useState<Variation | undefined>(() => defaultVariation(product, vid));
   const sorted = useMemo(
@@ -104,6 +110,10 @@ export function ProductScreen({
   const followId = current && hasVariants ? current.id : product.id;
   const following = subs.has(followId) || subs.has(product.id);
   const followAll = subs.has(product.id);
+  const isFavorite = saved.favorites.includes(product.id);
+  const inCompare = saved.compare.includes(product.id);
+  const cartId = current && hasVariants ? current.id : current?.id ?? product.id;
+  const inCart = saved.cart.some((i) => i.id === cartId);
 
   return (
     <div className="pd-page">
@@ -116,16 +126,33 @@ export function ProductScreen({
           ) : (
             <span />
           )}
-          {botName && (
+          <span className="pd-top-right">
+            {botName && (
+              <motion.button
+                className="icon-btn is-glass"
+                whileTap={{ scale: 0.9 }}
+                onClick={() => shareProduct(product.id, product.name) && toast("Выберите чат, чтобы поделиться")}
+                aria-label="Поделиться"
+              >
+                <IconShare />
+              </motion.button>
+            )}
             <motion.button
-              className="icon-btn is-glass"
-              whileTap={{ scale: 0.9 }}
-              onClick={() => shareProduct(product.id, product.name) && onShared()}
-              aria-label="Поделиться"
+              className={`icon-btn is-glass ${isFavorite ? "is-fav" : ""}`}
+              whileTap={{ scale: 0.8 }}
+              onClick={() => {
+                haptic.tap();
+                const on = lists.toggleFavorite(product.id);
+                toast(on ? "Добавлено в избранное" : "Убрано из избранного");
+              }}
+              aria-pressed={isFavorite}
+              aria-label="В избранное"
             >
-              <IconShare />
+              <motion.span key={String(isFavorite)} initial={{ scale: 0.4 }} animate={{ scale: [1.35, 1] }} transition={{ duration: 0.35 }}>
+                <IconHeart filled={isFavorite} />
+              </motion.span>
             </motion.button>
-          )}
+          </span>
         </div>
         <AnimatePresence initial={false} mode="popLayout">
           <motion.img
@@ -206,6 +233,47 @@ export function ProductScreen({
           );
         })}
 
+        <div className="pd-links">
+          <motion.button
+            className={`chip ${inCompare ? "is-active" : ""}`}
+            whileTap={{ scale: 0.94 }}
+            aria-pressed={inCompare}
+            onClick={() => {
+              if (!lists.toggleCompare(product.id)) toast("В сравнении уже 4 товара — уберите один");
+              else if (!inCompare) toast("Добавлено к сравнению");
+            }}
+          >
+            {inCompare && <motion.span className="chip-bg" layoutId={`cmp-${product.id}`} />}
+            <span>
+              <IconCompare size={16} /> {inCompare ? "В сравнении" : "Сравнить"}
+            </span>
+          </motion.button>
+          {saved.compare.length > (inCompare ? 1 : 0) && (
+            <button className="chip" onClick={onCompare}>
+              <span>Открыть сравнение · {saved.compare.length}</span>
+            </button>
+          )}
+        </div>
+
+        {product.specs.length > 0 && (
+          <section className="specs" aria-labelledby={`specs-${product.id}`}>
+            <h2 id={`specs-${product.id}`}>Характеристики</h2>
+            <dl>
+              {product.specs.map(([label, value], i) => (
+                <motion.div key={label} className="spec" initial={{ opacity: 0, y: 8 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: Math.min(i, 6) * 0.03 }}>
+                  <dt>{label}</dt>
+                  <dd>{value}</dd>
+                </motion.div>
+              ))}
+            </dl>
+            {product.specsSrc && (
+              <button className="spec-src" onClick={() => openExternal(product.specsSrc)}>
+                По данным Википедии <IconExternal size={14} />
+              </button>
+            )}
+          </section>
+        )}
+
         {hasVariants && (
           <button className="follow-all" onClick={() => onToggleSub(product.id)} aria-pressed={followAll}>
             {followAll ? "✓ Вы следите за всеми вариантами" : "Следить за всеми вариантами"}
@@ -255,6 +323,9 @@ export function ProductScreen({
           </div>
         )}
 
+        <button className="follow-all" onClick={() => openExternal(product.url)}>
+          Купить на сайте айпапа.рф <IconExternal size={16} />
+        </button>
         <p className="updated">Цены с сайта айпапа.рф · {updatedLabel(store.updatedAt)}</p>
       </motion.div>
 
@@ -275,10 +346,24 @@ export function ProductScreen({
             <IconBell filled={following} />
           </motion.span>
         </motion.button>
-        <motion.button className="btn btn-primary" whileTap={{ scale: 0.97 }} onClick={() => openExternal(product.url)}>
-          {price > 0 ? `Купить · ${rub(price)}` : "Узнать цену на сайте"}
-          <IconExternal />
-        </motion.button>
+        {inCart ? (
+          <motion.button className="btn btn-dark" whileTap={{ scale: 0.97 }} onClick={onCart} initial={{ scale: 0.96 }} animate={{ scale: 1 }}>
+            <IconCheck /> В корзине — оформить
+          </motion.button>
+        ) : (
+          <motion.button
+            className="btn btn-primary"
+            whileTap={{ scale: 0.97 }}
+            onClick={() => {
+              haptic.success();
+              lists.addToCart(cartId);
+              toast("Добавлено в корзину");
+            }}
+          >
+            <IconBag size={20} />
+            {price > 0 ? `В корзину · ${rub(price)}` : "В корзину"}
+          </motion.button>
+        )}
       </motion.div>
     </div>
   );

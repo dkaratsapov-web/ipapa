@@ -4,6 +4,7 @@ import { rub } from "../format";
 import type { Product } from "../types";
 import { IconBell, IconClose } from "./Icons";
 import { Img } from "./Img";
+import { ScreenHeader } from "./ScreenHeader";
 
 export function SubsScreen({
   store,
@@ -11,22 +12,19 @@ export function SubsScreen({
   onProduct,
   onToggleSub,
   onCatalog,
+  onBack,
 }: {
   store: Store;
   subs: Set<number>;
   onProduct: (p: Product, vid?: number) => void;
   onToggleSub: (id: number) => void;
   onCatalog: () => void;
+  onBack?: () => void;
 }) {
   const items = [...subs].map((id) => ({ id, found: store.resolve(id) }));
   return (
     <>
-      <header className="topbar">
-        <h1 className="page-title">Мои подписки</h1>
-        <div className="muted" style={{ fontWeight: 600, marginTop: 2 }}>
-          Напишем в Telegram, когда цена изменится или товар появится в наличии
-        </div>
-      </header>
+      <ScreenHeader title="Мои подписки" subtitle="Напишем в Telegram, когда цена изменится или товар появится в наличии" onBack={onBack} />
 
       {items.length === 0 ? (
         <motion.div className="empty" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}>

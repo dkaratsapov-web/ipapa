@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import type { Store } from "../data";
 import { plural, rub, updatedLabel } from "../format";
 import type { Product } from "../types";
-import { IconSearch } from "./Icons";
+import { IconChevronRight, IconSearch, IconSwap, IconWrench } from "./Icons";
 import { Img } from "./Img";
 import { ProductCard } from "./ProductCard";
 
@@ -10,11 +10,8 @@ function Header({ updated, onSearch }: { updated: string; onSearch?: () => void 
   return (
     <header className="topbar">
       <div className="logo">
-        <span className="logo-mark" aria-hidden="true">
-          i
-        </span>
         <h1 className="logo-text">
-          айпапа<span className="logo-dot">.</span>рф
+          <img className="logo-img" src={`${import.meta.env.BASE_URL}brand/logo.png`} alt="айпапа.рф" width={126} height={44} />
         </h1>
         <span className="logo-sub">
           Тверь
@@ -56,11 +53,13 @@ export function Home({
   onCategory,
   onProduct,
   onSearch,
+  onScreen,
 }: {
   store: Store;
   onCategory: (id: number) => void;
   onProduct: (p: Product) => void;
   onSearch: () => void;
+  onScreen: (name: "tradein" | "service") => void;
 }) {
   const featured = store.featured(8);
   const deals = store.deals(6);
@@ -106,6 +105,21 @@ export function Home({
           </div>
         </section>
       )}
+
+      <div className="promo-grid" style={{ marginTop: 20 }}>
+        <motion.button className="promo promo-dark" onClick={() => onScreen("tradein")} whileTap={{ scale: 0.97 }} initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.15 }}>
+          <IconSwap size={26} />
+          <b>Трейд-ин</b>
+          <span>Сколько стоит ваш iPhone</span>
+          <IconChevronRight />
+        </motion.button>
+        <motion.button className="promo" onClick={() => onScreen("service")} whileTap={{ scale: 0.97 }} initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
+          <IconWrench size={26} />
+          <b>Ремонт</b>
+          <span>При вас за 25 минут</span>
+          <IconChevronRight />
+        </motion.button>
+      </div>
 
       <section className="section" aria-labelledby="cat-title">
         <div className="section-head">

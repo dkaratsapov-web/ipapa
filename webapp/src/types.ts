@@ -21,6 +21,20 @@ export interface RawProduct {
   stock: number;
   sku?: string;
   v?: RawVariation[];
+  /** характеристики из Википедии: [название, значение] */
+  specs?: [string, string][];
+  specs_src?: string;
+}
+
+export interface TradeInVariant {
+  id: string;
+  label: string;
+  prices: Record<string, number>; // рубли по id состояния
+}
+
+export interface TradeIn {
+  conditions: { id: string; label: string }[];
+  devices: { slug: string; label: string; models: { id: string; name: string; variants: TradeInVariant[] }[] }[];
 }
 
 export interface Category {
@@ -34,6 +48,7 @@ export interface Catalog {
   updated_at: string | null;
   categories: Category[];
   products: RawProduct[];
+  tradein?: TradeIn;
 }
 
 export interface Variation {
@@ -64,6 +79,8 @@ export interface Product {
   /** порядок атрибутов, например ["Память", "Цвет"] */
   attrNames: string[];
   search: string;
+  specs: [string, string][];
+  specsSrc: string;
 }
 
 export type Screen =
@@ -71,4 +88,10 @@ export type Screen =
   | { name: "category"; id: number }
   | { name: "product"; id: number; vid?: number }
   | { name: "search" }
-  | { name: "subs" };
+  | { name: "subs" }
+  | { name: "favorites" }
+  | { name: "cart" }
+  | { name: "compare" }
+  | { name: "more" }
+  | { name: "service" }
+  | { name: "tradein" };

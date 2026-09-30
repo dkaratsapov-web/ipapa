@@ -1,25 +1,27 @@
 import { motion } from "framer-motion";
 import type { ReactNode } from "react";
 import { plural } from "../format";
-import { IconBell, IconHome, IconSearch } from "./Icons";
+import { IconBag, IconGrid, IconHeart, IconHome, IconSearch } from "./Icons";
 
-export type Tab = "home" | "search" | "subs";
+export type Tab = "home" | "search" | "favorites" | "cart" | "more";
 
 const TABS: { id: Tab; label: string; icon: ReactNode }[] = [
   { id: "home", label: "Каталог", icon: <IconHome /> },
   { id: "search", label: "Поиск", icon: <IconSearch size={22} /> },
-  { id: "subs", label: "Подписки", icon: <IconBell /> },
+  { id: "favorites", label: "Избранное", icon: <IconHeart /> },
+  { id: "cart", label: "Корзина", icon: <IconBag /> },
+  { id: "more", label: "Ещё", icon: <IconGrid /> },
 ];
 
 export function TabBar({
   active,
   onChange,
-  subsCount,
+  counts,
   hidden,
 }: {
   active: Tab;
   onChange: (t: Tab) => void;
-  subsCount: number;
+  counts: Partial<Record<Tab, number>>;
   hidden: boolean;
 }) {
   return (
@@ -31,27 +33,30 @@ export function TabBar({
       transition={{ type: "spring", stiffness: 420, damping: 40 }}
       inert={hidden}
     >
-      {TABS.map((t) => (
-        <motion.button
-          key={t.id}
-          className={`tab ${active === t.id ? "is-active" : ""}`}
-          onClick={() => onChange(t.id)}
-          whileTap={{ scale: 0.92 }}
-          aria-current={active === t.id ? "page" : undefined}
-          aria-label={t.id === "subs" && subsCount ? `Подписки, ${subsCount} ${plural(subsCount, "товар", "товара", "товаров")}` : undefined}
-        >
-          {active === t.id && (
-            <motion.span className="tab-bg" layoutId="tab-bg" transition={{ type: "spring", stiffness: 500, damping: 38 }} />
-          )}
-          {t.icon}
-          <span>{t.label}</span>
-          {t.id === "subs" && subsCount > 0 && (
-            <motion.span className="tab-count" key={subsCount} initial={{ scale: 0.4 }} animate={{ scale: 1 }} aria-hidden="true">
-              {subsCount}
-            </motion.span>
-          )}
-        </motion.button>
-      ))}
+      {TABS.map((t) => {
+        const n = counts[t.id] ?? 0;
+        return (
+          <motion.button
+            key={t.id}
+            className={`tab ${active === t.id ? "is-active" : ""}`}
+            onClick={() => onChange(t.id)}
+            whileTap={{ scale: 0.92 }}
+            aria-current={active === t.id ? "page" : undefined}
+            aria-label={n ? `${t.label}, ${n} ${plural(n, "товар", "товара", "товаров")}` : undefined}
+          >
+            {active === t.id && (
+              <motion.span className="tab-bg" layoutId="tab-bg" transition={{ type: "spring", stiffness: 500, damping: 38 }} />
+            )}
+            {t.icon}
+            <span>{t.label}</span>
+            {n > 0 && (
+              <motion.span className="tab-count" key={n} initial={{ scale: 0.4 }} animate={{ scale: [1.3, 1] }} aria-hidden="true">
+                {n}
+              </motion.span>
+            )}
+          </motion.button>
+        );
+      })}
     </motion.nav>
   );
 }

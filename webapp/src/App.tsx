@@ -2,11 +2,19 @@ import { AnimatePresence, motion, useDragControls, type PanInfo } from "framer-m
 import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { CategoryScreen } from "./components/CategoryScreen";
 import { Home, HomeSkeleton } from "./components/Home";
+import { Preloader } from "./components/Preloader";
 import { IconWifiOff } from "./components/Icons";
 import { ProductScreen } from "./components/ProductScreen";
 import { SearchScreen } from "./components/SearchScreen";
 import { SubsScreen } from "./components/SubsScreen";
 import { TabBar, type Tab } from "./components/TabBar";
+import { CartScreen } from "./components/CartScreen";
+import { CompareScreen } from "./components/CompareScreen";
+import { FavoritesScreen } from "./components/FavoritesScreen";
+import { MoreScreen } from "./components/MoreScreen";
+import { ServiceScreen } from "./components/ServiceScreen";
+import { TradeInScreen } from "./components/TradeInScreen";
+import { useLists } from "./state";
 import { Toast } from "./components/Toast";
 import { cachedCatalog, loadCatalog, Store } from "./data";
 import {
@@ -29,7 +37,13 @@ interface Entry {
 
 let nextKey = 1;
 const entry = (screen: Screen, opener?: HTMLElement | null): Entry => ({ key: nextKey++, screen, opener });
-const ROOTS: Record<Tab, Screen> = { home: { name: "home" }, search: { name: "search" }, subs: { name: "subs" } };
+const ROOTS: Record<Tab, Screen> = {
+  home: { name: "home" },
+  search: { name: "search" },
+  favorites: { name: "favorites" },
+  cart: { name: "cart" },
+  more: { name: "more" },
+};
 const PENDING_KEY = "ipapa-pending-subs";
 
 const spring = { type: "spring" as const, stiffness: 380, damping: 40 };
@@ -75,6 +89,13 @@ export default function App() {
   });
   const [toast, setToast] = useState<string | null>(null);
   const [typing, setTyping] = useState(false);
+  // Заставка: не меньше 1,4 с (чтобы анимация успела отыграть) и пока нет каталога
+  const [introDone, setIntroDone] = useState(false);
+  useEffect(() => {
+    const t = window.setTimeout(() => setIntroDone(true), 1400);
+    return () => window.clearTimeout(t);
+  }, []);
+  const lists = useLists();
   const toastTimer = useRef<number | undefined>(undefined);
   const screens = useRef(new Map<number, HTMLElement>());
   const openedStart = useRef(false);
@@ -240,9 +261,18 @@ export default function App() {
 
   const render = (screen: Screen, isTop: boolean): ReactNode => {
     if (!store) return <HomeSkeleton />;
+    const toHome = () => switchTab("home");
     switch (screen.name) {
       case "home":
-        return <Home store={store} onCategory={(id) => push({ name: "category", id })} onProduct={openProduct} onSearch={() => switchTab("search")} />;
+        return (
+          <Home
+            store={store}
+            onCategory={(id) => push({ name: "category", id })}
+            onProduct={openProduct}
+            onSearch={() => switchTab("search")}
+            onScreen={(name: "tradein" | "service") => push({ name })}
+          />
+        );
       case "category":
         return <CategoryScreen store={store} id={screen.id} onProduct={openProduct} onBack={back} />;
       case "product":
@@ -254,13 +284,27 @@ export default function App() {
             subs={subs}
             onToggleSub={toggleSub}
             onBack={back}
-            onShared={() => showToast("Выберите чат, чтобы поделиться")}
+            toast={showToast}
+            onCart={() => switchTab("cart")}
+            onCompare={() => push({ name: "compare" })}
           />
         );
       case "search":
-        return <SearchScreen store={store} onProduct={openProduct} onCatalog={() => switchTab("home")} autoFocus={isTop && mode === "tab"} />;
+        return <SearchScreen store={store} onProduct={openProduct} onCatalog={toHome} autoFocus={isTop && mode === "tab"} />;
       case "subs":
-        return <SubsScreen store={store} subs={subs} onProduct={openProduct} onToggleSub={toggleSub} onCatalog={() => switchTab("home")} />;
+        return <SubsScreen store={store} subs={subs} onProduct={openProduct} onToggleSub={toggleSub} onCatalog={toHome} onBack={back} />;
+      case "favorites":
+        return <FavoritesScreen store={store} onProduct={openProduct} onCatalog={toHome} />;
+      case "cart":
+        return <CartScreen store={store} onProduct={openProduct} onCatalog={toHome} toast={showToast} />;
+      case "compare":
+        return <CompareScreen store={store} onProduct={openProduct} onCatalog={toHome} onBack={back} />;
+      case "more":
+        return <MoreScreen subsCount={subs.size} go={(name) => push({ name })} />;
+      case "service":
+        return <ServiceScreen onBack={back} toast={showToast} />;
+      case "tradein":
+        return <TradeInScreen store={store} onBack={back} onCatalog={toHome} toast={showToast} />;
     }
   };
 
@@ -301,7 +345,12 @@ export default function App() {
         ))}
       </AnimatePresence>
 
-      <TabBar active={tab} onChange={switchTab} subsCount={subs.size} hidden={onProductScreen || typing} />
+      <TabBar
+        active={tab}
+        onChange={switchTab}
+        counts={{ favorites: lists.favorites.length, cart: lists.cart.reduce((n, i) => n + i.qty, 0) }}
+        hidden={onProductScreen || typing}
+      />
 
       <AnimatePresence>
         {pendingCount > 0 && !typing && (
@@ -323,6 +372,7 @@ export default function App() {
       </AnimatePresence>
 
       <Toast message={toast} />
+      <AnimatePresence>{(!introDone || !store) && !error && <Preloader key="preloader" />}</AnimatePresence>
     </div>
   );
 }
