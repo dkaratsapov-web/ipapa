@@ -170,6 +170,18 @@ async def test_miniapp_integration(env, repo):
     await send_text("/start u5001")
     assert await repo.subscribed_ids(USER) == {1002}
 
+    # пакет из мини-аппа: две подписки и одна отписка
+    s = await send_text("", web_app_data='{"a":"batch","sub":[5002,1001],"unsub":[1002]}')
+    assert await repo.subscribed_ids(USER) == {5002, 1001}
+    text = [c for c in s.calls if isinstance(c, SendMessage)][-1].text
+    assert "Слежу за ценой" in text and "Больше не слежу" in text
+    await send_text("/start u5002_1001-s5001_5003")
+    assert await repo.subscribed_ids(USER) == {5001, 5003}
+
+    # ссылка на товар открывает карточку
+    s = await send_text("/start p1001")
+    assert "iPhone 17 Pro" in s.texts()[-1]
+
     # мусор из мини-аппа игнорируется
     s = await send_text("", web_app_data="not json")
     assert s.texts() == []

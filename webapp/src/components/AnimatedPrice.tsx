@@ -1,21 +1,28 @@
-import { animate, motion, useMotionValue, useTransform } from "framer-motion";
+import { animate, motion, useMotionValue, useReducedMotion, useTransform } from "framer-motion";
 import { useEffect } from "react";
 import { rub } from "../format";
 
-/** Цена, которая «докручивается» до нового значения при смене варианта. */
+/** Цена «докручивается» до нового значения; скринридеру — только итоговое значение. */
 export function AnimatedPrice({ value, className }: { value: number; className?: string }) {
   const mv = useMotionValue(value);
+  const reduce = useReducedMotion();
   const text = useTransform(mv, (v) => rub(Math.round(v / 100) * 100));
   useEffect(() => {
-    if (!value) {
-      mv.set(0);
+    if (!value || reduce) {
+      mv.set(value);
       return;
     }
-    const from = mv.get() || value;
-    mv.set(from);
     const controls = animate(mv, value, { duration: 0.55, ease: [0.22, 1, 0.36, 1] });
     return () => controls.stop();
-  }, [value, mv]);
-  if (!value) return <span className={`${className ?? ""} is-request`}>Цена по запросу</span>;
-  return <motion.span className={className} aria-live="polite">{text}</motion.span>;
+  }, [value, mv, reduce]);
+  return (
+    <>
+      <span className="sr-only" aria-live="polite">{rub(value)}</span>
+      {value ? (
+        <motion.span className={className} aria-hidden="true">{text}</motion.span>
+      ) : (
+        <span className={`${className ?? ""} is-request`} aria-hidden="true">Цена по запросу</span>
+      )}
+    </>
+  );
 }

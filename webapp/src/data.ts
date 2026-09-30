@@ -10,21 +10,70 @@ export function dataUrl(): string {
   return params.get("data") || import.meta.env.VITE_DATA_URL || DEFAULT_DATA_URL;
 }
 
+const CACHE_KEY = "ipapa-catalog-v1";
+
+/** Каталог из прошлого запуска — показываем сразу, пока грузится свежий. */
+export function cachedCatalog(): Catalog | null {
+  try {
+    const raw = localStorage.getItem(CACHE_KEY);
+    return raw ? (JSON.parse(raw) as Catalog) : null;
+  } catch {
+    return null;
+  }
+}
+
+function saveCache(catalog: Catalog): void {
+  try {
+    localStorage.setItem(CACHE_KEY, JSON.stringify(catalog));
+  } catch {
+    /* переполнение или запрет хранилища — не критично */
+  }
+}
+
 export async function loadCatalog(): Promise<Catalog> {
   const url = dataUrl();
   // Каталог обновляется раз в час — добавляем метку, чтобы обойти кэш CDN
   const bust = `${url.includes("?") ? "&" : "?"}t=${Math.floor(Date.now() / 300_000)}`;
   const resp = await fetch(url + bust, { cache: "no-cache" });
-  if (!resp.ok) throw new Error(`Каталог недоступен (HTTP ${resp.status})`);
-  return resp.json();
+  if (!resp.ok) {
+    console.error("catalog.json: HTTP", resp.status);
+    throw new Error("Проверьте интернет и попробуйте ещё раз.");
+  }
+  const catalog = (await resp.json()) as Catalog;
+  saveCache(catalog);
+  return catalog;
 }
 
 export function normalize(text: string): string {
   return text.toLowerCase().replace(/ё/g, "е").replace(/\s+/g, " ").trim();
 }
 
+/** Русские и транслитерированные названия -> как в каталоге. */
+const SYNONYMS: [RegExp, string][] = [
+  [/айфон\S*/g, "iphone"],
+  [/айпад\S*/g, "ipad"],
+  [/макбук\S*/g, "macbook"],
+  [/(эйр|аир|эир)подс\S*/g, "airpods"],
+  [/(эпл|эппл|apple)\s*(вотч|воч|watch)\S*/g, "apple watch"],
+  [/(вотч|часы)\b/g, "watch"],
+  [/самсунг\S*|галакси\S*/g, "samsung"],
+  [/сяоми|ксиаоми/g, "xiaomi"],
+  [/редми/g, "redmi"],
+  [/дайсон\S*/g, "dyson"],
+  [/плейстейшн\S*|плойк\S*|пс5/g, "playstation"],
+  [/\bпро\b/g, "pro"],
+  [/\bмакс\b/g, "max"],
+  [/\bмини\b/g, "mini"],
+  [/\bплюс\b/g, "plus"],
+  [/\bэйр\b|\bаир\b/g, "air"],
+  [/(\d+)\s*(гб|gb)\b/g, "$1"],
+  [/(\d+)\s*(тб|tb)\b/g, "$1"],
+];
+
 export function terms(query: string): string[] {
-  return normalize(query).split(/[\s,;]+/).filter(Boolean);
+  let q = normalize(query);
+  for (const [re, to] of SYNONYMS) q = q.replace(re, to);
+  return q.split(/[\s,;]+/).filter(Boolean);
 }
 
 /** «Цвет: Silver, Память: 256 ГБ» -> { Цвет: "Silver", Память: "256 ГБ" } */
@@ -127,6 +176,7 @@ export class Store {
   }
 
   search(query: string, limit = 60): Product[] {
+    // limit + 1, чтобы понять, что результатов больше лимита
     const words = terms(query);
     if (!words.length) return [];
     return this.products
@@ -145,11 +195,20 @@ export class Store {
     return parent ? { product: parent, variation } : null;
   }
 
-  /** Новинки и скидки для главной. */
+  private newsId(): number | undefined {
+    return this.categories.find((c) => c.name.toLowerCase().includes("новинки"))?.id;
+  }
+
+  isNew(p: Product): boolean {
+    const id = this.newsId();
+    return id !== undefined && p.cats.includes(id);
+  }
+
+  /** Новинки (или самые дорогие товары в наличии) для карусели на главной. */
   featured(limit = 10): Product[] {
-    const news = this.categories.find((c) => c.name.toLowerCase().includes("новинки"));
+    const id = this.newsId();
     const good = (list: Product[]) => list.filter((p) => p.inStock && p.minPrice > 0);
-    const fromNews = news ? good(this.inCategory(news.id)) : [];
+    const fromNews = id !== undefined ? good(this.inCategory(id)) : [];
     const pool = fromNews.length ? fromNews : good(this.products).sort((a, b) => b.minPrice - a.minPrice);
     return pool.slice(0, limit);
   }

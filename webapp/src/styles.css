@@ -4,21 +4,30 @@
   --bg-card: #ffffff;
   --ink: #070709;
   --ink-2: #3f444b;
-  --muted: #69727d;
+  --muted: #5f6873;
   --line: #e9e6ed;
-  --accent: #ee2323;
-  --accent-dark: #df1717;
+  --line-strong: #c9c6cf;
+  --accent: #ee2323; /* фирменный — декор, логотип */
+  --accent-strong: #d91c1c; /* фоны под белым текстом: контраст 5.08 */
+  --accent-dark: #b81414;
   --accent-soft: #fde8e8;
-  --ok: #1e7d5d;
+  --ok: #1a6e52;
   --ok-soft: #e3f3ec;
   --radius: 18px;
   --radius-sm: 12px;
   --shadow: 0 1px 2px rgba(7, 7, 9, 0.04), 0 8px 24px rgba(7, 7, 9, 0.06);
   --shadow-lg: 0 20px 50px rgba(7, 7, 9, 0.16);
   --tabbar-h: 64px;
-  --safe-b: env(safe-area-inset-bottom, 0px);
-  --font: "Manrope", "Roboto", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+  --safe-b: max(env(safe-area-inset-bottom, 0px), calc(var(--tg-safe-area-inset-bottom, 0px) + var(--tg-content-safe-area-inset-bottom, 0px)));
+  --safe-t: calc(var(--tg-safe-area-inset-top, 0px) + var(--tg-content-safe-area-inset-top, 0px));
+  --font: "Manrope Variable", "Manrope Fallback", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   color-scheme: light;
+}
+
+@font-face {
+  font-family: "Manrope Fallback";
+  src: local("Arial");
+  size-adjust: 103%;
 }
 
 * {
@@ -62,6 +71,29 @@ img {
   display: block;
 }
 
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
 /* ---------- каркас ---------- */
 
 .app {
@@ -74,12 +106,26 @@ img {
 .screen {
   position: absolute;
   inset: 0;
+  overflow: hidden;
+  background: var(--bg);
+  will-change: transform;
+}
+
+.screen-scroll {
+  position: absolute;
+  inset: 0;
   overflow-y: auto;
   overflow-x: hidden;
-  background: var(--bg);
   padding-bottom: calc(var(--tabbar-h) + var(--safe-b) + 24px);
+  scroll-padding-top: 120px;
+  scroll-padding-bottom: calc(var(--tabbar-h) + var(--safe-b) + 24px);
+  overscroll-behavior: contain;
   -webkit-overflow-scrolling: touch;
-  will-change: transform;
+}
+
+.screen.no-tabbar .screen-scroll {
+  padding-bottom: 0;
+  scroll-padding-bottom: calc(96px + var(--safe-b)); /* фокус не прячется под панель покупки */
 }
 
 .screen.is-under {
@@ -128,7 +174,17 @@ img {
   background: rgba(255, 255, 255, 0.86);
   backdrop-filter: saturate(180%) blur(18px);
   -webkit-backdrop-filter: saturate(180%) blur(18px);
-  padding: 12px 16px 10px;
+  padding: calc(12px + var(--safe-t)) 16px 10px;
+}
+
+.topbar-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.back-btn {
+  margin-left: -4px;
 }
 
 .logo {
@@ -180,8 +236,19 @@ img {
   font-weight: 500;
 }
 
+.search-pill:focus-within {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+.search-pill input::placeholder {
+  color: var(--muted);
+  opacity: 1;
+}
+
 .search-pill input {
   flex: 1;
+  min-width: 0;
   border: 0;
   outline: 0;
   background: transparent;
@@ -211,6 +278,7 @@ img {
   overflow-x: auto;
   padding: 2px 16px 8px;
   scroll-snap-type: x mandatory;
+  scroll-padding-inline: 16px;
   scrollbar-width: none;
 }
 
@@ -272,14 +340,40 @@ img {
   z-index: 1;
 }
 
+.hero-card:focus-visible {
+  outline-color: #fff;
+  outline-offset: -4px;
+}
+
+.hero-glow {
+  position: absolute;
+  right: 6%;
+  bottom: 6px;
+  width: 42%;
+  height: 16px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.55);
+  filter: blur(10px);
+}
+
 .hero-img {
   position: absolute;
   right: -6px;
-  bottom: 8px;
+  bottom: 12px;
   width: 52%;
   aspect-ratio: 1;
   object-fit: contain;
-  filter: drop-shadow(0 18px 30px rgba(0, 0, 0, 0.5));
+}
+
+.hero-card:first-child .hero-img {
+  animation: float 4s ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes float {
+  50% {
+    transform: translateY(-7px);
+  }
 }
 
 /* ---------- категории ---------- */
@@ -303,7 +397,7 @@ img {
   min-height: 118px;
 }
 
-.cat-tile img {
+.cat-tile-unused img {
   width: 64px;
   height: 64px;
   object-fit: contain;
@@ -317,7 +411,7 @@ img {
 }
 
 .cat-tile-count {
-  font-size: 11px;
+  font-size: 12px;
   color: var(--muted);
   font-weight: 600;
 }
@@ -339,8 +433,8 @@ img {
 .chip {
   position: relative;
   flex: none;
-  height: 36px;
-  padding: 0 14px;
+  height: 40px;
+  padding: 0 15px;
   border-radius: 999px;
   background: var(--bg-soft);
   font-weight: 700;
@@ -445,11 +539,11 @@ img {
   top: 8px;
   left: 8px;
   z-index: 1;
-  font-size: 11px;
+  font-size: 11.5px;
   font-weight: 800;
   padding: 4px 8px;
   border-radius: 999px;
-  background: var(--accent);
+  background: var(--accent-strong);
   color: #fff;
 }
 
@@ -494,16 +588,18 @@ img {
 }
 
 .toggle-track {
-  width: 40px;
-  height: 24px;
+  width: 44px;
+  height: 26px;
   border-radius: 999px;
-  background: var(--line);
-  padding: 2px;
+  background: #e4e4e9;
+  box-shadow: inset 0 0 0 1.5px #8a8f98;
+  padding: 3px;
   display: flex;
 }
 
 .toggle-track.is-on {
   background: var(--ok);
+  box-shadow: none;
   justify-content: flex-end;
 }
 
@@ -529,7 +625,7 @@ img {
 
 .pd-media {
   position: relative;
-  aspect-ratio: 1 / 0.92;
+  height: min(44vh, 360px);
   background: radial-gradient(circle at 50% 42%, #ffffff 0%, var(--bg-soft) 70%);
   display: grid;
   place-items: center;
@@ -592,6 +688,7 @@ img {
 .pd-save {
   background: var(--accent-soft);
   color: var(--accent-dark);
+  align-self: center;
   font-weight: 800;
   font-size: 12.5px;
   padding: 4px 9px;
@@ -602,7 +699,7 @@ img {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  margin-top: 10px;
+  align-self: center;
   font-weight: 700;
   font-size: 13.5px;
   padding: 6px 12px;
@@ -651,7 +748,7 @@ img {
   min-height: 44px;
   padding: 0 16px;
   border-radius: 14px;
-  border: 1.5px solid var(--line);
+  border: 1.5px solid var(--line-strong);
   font-weight: 700;
   font-size: 14px;
   display: inline-flex;
@@ -701,9 +798,9 @@ img {
 }
 
 .btn-primary {
-  background: var(--accent);
+  background: var(--accent-strong);
   color: #fff;
-  box-shadow: 0 10px 24px rgba(238, 35, 35, 0.28);
+  box-shadow: 0 10px 24px rgba(217, 28, 28, 0.28);
 }
 
 .btn-dark {
@@ -750,6 +847,25 @@ img {
 
 .table-row.is-current {
   background: var(--bg-soft);
+  box-shadow: inset 3px 0 0 var(--ink);
+}
+
+.table-head:focus-visible,
+.table-row:focus-visible,
+.row:focus-visible {
+  outline-offset: -3px;
+}
+
+.stock-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--ok);
+  flex: none;
+}
+
+.stock-dot.is-out {
+  background: var(--line-strong);
 }
 
 .table-row .t-label {
@@ -844,11 +960,18 @@ img {
   padding: 60px 32px 0;
 }
 
-.empty-emoji {
-  font-size: 56px;
+.empty-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 24px;
+  background: var(--bg-soft);
+  display: grid;
+  place-items: center;
+  margin: 0 auto;
+  color: var(--ink);
 }
 
-.empty h3 {
+.empty h2 {
   font-size: 20px;
   font-weight: 800;
   margin: 12px 0 6px;
@@ -893,10 +1016,15 @@ img {
   align-items: center;
   justify-content: center;
   gap: 2px;
-  font-size: 11px;
+  font-size: 11.5px;
   font-weight: 700;
+  letter-spacing: 0.01em;
   color: var(--muted);
   border-radius: 18px;
+}
+
+.tab.is-active:focus-visible {
+  outline-color: var(--accent);
 }
 
 .tab.is-active {
@@ -922,21 +1050,26 @@ img {
   height: 18px;
   padding: 0 5px;
   border-radius: 999px;
-  background: var(--accent);
+  background: var(--accent-strong);
   color: #fff;
-  font-size: 10.5px;
+  font-size: 11px;
   display: grid;
   place-items: center;
 }
 
 /* ---------- тост ---------- */
 
-.toast {
+.toast-region {
   position: fixed;
   left: 16px;
   right: 16px;
   bottom: calc(var(--tabbar-h) + var(--safe-b) + 24px);
   z-index: 30;
+  pointer-events: none;
+}
+
+.toast {
+  position: relative;
   background: var(--ink);
   color: #fff;
   border-radius: 16px;
@@ -950,7 +1083,7 @@ img {
 
 /* ---------- загрузка ---------- */
 
-.splash {
+.splash-unused {
   position: fixed;
   inset: 0;
   display: grid;
@@ -989,4 +1122,184 @@ img {
 .error-box {
   padding: 80px 32px;
   text-align: center;
+}
+
+/* ---------- карточка: липкая панель покупки ---------- */
+
+.buybar {
+  position: sticky;
+  bottom: 0;
+  margin-top: 24px;
+  z-index: 15;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 10px 16px calc(10px + var(--safe-b));
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: saturate(180%) blur(18px);
+  -webkit-backdrop-filter: saturate(180%) blur(18px);
+  border-top: 1px solid rgba(7, 7, 9, 0.06);
+}
+
+.buybar .btn {
+  flex: 1;
+  height: 52px;
+}
+
+.buybar .bell {
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  flex: none;
+  display: grid;
+  place-items: center;
+  background: var(--bg-soft);
+  color: var(--ink);
+}
+
+.buybar .bell.is-on {
+  background: var(--ok-soft);
+  color: var(--ok);
+}
+
+.follow-all {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  min-width: 44px;
+  margin: 14px auto 0;
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  min-height: 44px;
+  padding: 0 8px;
+}
+
+.follow-hint {
+  margin: 12px 0 0;
+  font-size: 13px;
+  color: var(--muted);
+  text-align: center;
+}
+
+.pd-top-actions {
+  position: absolute;
+  top: calc(12px + var(--safe-t));
+  left: 12px;
+  right: 12px;
+  display: flex;
+  justify-content: space-between;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.pd-top-actions > * {
+  pointer-events: auto;
+}
+
+.icon-btn.is-glass {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: var(--shadow);
+}
+
+/* ---------- плашка сохранения подписок ---------- */
+
+.savebar {
+  position: fixed;
+  left: 16px;
+  right: 16px;
+  bottom: calc(var(--tabbar-h) + var(--safe-b) + 20px);
+  z-index: 25;
+}
+
+.savebar.is-low {
+  bottom: calc(84px + var(--safe-b));
+}
+
+.savebar .btn {
+  width: 100%;
+  box-shadow: var(--shadow-lg);
+}
+
+.savebar small {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  opacity: 0.8;
+}
+
+/* ---------- загрузка ---------- */
+
+.is-loading {
+  background: linear-gradient(90deg, var(--bg-soft) 0%, #ebebef 50%, var(--bg-soft) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.2s infinite linear;
+}
+
+.skeleton-hero {
+  flex: none;
+  width: 78%;
+  max-width: 340px;
+  height: 230px;
+  border-radius: 24px;
+}
+
+.skeleton-tile {
+  height: 118px;
+}
+
+.cat-img {
+  width: 64px;
+  height: 64px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+}
+
+.cat-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+}
+
+.card-media,
+.row-img {
+  display: grid;
+}
+
+.logo-text {
+  margin: 0;
+  font: inherit;
+  letter-spacing: inherit;
+  flex: 1;
+}
+
+/* заголовок получает фокус программно при переходе — рамка не нужна */
+h1[tabindex="-1"]:focus {
+  outline: none;
+}
+
+input[type="search"]::-webkit-search-cancel-button {
+  display: none;
+}
+
+/* карточка товара: панель покупки прижата к низу даже при коротком контенте */
+.pd-page {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.pd-page .buybar {
+  margin-top: auto;
+}
+
+.pd-page .pd-body {
+  padding-bottom: 24px;
 }

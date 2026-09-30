@@ -24,7 +24,18 @@ from config import Config
 from db.repo import Repo
 
 log = logging.getLogger(__name__)
-DEEP_LINK = re.compile(r"^([su])(\d+)$")
+# /start s1_2-u3 — подписаться на 1 и 2, отписаться от 3; /start p5 — открыть товар 5
+DEEP_LINK = re.compile(r"^[su]\d+(_\d+)*(-[su]\d+(_\d+)*)*$")
+PRODUCT_LINK = re.compile(r"^p(\d+)$")
+
+
+def parse_batch(payload: str) -> tuple[list[int], list[int]]:
+    sub: list[int] = []
+    unsub: list[int] = []
+    for segment in payload.split("-"):
+        target = sub if segment[0] == "s" else unsub
+        target.extend(int(x) for x in segment[1:].split("_") if x)
+    return sub, unsub
 OPEN_TEXT = "🛍 Открыть магазин"
 
 
@@ -69,46 +80,77 @@ async def offer_app(message: Message, bot: Bot, config: Config, repo: Repo) -> N
                          reply_markup=await app_keyboard(bot, config, repo, message.chat.id))
 
 
-async def apply_action(repo: Repo, tg_id: int, action: str, product_id: int) -> str:
+async def _title(repo: Repo, product_id: int) -> str | None:
     product = await repo.get_product(product_id)
     if not product:
-        return "Товар не найден — возможно, он снят с продажи."
-    title = product["name"]
+        return None
     if product["parent_id"]:
         parent = await repo.get_product(product["parent_id"])
-        title = item_title({**dict(product), "parent_name": parent["name"] if parent else None})
-    if action == "s":
-        await repo.add_subscription(tg_id, product_id)
-        return f"🔔 Слежу за ценой: <b>{escape(title)}</b>\nНапишу, когда цена изменится или товар появится в наличии."
-    await repo.remove_subscription_by_product(tg_id, product_id)
-    return f"🔕 Больше не слежу: <b>{escape(title)}</b>"
+        return item_title({**dict(product), "parent_name": parent["name"] if parent else None})
+    return product["name"]
 
 
-async def on_deep_link(message: Message, command: CommandObject, bot: Bot,
-                       config: Config, repo: Repo) -> None:
-    match = DEEP_LINK.match(command.args or "")
-    if not match:
-        # неизвестный параметр — обычное приветствие
-        from bot.handlers.user import cmd_start
-        await cmd_start(message, bot, config, repo)
-        return
-    text = await apply_action(repo, message.chat.id, match[1], int(match[2]))
+async def apply_batch(repo: Repo, tg_id: int, sub: list[int], unsub: list[int]) -> str:
+    added, removed = [], []
+    for pid in dict.fromkeys(sub):
+        title = await _title(repo, pid)
+        if title:
+            await repo.add_subscription(tg_id, pid)
+            added.append(title)
+    for pid in dict.fromkeys(unsub):
+        await repo.remove_subscription_by_product(tg_id, pid)
+        title = await _title(repo, pid)
+        removed.append(title or f"товар #{pid}")
+    lines = []
+    if added:
+        lines.append("🔔 <b>Слежу за ценой:</b>")
+        lines += [f"• {escape(t)}" for t in added]
+        lines.append("Напишу, когда цена изменится или товар появится в наличии.")
+    if removed:
+        if lines:
+            lines.append("")
+        lines.append("🔕 <b>Больше не слежу:</b>")
+        lines += [f"• {escape(t)}" for t in removed]
+    return "\n".join(lines) or "Товар не найден — возможно, он снят с продажи."
+
+
+async def reply_with_app(message: Message, bot: Bot, config: Config, repo: Repo, text: str) -> None:
     await refresh_menu_button(bot, config, repo, message.chat.id)
     markup = await app_keyboard(bot, config, repo, message.chat.id) if config.miniapp_url else None
     await message.answer(text, reply_markup=markup)
 
 
+async def on_deep_link(message: Message, command: CommandObject, bot: Bot,
+                       config: Config, repo: Repo) -> None:
+    payload = command.args or ""
+    if DEEP_LINK.match(payload):
+        sub, unsub = parse_batch(payload)
+        await reply_with_app(message, bot, config, repo, await apply_batch(repo, message.chat.id, sub, unsub))
+        return
+    from bot.handlers.user import cmd_start, render_product
+    product = PRODUCT_LINK.match(payload)
+    if product:
+        await render_product(message, repo, config, int(product[1]))
+        return
+    await cmd_start(message, bot, config, repo)  # неизвестный параметр — обычное приветствие
+
+
 async def on_web_app_data(message: Message, bot: Bot, config: Config, repo: Repo) -> None:
+    """{"a": "batch", "sub": [..], "unsub": [..]} или {"a": "sub"|"unsub", "id": N}."""
     try:
         data = json.loads(message.web_app_data.data)
-        action = {"sub": "s", "unsub": "u"}[data["a"]]
-        product_id = int(data["id"])
+        if data["a"] == "batch":
+            sub = [int(x) for x in data.get("sub", [])][:200]
+            unsub = [int(x) for x in data.get("unsub", [])][:200]
+        else:
+            ids = [int(data["id"])]
+            sub, unsub = (ids, []) if data["a"] == "sub" else (([], ids) if data["a"] == "unsub" else ([], []))
     except (ValueError, KeyError, TypeError):
         log.warning("Некорректные данные из мини-аппа: %r", message.web_app_data.data)
         return
-    text = await apply_action(repo, message.chat.id, action, product_id)
-    await refresh_menu_button(bot, config, repo, message.chat.id)
-    await message.answer(text, reply_markup=await app_keyboard(bot, config, repo, message.chat.id))
+    if not sub and not unsub:
+        return
+    await reply_with_app(message, bot, config, repo, await apply_batch(repo, message.chat.id, sub, unsub))
 
 
 def build_router() -> Router:

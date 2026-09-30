@@ -17,35 +17,46 @@ export const ProductCard = memo(function ProductCard({
   const colorAttr = product.attrNames.find(isColorAttr);
   const colors = colorAttr ? [...new Set(product.variations.map((v) => v.attrs[colorAttr]).filter(Boolean))] : [];
   const hasRange = product.variations.length > 1 && product.minPrice > 0;
+  const discount = product.inStock && product.maxDiscount > 0;
+  const label = [
+    product.name,
+    product.inStock ? "" : "нет в наличии",
+    product.minPrice ? `${hasRange ? "от " : ""}${rub(product.minPrice)}` : "цена по запросу",
+    discount ? `скидка до ${rub(product.maxDiscount)}` : "",
+  ]
+    .filter(Boolean)
+    .join(", ");
   return (
     <motion.button
+      layout="position"
       className="card"
       onClick={() => onOpen(product)}
       initial={{ opacity: 0, y: 18 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: Math.min(index, 12) * 0.035, type: "spring", stiffness: 380, damping: 32 }}
+      transition={{ delay: Math.min(index, 8) * 0.03, type: "spring", stiffness: 420, damping: 36 }}
       whileTap={{ scale: 0.97 }}
-      aria-label={`${product.name}, ${product.minPrice ? rub(product.minPrice) : "цена по запросу"}`}
+      aria-label={label}
     >
-      {product.maxDiscount > 0 && <span className="badge">−{rub(product.maxDiscount)}</span>}
-      {!product.inStock && <span className="badge is-out">Нет в наличии</span>}
-      <div className="card-media">
-        <Img src={product.thumb} alt="" />
-      </div>
-      <div className="card-body">
-        <div className="card-name">{product.name}</div>
+      {!product.inStock ? (
+        <span className="badge is-out">Нет в наличии</span>
+      ) : (
+        discount && <span className="badge">до −{rub(product.maxDiscount)}</span>
+      )}
+      <Img src={product.thumb} alt="" frameClass="card-media" />
+      <span className="card-body">
+        <span className="card-name">{product.name}</span>
         {colors.length > 1 && (
-          <div className="swatches-mini" aria-hidden="true">
+          <span className="swatches-mini" aria-hidden="true">
             {colors.slice(0, 6).map((c) => (
               <i key={c} style={{ background: swatch(c) }} />
             ))}
-          </div>
+          </span>
         )}
-        <div className={`card-price ${product.minPrice ? "" : "is-request"}`}>
+        <span className={`card-price ${product.minPrice ? "" : "is-request"}`}>
           {hasRange && <small>от </small>}
           {rub(product.minPrice)}
-        </div>
-      </div>
+        </span>
+      </span>
     </motion.button>
   );
 });
