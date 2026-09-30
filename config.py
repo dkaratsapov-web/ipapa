@@ -34,6 +34,15 @@ class Config:
     miniapp_url: str = ""      # адрес мини-аппа (https), пусто — кнопка не показывается
     export_path: str = ""      # куда писать catalog.json для мини-аппа
     export_cmd: str = ""       # команда публикации выгрузки после синхронизации
+    leads_chat_id: int = 0     # чат менеджеров для заявок; 0 — отправлять администраторам
+
+    @property
+    def site_url(self) -> str:
+        return self.site_api_url.split("/wp-json")[0]
+
+    @property
+    def lead_recipients(self) -> list[int]:
+        return [self.leads_chat_id] if self.leads_chat_id else sorted(self.admin_ids)
 
     @property
     def tz(self) -> ZoneInfo:
@@ -58,4 +67,5 @@ def load_config() -> Config:
         miniapp_url=os.getenv("MINIAPP_URL", "").strip(),
         export_path=os.getenv("EXPORT_PATH", "").strip(),
         export_cmd=os.getenv("EXPORT_CMD", "").strip(),
+        leads_chat_id=int(os.getenv("LEADS_CHAT_ID", "0") or 0),
     )

@@ -16,7 +16,7 @@ from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from apscheduler.triggers.cron import CronTrigger
 from apscheduler.triggers.interval import IntervalTrigger
 
-from bot.handlers import admin, user, webapp
+from bot.handlers import admin, leads, user, webapp
 from bot.middlewares import UserMiddleware
 from config import Config, load_config
 from db.database import connect
@@ -50,6 +50,7 @@ async def set_commands(bot: Bot, config: Config) -> None:
         BotCommand(command="changes", description="Изменения цен за N часов"),
         BotCommand(command="stats", description="Статистика"),
         BotCommand(command="digest", description="Сводка сейчас"),
+        BotCommand(command="leads", description="Последние заявки"),
     ]
     for admin_id in config.admin_ids:
         try:
@@ -73,6 +74,8 @@ async def main() -> None:
     dp = Dispatcher(repo=repo, config=config, jobs=jobs)
     dp.update.outer_middleware(UserMiddleware(repo, config.admin_ids))
     dp.include_router(admin.build_router(config.admin_ids))
+    dp.include_router(leads.build_admin_router(config.admin_ids))
+    dp.include_router(leads.build_router())
     dp.include_router(webapp.build_router())  # до user: /start с параметром
     dp.include_router(user.build_router())  # последним: ловит любой текст как поиск
 

@@ -75,6 +75,14 @@ CREATE TABLE IF NOT EXISTS image_matches (
     checked_at TEXT NOT NULL
 );
 
+CREATE TABLE IF NOT EXISTS model_specs (
+    model      TEXT PRIMARY KEY,               -- clean_model(name).lower()
+    title      TEXT NOT NULL DEFAULT '',       -- статья Википедии
+    url        TEXT NOT NULL DEFAULT '',
+    specs      TEXT NOT NULL DEFAULT '[]',     -- JSON [[подпись, значение], …]; [] — не нашли
+    checked_at TEXT NOT NULL
+);
+
 CREATE TABLE IF NOT EXISTS sync_log (
     id               INTEGER PRIMARY KEY AUTOINCREMENT,
     started_at       TEXT NOT NULL,

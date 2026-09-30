@@ -8,6 +8,7 @@ from zoneinfo import ZoneInfo
 
 from db.database import parse_ts
 from services.parsing import format_diff, format_price, short_label
+from services.specs import card_specs
 
 MAX_TEXT = 4000  # запас до лимита Telegram 4096
 
@@ -32,8 +33,21 @@ def price_html(price: int, regular: int) -> str:
     return f"<b>{format_price(price)}</b>" if price else format_price(0)
 
 
+def specs_block(specs: list[list[str]] | None, url: str = "") -> list[str]:
+    """Короткий блок ключевых характеристик из Википедии."""
+    items = card_specs(specs or [])
+    if not items:
+        return []
+    block = ["", "<b>Характеристики</b>"]
+    block += [f"• {escape(label)}: {escape(value)}" for label, value in items]
+    if url:
+        block.append(f'<a href="{escape(url)}">По данным Википедии</a>')
+    return block
+
+
 def product_card(product: Mapping[str, Any], variations: list[Mapping[str, Any]],
-                 updated_at: str | None, tz: ZoneInfo) -> str:
+                 updated_at: str | None, tz: ZoneInfo,
+                 specs: list[list[str]] | None = None, specs_url: str = "") -> str:
     head = [f"<b>{escape(product['name'])}</b>"]
     if product["permalink"]:
         head.append(f'<a href="{escape(product["permalink"])}">Открыть на сайте</a>')
@@ -50,7 +64,9 @@ def product_card(product: Mapping[str, Any], variations: list[Mapping[str, Any]]
         lines.append(f"{price_html(product['price'], product['regular_price'])} · {mark}")
 
     tail = ["", f"<i>Обновлено: {fmt_dt(updated_at, tz)}</i>"]
-    text = "\n".join(head + lines + tail)
+    text = "\n".join(head + lines + specs_block(specs, specs_url) + tail)
+    if len(text) > MAX_TEXT:  # сначала жертвуем характеристиками
+        text = "\n".join(head + lines + tail)
     if len(text) > MAX_TEXT:  # обрезаем список вариантов
         budget = MAX_TEXT - len("\n".join(head + tail)) - 60
         kept, size = [], 0

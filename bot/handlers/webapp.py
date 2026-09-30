@@ -123,6 +123,9 @@ async def reply_with_app(message: Message, bot: Bot, config: Config, repo: Repo,
 async def on_deep_link(message: Message, command: CommandObject, bot: Bot,
                        config: Config, repo: Repo) -> None:
     payload = command.args or ""
+    from bot.handlers.leads import lead_from_deep_link
+    if await lead_from_deep_link(message, bot, config, repo, payload):
+        return
     if DEEP_LINK.match(payload):
         sub, unsub = parse_batch(payload)
         await reply_with_app(message, bot, config, repo, await apply_batch(repo, message.chat.id, sub, unsub))
@@ -136,9 +139,18 @@ async def on_deep_link(message: Message, command: CommandObject, bot: Bot,
 
 
 async def on_web_app_data(message: Message, bot: Bot, config: Config, repo: Repo) -> None:
-    """{"a": "batch", "sub": [..], "unsub": [..]} или {"a": "sub"|"unsub", "id": N}."""
+    """{"a": "batch", "sub": [..], "unsub": [..]}, {"a": "sub"|"unsub", "id": N} или {"a": "lead", ...}."""
     try:
         data = json.loads(message.web_app_data.data)
+        if data.get("a") == "lead":
+            from bot.handlers.leads import accept_lead
+            from services.leads import from_web_app
+            lead = from_web_app(data)
+            if lead:
+                await accept_lead(message, bot, config, repo, lead)
+            else:
+                log.warning("Некорректная заявка из мини-аппа: %r", message.web_app_data.data)
+            return
         if data["a"] == "batch":
             sub = [int(x) for x in data.get("sub", [])][:200]
             unsub = [int(x) for x in data.get("unsub", [])][:200]

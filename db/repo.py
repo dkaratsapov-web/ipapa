@@ -6,6 +6,7 @@ from typing import Any, Iterable
 import aiosqlite
 
 from db.database import utcnow
+from services.specs import accessory_category_ids, device_model, load_specs
 
 # Карточка «родительского» товара с минимальной ценой по активным вариантам.
 _PRODUCT_SUMMARY = """
@@ -100,6 +101,16 @@ class Repo:
                 WHERE p.id = ?""",
             (product_id,),
         )
+
+    async def specs_for_model(self, model: str) -> tuple[list[list[str]], str] | None:
+        """Характеристики модели из Википедии: (specs, url) или None."""
+        return (await load_specs(self.conn, [model.lower()])).get(model.lower())
+
+    async def specs_for_product(self, product: Any) -> tuple[list[list[str]], str] | None:
+        """Характеристики товара (для аксессуаров и моделей без цифр — None)."""
+        model = device_model(product["name"], product["category_ids"],
+                             await accessory_category_ids(self.conn))
+        return await self.specs_for_model(model) if model else None
 
     async def get_product_summary(self, product_id: int) -> aiosqlite.Row | None:
         return await self._one(f"{_PRODUCT_SUMMARY} WHERE p.id = ?", (product_id,))

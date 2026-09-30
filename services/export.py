@@ -9,6 +9,10 @@ from typing import Any
 
 import aiosqlite
 
+from services import tradein
+
+from services.specs import accessory_category_ids, device_model, load_specs
+
 log = logging.getLogger(__name__)
 
 
@@ -18,6 +22,7 @@ async def build_catalog(conn: aiosqlite.Connection) -> dict[str, Any]:
     Формат варианта: [id, variation_label, price, regular_price, in_stock, image_url, thumb].
     Картинки варианта пустые, если совпадают с картинкой товара.
     Цены — в копейках.
+    Характеристики из Википедии (если нашлись): "specs": [[подпись, значение], …], "specs_src": url.
     """
     async with conn.execute(
         "SELECT id, name, parent_id, count FROM categories WHERE count > 0 ORDER BY name"
@@ -43,29 +48,40 @@ async def build_catalog(conn: aiosqlite.Connection) -> dict[str, Any]:
              FROM products p LEFT JOIN image_matches m ON m.product_id = p.id
             WHERE p.type != 'variation' AND p.is_active = 1 ORDER BY p.name"""
     ) as cur:
-        products = []
-        for pid, ptype, name, url, img, thumb, cats, price, reg, stock, sku in await cur.fetchall():
-            item: dict[str, Any] = {
-                "id": pid, "name": name, "url": url, "img": img, "thumb": thumb,
-                "cats": [int(c) for c in cats.strip("|").split("|") if c],
-                "price": price, "reg": reg, "stock": stock,
-            }
-            if sku:
-                item["sku"] = sku
-            if ptype == "variable":
-                vs = variations.get(pid, [])
-                for v in vs:  # картинка варианта нужна, только если отличается
-                    if v[5] == img:
-                        v[5] = v[6] = ""
-                item["v"] = vs
-            products.append(item)
+        rows = await cur.fetchall()
+
+    accessories = await accessory_category_ids(conn)
+    specs = await load_specs(conn)
+    products = []
+    for pid, ptype, name, url, img, thumb, cats, price, reg, stock, sku in rows:
+        item: dict[str, Any] = {
+            "id": pid, "name": name, "url": url, "img": img, "thumb": thumb,
+            "cats": [int(c) for c in cats.strip("|").split("|") if c],
+            "price": price, "reg": reg, "stock": stock,
+        }
+        if sku:
+            item["sku"] = sku
+        if ptype == "variable":
+            vs = variations.get(pid, [])
+            for v in vs:  # картинка варианта нужна, только если отличается
+                if v[5] == img:
+                    v[5] = v[6] = ""
+            item["v"] = vs
+        found = specs.get(device_model(name, cats, accessories))
+        if found:
+            item["specs"], item["specs_src"] = found
+        products.append(item)
 
     async with conn.execute(
         "SELECT finished_at FROM sync_log WHERE status = 'success' ORDER BY id DESC LIMIT 1"
     ) as cur:
         row = await cur.fetchone()
 
-    return {"updated_at": row[0] if row else None, "categories": categories, "products": products}
+    catalog: dict[str, Any] = {"updated_at": row[0] if row else None, "categories": categories, "products": products}
+    tradein_data = await tradein.load(conn)
+    if tradein_data:
+        catalog["tradein"] = tradein_data  # прайс калькулятора трейд-ина с сайта
+    return catalog
 
 
 async def export_catalog(conn: aiosqlite.Connection, path: str) -> int:
