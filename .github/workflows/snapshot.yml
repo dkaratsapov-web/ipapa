@@ -20,6 +20,8 @@ jobs:
       - run: pip install -r requirements.txt
       - name: Фикстуры Store API
         run: python scripts/fetch_fixtures.py --limit 20 | tee fixtures.log
+      - name: Покрытие картинками
+        run: python scripts/image_coverage.py | tee -a fixtures.log
       - name: Главная страница и стили
         run: |
           mkdir -p snapshot/css
