@@ -1,0 +1,48 @@
+# Ручной снимок сайта: реальные ответы Store API (фикстуры) и оформление главной
+# страницы. Результат коммитится в ветку site-snapshot.
+name: site-snapshot
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Фикстуры Store API
+        run: python scripts/fetch_fixtures.py --limit 20 | tee fixtures.log
+      - name: Главная страница и стили
+        run: |
+          mkdir -p snapshot/css
+          UA="IPapaPriceBot/1.0"
+          SITE="https://xn--80aaa8a4ab.xn--p1ai"
+          curl -sSL -A "$UA" --max-time 30 "$SITE/" -o snapshot/index.html
+          grep -oE "href=['\"][^'\"]+\.css[^'\"]*['\"]" snapshot/index.html \
+            | sed -E "s/^href=['\"]//; s/['\"]$//" | sort -u | head -25 > snapshot/css-urls.txt || true
+          i=0
+          while read -r url; do
+            i=$((i+1)); sleep 1
+            case "$url" in //*) url="https:$url";; /*) url="$SITE$url";; esac
+            curl -sSL -A "$UA" --max-time 30 "$url" -o "snapshot/css/$i.css" || true
+          done < snapshot/css-urls.txt
+          ls -la snapshot snapshot/css
+      - name: Коммит в ветку site-snapshot
+        run: |
+          mkdir /tmp/out && cp -r tests/fixtures snapshot fixtures.log /tmp/out/
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout --orphan site-snapshot
+          git rm -rfq .
+          cp -r /tmp/out/* .
+          git add -A
+          git commit -qm "Снимок сайта $(date -u +%FT%TZ)"
+          git push -f origin site-snapshot
