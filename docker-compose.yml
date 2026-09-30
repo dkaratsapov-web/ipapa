@@ -1,0 +1,14 @@
+services:
+  bot:
+    build: .
+    container_name: ipapa-bot
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      DB_PATH: /app/data/ipapa.db
+      LOG_PATH: /app/data/bot.log
+    volumes:
+      - ipapa-data:/app/data
+
+volumes:
+  ipapa-data:

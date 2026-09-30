@@ -1,0 +1,18 @@
+# systemd-юнит. Предполагается установка в /opt/ipapa с виртуальным окружением .venv
+# и пользователем ipapa (см. README, раздел «Запуск через systemd»).
+[Unit]
+Description=IPapa price Telegram bot
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=ipapa
+WorkingDirectory=/opt/ipapa
+EnvironmentFile=/opt/ipapa/.env
+ExecStart=/opt/ipapa/.venv/bin/python main.py
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

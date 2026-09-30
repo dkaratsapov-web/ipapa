@@ -1,0 +1,75 @@
+{
+ "_note": "Образец в формате WooCommerce Store API v1. Замените реальными ответами: python scripts/fetch_fixtures.py",
+ "endpoint": "/products/categories",
+ "params": {
+  "per_page": 100
+ },
+ "items": [
+  {
+   "id": 15,
+   "name": "iPhone",
+   "slug": "iphone",
+   "parent": 0,
+   "count": 3,
+   "description": "",
+   "image": null,
+   "review_count": 0,
+   "permalink": "https://xn--80aaa8a4ab.xn--p1ai/product-category/iphone/"
+  },
+  {
+   "id": 16,
+   "name": "iPhone 17 Pro",
+   "slug": "iphone-17-pro",
+   "parent": 15,
+   "count": 2,
+   "description": "",
+   "image": null,
+   "review_count": 0,
+   "permalink": "https://xn--80aaa8a4ab.xn--p1ai/product-category/iphone-17-pro/"
+  },
+  {
+   "id": 20,
+   "name": "AirPods",
+   "slug": "airpods",
+   "parent": 0,
+   "count": 1,
+   "description": "",
+   "image": null,
+   "review_count": 0,
+   "permalink": "https://xn--80aaa8a4ab.xn--p1ai/product-category/airpods/"
+  },
+  {
+   "id": 30,
+   "name": "Samsung",
+   "slug": "samsung",
+   "parent": 0,
+   "count": 1,
+   "description": "",
+   "image": null,
+   "review_count": 0,
+   "permalink": "https://xn--80aaa8a4ab.xn--p1ai/product-category/samsung/"
+  },
+  {
+   "id": 40,
+   "name": "Игровые приставки",
+   "slug": "igrovye-pristavki",
+   "parent": 0,
+   "count": 1,
+   "description": "",
+   "image": null,
+   "review_count": 0,
+   "permalink": "https://xn--80aaa8a4ab.xn--p1ai/product-category/igrovye-pristavki/"
+  },
+  {
+   "id": 99,
+   "name": "Misc",
+   "slug": "misc",
+   "parent": 0,
+   "count": 0,
+   "description": "",
+   "image": null,
+   "review_count": 0,
+   "permalink": "https://xn--80aaa8a4ab.xn--p1ai/product-category/misc/"
+  }
+ ]
+}
