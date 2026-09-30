@@ -31,6 +31,9 @@ class Config:
     log_path: str = "data/bot.log"
     site_api_url: str = DEFAULT_API_URL
     run_duration_min: int = 0  # 0 — работать бессрочно; >0 — остановиться через N минут
+    miniapp_url: str = ""      # адрес мини-аппа (https), пусто — кнопка не показывается
+    export_path: str = ""      # куда писать catalog.json для мини-аппа
+    export_cmd: str = ""       # команда публикации выгрузки после синхронизации
 
     @property
     def tz(self) -> ZoneInfo:
@@ -52,4 +55,7 @@ def load_config() -> Config:
         log_path=os.getenv("LOG_PATH", "data/bot.log"),
         site_api_url=os.getenv("SITE_API_URL", DEFAULT_API_URL).rstrip("/"),
         run_duration_min=int(os.getenv("RUN_DURATION_MIN", "0") or 0),
+        miniapp_url=os.getenv("MINIAPP_URL", "").strip(),
+        export_path=os.getenv("EXPORT_PATH", "").strip(),
+        export_cmd=os.getenv("EXPORT_CMD", "").strip(),
     )

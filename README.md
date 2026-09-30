@@ -75,6 +75,26 @@ Workflow `.github/workflows/bot.yml` запускает бота на ранне
 - Раннеры GitHub находятся за рубежом. Если сайт магазина закрыт для зарубежных IP, синхронизация будет падать, и админ получит уведомление.
 - Репозиторий публичный, поэтому логи Actions видны всем. Токен GitHub в логах маскирует, но ID администраторов тоже лучше хранить в secrets.
 
+## Мини-апп (Telegram Web App)
+
+Приложение-витрина на React (`webapp/`: Vite, TypeScript, Framer Motion) в стиле айпапа.рф. В нём есть каталог, поиск, карточка товара с выбором цвета и памяти и подписки на цену.
+
+Как это работает:
+- После каждой успешной синхронизации бот выгружает каталог в `catalog.json` (`EXPORT_PATH`) и публикует его командой `EXPORT_CMD`. В GitHub Actions каталог уходит в ветку `webapp-data`.
+- Мини-апп читает `catalog.json` с `raw.githubusercontent.com`. Источник можно поменять через `VITE_DATA_URL` или параметр `?data=`.
+- Своего сервера у приложения нет, поэтому подписки передаются через бота. При запуске с кнопки клавиатуры используется `sendData`, при запуске из меню или из карточки — deep link `/start s<ID>` или `/start u<ID>`. Текущие подписки бот передаёт приложению в адресе (`?subs=`).
+
+Публикация на GitHub Pages:
+1. Settings → Pages → Build and deployment → Source: **GitHub Actions**.
+2. Workflow `miniapp` соберёт приложение при изменениях в `webapp/`. Его можно запустить и вручную.
+3. Адрес по умолчанию: `https://dkaratsapov-web.github.io/ipapa/`. Другой адрес задаётся переменной `MINIAPP_URL` в Settings → Variables.
+
+Разработка:
+```bash
+cd webapp && npm install
+npm run dev            # затем открыть http://localhost:5173/?demo=1 (демо-каталог)
+```
+
 ## Запуск через systemd
 
 ```bash

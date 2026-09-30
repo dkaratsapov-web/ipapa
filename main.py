@@ -16,7 +16,7 @@ from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from apscheduler.triggers.cron import CronTrigger
 from apscheduler.triggers.interval import IntervalTrigger
 
-from bot.handlers import admin, user
+from bot.handlers import admin, user, webapp
 from bot.middlewares import UserMiddleware
 from config import Config, load_config
 from db.database import connect
@@ -73,6 +73,7 @@ async def main() -> None:
     dp = Dispatcher(repo=repo, config=config, jobs=jobs)
     dp.update.outer_middleware(UserMiddleware(repo, config.admin_ids))
     dp.include_router(admin.build_router(config.admin_ids))
+    dp.include_router(webapp.build_router())  # до user: /start с параметром
     dp.include_router(user.build_router())  # последним: ловит любой текст как поиск
 
     scheduler = AsyncIOScheduler(timezone=config.tz)

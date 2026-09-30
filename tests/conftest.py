@@ -19,18 +19,18 @@ from services.sync import SyncService  # noqa: E402
 FIXTURES = os.path.join(os.path.dirname(__file__), "fixtures")
 
 
-def load_fixture(name: str) -> list[dict[str, Any]]:
-    with open(os.path.join(FIXTURES, f"{name}.json"), encoding="utf-8") as f:
+def load_fixture(name: str, subdir: str = "") -> list[dict[str, Any]]:
+    with open(os.path.join(FIXTURES, subdir, f"{name}.json"), encoding="utf-8") as f:
         return json.load(f)["items"]
 
 
 class FakeSite:
     """Имитация Store API: пагинация, заголовки X-WP-*, сбои по запросу."""
 
-    def __init__(self) -> None:
-        self.products = load_fixture("products")
-        self.variations = load_fixture("variations")
-        self.categories = load_fixture("categories")
+    def __init__(self, subdir: str = "") -> None:
+        self.products = load_fixture("products", subdir)
+        self.variations = load_fixture("variations", subdir)
+        self.categories = load_fixture("categories", subdir)
         self.fail_status: int | None = None
         self.fail_on: str | None = None  # "variation" — падать только на вариантах
         self.requests: list[httpx.Request] = []

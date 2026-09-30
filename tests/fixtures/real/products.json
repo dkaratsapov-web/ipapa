@@ -1,0 +1,4023 @@
+{
+ "_note": "Реальный ответ сайта",
+ "fetched_at": "2026-09-30T18:06:05.400477+00:00",
+ "endpoint": "/products",
+ "params": {
+  "per_page": 20
+ },
+ "items": [
+  {
+   "id": 5883,
+   "name": "Redmagic 11S Pro",
+   "slug": "redmagic-11s-pro",
+   "parent": 0,
+   "type": "variable",
+   "variation": "",
+   "permalink": "https://xn--80aaa8a4ab.xn--p1ai/product-card/redmagic-11s-pro/",
+   "sku": "",
+   "short_description": "",
+   "description": "",
+   "on_sale": false,
+   "prices": {
+    "price": "11470000",
+    "regular_price": "11470000",
+    "sale_price": "11470000",
+    "price_range": null,
+    "currency_code": "RUB",
+    "currency_symbol": "₽",
+    "currency_minor_unit": 2,
+    "currency_decimal_separator": ",",
+    "currency_thousand_separator": " ",
+    "currency_prefix": "",
+    "currency_suffix": " ₽"
+   },
+   "price_html": "<span class=\"woocommerce-Price-amount amount\">114 700,00&nbsp;<span class=\"woocommerce-Price-currencySymbol\">&#8381;</span></span>",
+   "average_rating": "0",
+   "review_count": 0,
+   "images": [
+    {
+     "id": 5884,
+     "src": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/a4614dc91fac5bb426355c86-scaled.png",
+     "thumbnail": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/a4614dc91fac5bb426355c86-300x300.png",
+     "srcset": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/a4614dc91fac5bb426355c86-scaled.png 2560w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/a4614dc91fac5bb426355c86-300x300.png 300w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/a4614dc91fac5bb426355c86-1024x1024.png 1024w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/a4614dc91fac5bb426355c86-150x150.png 150w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/a4614dc91fac5bb426355c86-768x768.png 768w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/a4614dc91fac5bb426355c86-1536x1536.png 1536w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/a4614dc91fac5bb426355c86-2048x2048.png 2048w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/a4614dc91fac5bb426355c86-1320x1320.png 1320w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/a4614dc91fac5bb426355c86-600x600.png 600w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/a4614dc91fac5bb426355c86-100x100.png 100w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/a4614dc91fac5bb426355c86-50x50.png 50w",
+     "sizes": "(max-width: 2560px) 100vw, 2560px",
+     "name": "Redmagic 11S Pro 16/512 Nightfreeze",
+     "alt": "Redmagic 11S Pro — Nightfreeze"
+    }
+   ],
+   "categories": [
+    {
+     "id": 219,
+     "name": "Android-смартфоны",
+     "slug": "android",
+     "link": "https://xn--80aaa8a4ab.xn--p1ai/catalog/android/"
+    },
+    {
+     "id": 270,
+     "name": "Redmagic",
+     "slug": "redmagic",
+     "link": "https://xn--80aaa8a4ab.xn--p1ai/catalog/redmagic/"
+    }
+   ],
+   "tags": [],
+   "brands": [],
+   "attributes": [
+    {
+     "id": 1,
+     "name": "Цвет",
+     "taxonomy": "pa_color",
+     "has_variations": true,
+     "terms": [
+      {
+       "id": 271,
+       "name": "Nightfreeze",
+       "slug": "nightfreeze"
+      }
+     ]
+    },
+    {
+     "id": 2,
+     "name": "Память",
+     "taxonomy": "pa_storage",
+     "has_variations": true,
+     "terms": [
+      {
+       "id": 239,
+       "name": "16/512 ГБ",
+       "slug": "16-512-%d0%b3%d0%b1"
+      }
+     ]
+    }
+   ],
+   "variations": [
+    {
+     "id": 5885,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "nightfreeze"
+      },
+      {
+       "name": "Память",
+       "value": "16-512-%d0%b3%d0%b1"
+      }
+     ]
+    }
+   ],
+   "grouped_products": [],
+   "has_options": true,
+   "is_purchasable": true,
+   "is_in_stock": true,
+   "is_on_backorder": false,
+   "low_stock_remaining": null,
+   "stock_availability": {
+    "text": "",
+    "class": "in-stock"
+   },
+   "sold_individually": false,
+   "add_to_cart": {
+    "text": "Выберите параметры",
+    "description": "Выберите опции для &ldquo;Redmagic 11S Pro&rdquo;",
+    "url": "https://xn--80aaa8a4ab.xn--p1ai/product-card/redmagic-11s-pro/",
+    "single_text": "В корзину",
+    "minimum": 1,
+    "maximum": 9999,
+    "multiple_of": 1
+   },
+   "extensions": {}
+  },
+  {
+   "id": 5880,
+   "name": "Redmi A3 Pro",
+   "slug": "redmi-a3-pro",
+   "parent": 0,
+   "type": "variable",
+   "variation": "",
+   "permalink": "https://xn--80aaa8a4ab.xn--p1ai/product-card/redmi-a3-pro/",
+   "sku": "",
+   "short_description": "",
+   "description": "",
+   "on_sale": false,
+   "prices": {
+    "price": "1360000",
+    "regular_price": "1360000",
+    "sale_price": "1360000",
+    "price_range": null,
+    "currency_code": "RUB",
+    "currency_symbol": "₽",
+    "currency_minor_unit": 2,
+    "currency_decimal_separator": ",",
+    "currency_thousand_separator": " ",
+    "currency_prefix": "",
+    "currency_suffix": " ₽"
+   },
+   "price_html": "<span class=\"woocommerce-Price-amount amount\">13 600,00&nbsp;<span class=\"woocommerce-Price-currencySymbol\">&#8381;</span></span>",
+   "average_rating": "0",
+   "review_count": 0,
+   "images": [
+    {
+     "id": 5881,
+     "src": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/69943e98304d51e4e92f9e10.webp",
+     "thumbnail": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/69943e98304d51e4e92f9e10-300x300.webp",
+     "srcset": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/69943e98304d51e4e92f9e10.webp 1000w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/69943e98304d51e4e92f9e10-300x300.webp 300w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/69943e98304d51e4e92f9e10-150x150.webp 150w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/69943e98304d51e4e92f9e10-768x768.webp 768w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/69943e98304d51e4e92f9e10-600x600.webp 600w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/69943e98304d51e4e92f9e10-100x100.webp 100w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/69943e98304d51e4e92f9e10-50x50.webp 50w",
+     "sizes": "(max-width: 1000px) 100vw, 1000px",
+     "name": "Redmi A3 Pro 4/128 Black",
+     "alt": "Redmi A3 Pro — Black"
+    }
+   ],
+   "categories": [
+    {
+     "id": 219,
+     "name": "Android-смартфоны",
+     "slug": "android",
+     "link": "https://xn--80aaa8a4ab.xn--p1ai/catalog/android/"
+    },
+    {
+     "id": 29,
+     "name": "Xiaomi",
+     "slug": "xiaomi",
+     "link": "https://xn--80aaa8a4ab.xn--p1ai/catalog/xiaomi/"
+    }
+   ],
+   "tags": [],
+   "brands": [],
+   "attributes": [
+    {
+     "id": 1,
+     "name": "Цвет",
+     "taxonomy": "pa_color",
+     "has_variations": true,
+     "terms": [
+      {
+       "id": 180,
+       "name": "Black",
+       "slug": "black"
+      }
+     ]
+    },
+    {
+     "id": 2,
+     "name": "Память",
+     "taxonomy": "pa_storage",
+     "has_variations": true,
+     "terms": [
+      {
+       "id": 235,
+       "name": "4/128 ГБ",
+       "slug": "4-128-%d0%b3%d0%b1"
+      }
+     ]
+    }
+   ],
+   "variations": [
+    {
+     "id": 5882,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "black"
+      },
+      {
+       "name": "Память",
+       "value": "4-128-%d0%b3%d0%b1"
+      }
+     ]
+    }
+   ],
+   "grouped_products": [],
+   "has_options": true,
+   "is_purchasable": true,
+   "is_in_stock": true,
+   "is_on_backorder": false,
+   "low_stock_remaining": null,
+   "stock_availability": {
+    "text": "",
+    "class": "in-stock"
+   },
+   "sold_individually": false,
+   "add_to_cart": {
+    "text": "Выберите параметры",
+    "description": "Выберите опции для &ldquo;Redmi A3 Pro&rdquo;",
+    "url": "https://xn--80aaa8a4ab.xn--p1ai/product-card/redmi-a3-pro/",
+    "single_text": "В корзину",
+    "minimum": 1,
+    "maximum": 9999,
+    "multiple_of": 1
+   },
+   "extensions": {}
+  },
+  {
+   "id": 5855,
+   "name": "Redmi 17",
+   "slug": "redmi-17",
+   "parent": 0,
+   "type": "variable",
+   "variation": "",
+   "permalink": "https://xn--80aaa8a4ab.xn--p1ai/product-card/redmi-17/",
+   "sku": "",
+   "short_description": "",
+   "description": "",
+   "on_sale": false,
+   "prices": {
+    "price": "1760000",
+    "regular_price": "1760000",
+    "sale_price": "1760000",
+    "price_range": {
+     "min_amount": "1760000",
+     "max_amount": "2410000"
+    },
+    "currency_code": "RUB",
+    "currency_symbol": "₽",
+    "currency_minor_unit": 2,
+    "currency_decimal_separator": ",",
+    "currency_thousand_separator": " ",
+    "currency_prefix": "",
+    "currency_suffix": " ₽"
+   },
+   "price_html": "<span class=\"woocommerce-Price-amount amount\" aria-hidden=\"true\">17 600,00&nbsp;<span class=\"woocommerce-Price-currencySymbol\">&#8381;</span></span> <span aria-hidden=\"true\">&ndash;</span> <span class=\"woocommerce-Price-amount amount\" aria-hidden=\"true\">24 100,00&nbsp;<span class=\"woocommerce-Price-currencySymbol\">&#8381;</span></span><span class=\"screen-reader-text\">Диапазон цен: 17 600,00&nbsp;&#8381; – 24 100,00&nbsp;&#8381;</span>",
+   "average_rating": "0",
+   "review_count": 0,
+   "images": [
+    {
+     "id": 5856,
+     "src": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/f2f947967ead66952d9029bd.jpg",
+     "thumbnail": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/f2f947967ead66952d9029bd-300x300.jpg",
+     "srcset": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/f2f947967ead66952d9029bd.jpg 700w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/f2f947967ead66952d9029bd-300x300.jpg 300w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/f2f947967ead66952d9029bd-150x150.jpg 150w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/f2f947967ead66952d9029bd-600x600.jpg 600w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/f2f947967ead66952d9029bd-100x100.jpg 100w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/f2f947967ead66952d9029bd-50x50.jpg 50w",
+     "sizes": "(max-width: 700px) 100vw, 700px",
+     "name": "Redmi 17 4/128 Black",
+     "alt": "Redmi 17 — Black"
+    },
+    {
+     "id": 5857,
+     "src": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/2c76a215f6d455b78d39bcc3.jpg",
+     "thumbnail": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/2c76a215f6d455b78d39bcc3-300x300.jpg",
+     "srcset": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/2c76a215f6d455b78d39bcc3.jpg 700w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/2c76a215f6d455b78d39bcc3-300x300.jpg 300w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/2c76a215f6d455b78d39bcc3-150x150.jpg 150w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/2c76a215f6d455b78d39bcc3-600x600.jpg 600w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/2c76a215f6d455b78d39bcc3-100x100.jpg 100w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/2c76a215f6d455b78d39bcc3-50x50.jpg 50w",
+     "sizes": "(max-width: 700px) 100vw, 700px",
+     "name": "Redmi 17 4/128 Blue",
+     "alt": "Redmi 17 — Blue"
+    },
+    {
+     "id": 5858,
+     "src": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/4d76ff6140ff498f4fbc8a60.jpg",
+     "thumbnail": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/4d76ff6140ff498f4fbc8a60-300x300.jpg",
+     "srcset": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/4d76ff6140ff498f4fbc8a60.jpg 700w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/4d76ff6140ff498f4fbc8a60-300x300.jpg 300w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/4d76ff6140ff498f4fbc8a60-150x150.jpg 150w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/4d76ff6140ff498f4fbc8a60-600x600.jpg 600w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/4d76ff6140ff498f4fbc8a60-100x100.jpg 100w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/4d76ff6140ff498f4fbc8a60-50x50.jpg 50w",
+     "sizes": "(max-width: 700px) 100vw, 700px",
+     "name": "Redmi 17 4/128 Purple",
+     "alt": "Redmi 17 — Purple"
+    },
+    {
+     "id": 5856,
+     "src": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/f2f947967ead66952d9029bd.jpg",
+     "thumbnail": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/f2f947967ead66952d9029bd-300x300.jpg",
+     "srcset": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/f2f947967ead66952d9029bd.jpg 700w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/f2f947967ead66952d9029bd-300x300.jpg 300w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/f2f947967ead66952d9029bd-150x150.jpg 150w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/f2f947967ead66952d9029bd-600x600.jpg 600w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/f2f947967ead66952d9029bd-100x100.jpg 100w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/f2f947967ead66952d9029bd-50x50.jpg 50w",
+     "sizes": "(max-width: 700px) 100vw, 700px",
+     "name": "Redmi 17 4/128 Black",
+     "alt": "Redmi 17 — Black"
+    },
+    {
+     "id": 5859,
+     "src": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/c9889a39919dc4e48a6d9f52.jpg",
+     "thumbnail": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/c9889a39919dc4e48a6d9f52-300x300.jpg",
+     "srcset": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/c9889a39919dc4e48a6d9f52.jpg 700w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/c9889a39919dc4e48a6d9f52-300x300.jpg 300w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/c9889a39919dc4e48a6d9f52-150x150.jpg 150w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/c9889a39919dc4e48a6d9f52-600x600.jpg 600w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/c9889a39919dc4e48a6d9f52-100x100.jpg 100w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/c9889a39919dc4e48a6d9f52-50x50.jpg 50w",
+     "sizes": "(max-width: 700px) 100vw, 700px",
+     "name": "Redmi 17 8/256 Green",
+     "alt": "Redmi 17 — Green"
+    }
+   ],
+   "categories": [
+    {
+     "id": 219,
+     "name": "Android-смартфоны",
+     "slug": "android",
+     "link": "https://xn--80aaa8a4ab.xn--p1ai/catalog/android/"
+    },
+    {
+     "id": 29,
+     "name": "Xiaomi",
+     "slug": "xiaomi",
+     "link": "https://xn--80aaa8a4ab.xn--p1ai/catalog/xiaomi/"
+    }
+   ],
+   "tags": [],
+   "brands": [],
+   "attributes": [
+    {
+     "id": 1,
+     "name": "Цвет",
+     "taxonomy": "pa_color",
+     "has_variations": true,
+     "terms": [
+      {
+       "id": 180,
+       "name": "Black",
+       "slug": "black"
+      },
+      {
+       "id": 88,
+       "name": "Blue",
+       "slug": "blue"
+      },
+      {
+       "id": 103,
+       "name": "Green",
+       "slug": "green"
+      },
+      {
+       "id": 91,
+       "name": "Purple",
+       "slug": "purple"
+      }
+     ]
+    },
+    {
+     "id": 2,
+     "name": "Память",
+     "taxonomy": "pa_storage",
+     "has_variations": true,
+     "terms": [
+      {
+       "id": 235,
+       "name": "4/128 ГБ",
+       "slug": "4-128-%d0%b3%d0%b1"
+      },
+      {
+       "id": 236,
+       "name": "4/256 ГБ",
+       "slug": "4-256-%d0%b3%d0%b1"
+      },
+      {
+       "id": 248,
+       "name": "6/128 ГБ",
+       "slug": "6-128-%d0%b3%d0%b1"
+      },
+      {
+       "id": 234,
+       "name": "6/256 ГБ",
+       "slug": "6-256-%d0%b3%d0%b1"
+      },
+      {
+       "id": 185,
+       "name": "8/256 ГБ",
+       "slug": "8-256-gb"
+      }
+     ]
+    }
+   ],
+   "variations": [
+    {
+     "id": 5860,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "black"
+      },
+      {
+       "name": "Память",
+       "value": "4-128-%d0%b3%d0%b1"
+      }
+     ]
+    },
+    {
+     "id": 5861,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "blue"
+      },
+      {
+       "name": "Память",
+       "value": "4-128-%d0%b3%d0%b1"
+      }
+     ]
+    },
+    {
+     "id": 5862,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "purple"
+      },
+      {
+       "name": "Память",
+       "value": "4-128-%d0%b3%d0%b1"
+      }
+     ]
+    },
+    {
+     "id": 5863,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "black"
+      },
+      {
+       "name": "Память",
+       "value": "4-256-%d0%b3%d0%b1"
+      }
+     ]
+    },
+    {
+     "id": 5864,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "blue"
+      },
+      {
+       "name": "Память",
+       "value": "4-256-%d0%b3%d0%b1"
+      }
+     ]
+    },
+    {
+     "id": 5865,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "purple"
+      },
+      {
+       "name": "Память",
+       "value": "4-256-%d0%b3%d0%b1"
+      }
+     ]
+    },
+    {
+     "id": 5866,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "black"
+      },
+      {
+       "name": "Память",
+       "value": "8-256-gb"
+      }
+     ]
+    },
+    {
+     "id": 5867,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "blue"
+      },
+      {
+       "name": "Память",
+       "value": "8-256-gb"
+      }
+     ]
+    },
+    {
+     "id": 5868,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "green"
+      },
+      {
+       "name": "Память",
+       "value": "8-256-gb"
+      }
+     ]
+    },
+    {
+     "id": 5869,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "green"
+      },
+      {
+       "name": "Память",
+       "value": "4-128-%d0%b3%d0%b1"
+      }
+     ]
+    },
+    {
+     "id": 5870,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "purple"
+      },
+      {
+       "name": "Память",
+       "value": "8-256-gb"
+      }
+     ]
+    },
+    {
+     "id": 5871,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "green"
+      },
+      {
+       "name": "Память",
+       "value": "4-256-%d0%b3%d0%b1"
+      }
+     ]
+    },
+    {
+     "id": 5872,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "black"
+      },
+      {
+       "name": "Память",
+       "value": "6-128-%d0%b3%d0%b1"
+      }
+     ]
+    },
+    {
+     "id": 5873,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "blue"
+      },
+      {
+       "name": "Память",
+       "value": "6-128-%d0%b3%d0%b1"
+      }
+     ]
+    },
+    {
+     "id": 5874,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "green"
+      },
+      {
+       "name": "Память",
+       "value": "6-128-%d0%b3%d0%b1"
+      }
+     ]
+    },
+    {
+     "id": 5875,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "purple"
+      },
+      {
+       "name": "Память",
+       "value": "6-128-%d0%b3%d0%b1"
+      }
+     ]
+    },
+    {
+     "id": 5876,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "black"
+      },
+      {
+       "name": "Память",
+       "value": "6-256-%d0%b3%d0%b1"
+      }
+     ]
+    },
+    {
+     "id": 5877,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "blue"
+      },
+      {
+       "name": "Память",
+       "value": "6-256-%d0%b3%d0%b1"
+      }
+     ]
+    },
+    {
+     "id": 5878,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "green"
+      },
+      {
+       "name": "Память",
+       "value": "6-256-%d0%b3%d0%b1"
+      }
+     ]
+    },
+    {
+     "id": 5879,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "purple"
+      },
+      {
+       "name": "Память",
+       "value": "6-256-%d0%b3%d0%b1"
+      }
+     ]
+    }
+   ],
+   "grouped_products": [],
+   "has_options": true,
+   "is_purchasable": true,
+   "is_in_stock": true,
+   "is_on_backorder": false,
+   "low_stock_remaining": null,
+   "stock_availability": {
+    "text": "",
+    "class": "in-stock"
+   },
+   "sold_individually": false,
+   "add_to_cart": {
+    "text": "Выберите параметры",
+    "description": "Выберите опции для &ldquo;Redmi 17&rdquo;",
+    "url": "https://xn--80aaa8a4ab.xn--p1ai/product-card/redmi-17/",
+    "single_text": "В корзину",
+    "minimum": 1,
+    "maximum": 9999,
+    "multiple_of": 1
+   },
+   "extensions": {}
+  },
+  {
+   "id": 5841,
+   "name": "Xiaomi 17 Pro Max",
+   "slug": "xiaomi-17-pro-max",
+   "parent": 0,
+   "type": "variable",
+   "variation": "",
+   "permalink": "https://xn--80aaa8a4ab.xn--p1ai/product-card/xiaomi-17-pro-max/",
+   "sku": "",
+   "short_description": "",
+   "description": "",
+   "on_sale": false,
+   "prices": {
+    "price": "11580000",
+    "regular_price": "11580000",
+    "sale_price": "11580000",
+    "price_range": {
+     "min_amount": "11580000",
+     "max_amount": "14720000"
+    },
+    "currency_code": "RUB",
+    "currency_symbol": "₽",
+    "currency_minor_unit": 2,
+    "currency_decimal_separator": ",",
+    "currency_thousand_separator": " ",
+    "currency_prefix": "",
+    "currency_suffix": " ₽"
+   },
+   "price_html": "<span class=\"woocommerce-Price-amount amount\" aria-hidden=\"true\">115 800,00&nbsp;<span class=\"woocommerce-Price-currencySymbol\">&#8381;</span></span> <span aria-hidden=\"true\">&ndash;</span> <span class=\"woocommerce-Price-amount amount\" aria-hidden=\"true\">147 200,00&nbsp;<span class=\"woocommerce-Price-currencySymbol\">&#8381;</span></span><span class=\"screen-reader-text\">Диапазон цен: 115 800,00&nbsp;&#8381; – 147 200,00&nbsp;&#8381;</span>",
+   "average_rating": "0",
+   "review_count": 0,
+   "images": [
+    {
+     "id": 5842,
+     "src": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/00f6b4b8e0bb34874d34bb77.png",
+     "thumbnail": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/00f6b4b8e0bb34874d34bb77-300x300.png",
+     "srcset": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/00f6b4b8e0bb34874d34bb77.png 800w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/00f6b4b8e0bb34874d34bb77-300x300.png 300w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/00f6b4b8e0bb34874d34bb77-150x150.png 150w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/00f6b4b8e0bb34874d34bb77-768x768.png 768w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/00f6b4b8e0bb34874d34bb77-600x600.png 600w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/00f6b4b8e0bb34874d34bb77-100x100.png 100w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/00f6b4b8e0bb34874d34bb77-50x50.png 50w",
+     "sizes": "(max-width: 800px) 100vw, 800px",
+     "name": "Xiaomi 17 Pro Max 12/512 Black",
+     "alt": "Xiaomi 17 Pro Max — Black"
+    },
+    {
+     "id": 5843,
+     "src": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/1db1778ed3e72fddbb635718.png",
+     "thumbnail": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/1db1778ed3e72fddbb635718-300x300.png",
+     "srcset": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/1db1778ed3e72fddbb635718.png 800w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/1db1778ed3e72fddbb635718-300x300.png 300w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/1db1778ed3e72fddbb635718-150x150.png 150w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/1db1778ed3e72fddbb635718-768x768.png 768w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/1db1778ed3e72fddbb635718-600x600.png 600w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/1db1778ed3e72fddbb635718-100x100.png 100w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/1db1778ed3e72fddbb635718-50x50.png 50w",
+     "sizes": "(max-width: 800px) 100vw, 800px",
+     "name": "Xiaomi 17 Pro Max 12/512 White",
+     "alt": "Xiaomi 17 Pro Max — White"
+    },
+    {
+     "id": 5844,
+     "src": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/c0ddaab1deaf29b23d085eea.png",
+     "thumbnail": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/c0ddaab1deaf29b23d085eea-300x300.png",
+     "srcset": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/c0ddaab1deaf29b23d085eea.png 800w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/c0ddaab1deaf29b23d085eea-300x300.png 300w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/c0ddaab1deaf29b23d085eea-150x150.png 150w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/c0ddaab1deaf29b23d085eea-768x768.png 768w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/c0ddaab1deaf29b23d085eea-600x600.png 600w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/c0ddaab1deaf29b23d085eea-100x100.png 100w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/c0ddaab1deaf29b23d085eea-50x50.png 50w",
+     "sizes": "(max-width: 800px) 100vw, 800px",
+     "name": "Xiaomi 17 Pro Max 12/512 Green",
+     "alt": "Xiaomi 17 Pro Max — Green"
+    },
+    {
+     "id": 5845,
+     "src": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/b57a09936353ff3ec78554d1.png",
+     "thumbnail": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/b57a09936353ff3ec78554d1-300x300.png",
+     "srcset": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/b57a09936353ff3ec78554d1.png 800w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/b57a09936353ff3ec78554d1-300x300.png 300w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/b57a09936353ff3ec78554d1-150x150.png 150w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/b57a09936353ff3ec78554d1-768x768.png 768w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/b57a09936353ff3ec78554d1-600x600.png 600w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/b57a09936353ff3ec78554d1-100x100.png 100w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/b57a09936353ff3ec78554d1-50x50.png 50w",
+     "sizes": "(max-width: 800px) 100vw, 800px",
+     "name": "Xiaomi 17 Pro Max 12/512 Purple",
+     "alt": "Xiaomi 17 Pro Max — Purple"
+    },
+    {
+     "id": 5842,
+     "src": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/00f6b4b8e0bb34874d34bb77.png",
+     "thumbnail": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/00f6b4b8e0bb34874d34bb77-300x300.png",
+     "srcset": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/00f6b4b8e0bb34874d34bb77.png 800w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/00f6b4b8e0bb34874d34bb77-300x300.png 300w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/00f6b4b8e0bb34874d34bb77-150x150.png 150w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/00f6b4b8e0bb34874d34bb77-768x768.png 768w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/00f6b4b8e0bb34874d34bb77-600x600.png 600w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/00f6b4b8e0bb34874d34bb77-100x100.png 100w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/00f6b4b8e0bb34874d34bb77-50x50.png 50w",
+     "sizes": "(max-width: 800px) 100vw, 800px",
+     "name": "Xiaomi 17 Pro Max 12/512 Black",
+     "alt": "Xiaomi 17 Pro Max — Black"
+    }
+   ],
+   "categories": [
+    {
+     "id": 219,
+     "name": "Android-смартфоны",
+     "slug": "android",
+     "link": "https://xn--80aaa8a4ab.xn--p1ai/catalog/android/"
+    },
+    {
+     "id": 29,
+     "name": "Xiaomi",
+     "slug": "xiaomi",
+     "link": "https://xn--80aaa8a4ab.xn--p1ai/catalog/xiaomi/"
+    }
+   ],
+   "tags": [],
+   "brands": [],
+   "attributes": [
+    {
+     "id": 1,
+     "name": "Цвет",
+     "taxonomy": "pa_color",
+     "has_variations": true,
+     "terms": [
+      {
+       "id": 180,
+       "name": "Black",
+       "slug": "black"
+      },
+      {
+       "id": 103,
+       "name": "Green",
+       "slug": "green"
+      },
+      {
+       "id": 91,
+       "name": "Purple",
+       "slug": "purple"
+      },
+      {
+       "id": 181,
+       "name": "White",
+       "slug": "white"
+      }
+     ]
+    },
+    {
+     "id": 2,
+     "name": "Память",
+     "taxonomy": "pa_storage",
+     "has_variations": true,
+     "terms": [
+      {
+       "id": 227,
+       "name": "12/512 ГБ",
+       "slug": "12-512-%d0%b3%d0%b1"
+      },
+      {
+       "id": 201,
+       "name": "16/1 ТБ",
+       "slug": "16-1-tb"
+      },
+      {
+       "id": 239,
+       "name": "16/512 ГБ",
+       "slug": "16-512-%d0%b3%d0%b1"
+      }
+     ]
+    }
+   ],
+   "variations": [
+    {
+     "id": 5846,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "black"
+      },
+      {
+       "name": "Память",
+       "value": "12-512-%d0%b3%d0%b1"
+      }
+     ]
+    },
+    {
+     "id": 5847,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "white"
+      },
+      {
+       "name": "Память",
+       "value": "12-512-%d0%b3%d0%b1"
+      }
+     ]
+    },
+    {
+     "id": 5848,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "green"
+      },
+      {
+       "name": "Память",
+       "value": "12-512-%d0%b3%d0%b1"
+      }
+     ]
+    },
+    {
+     "id": 5849,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "purple"
+      },
+      {
+       "name": "Память",
+       "value": "12-512-%d0%b3%d0%b1"
+      }
+     ]
+    },
+    {
+     "id": 5850,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "black"
+      },
+      {
+       "name": "Память",
+       "value": "16-512-%d0%b3%d0%b1"
+      }
+     ]
+    },
+    {
+     "id": 5851,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "white"
+      },
+      {
+       "name": "Память",
+       "value": "16-512-%d0%b3%d0%b1"
+      }
+     ]
+    },
+    {
+     "id": 5852,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "green"
+      },
+      {
+       "name": "Память",
+       "value": "16-512-%d0%b3%d0%b1"
+      }
+     ]
+    },
+    {
+     "id": 5853,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "purple"
+      },
+      {
+       "name": "Память",
+       "value": "16-512-%d0%b3%d0%b1"
+      }
+     ]
+    },
+    {
+     "id": 5854,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "black"
+      },
+      {
+       "name": "Память",
+       "value": "16-1-tb"
+      }
+     ]
+    }
+   ],
+   "grouped_products": [],
+   "has_options": true,
+   "is_purchasable": true,
+   "is_in_stock": true,
+   "is_on_backorder": false,
+   "low_stock_remaining": null,
+   "stock_availability": {
+    "text": "",
+    "class": "in-stock"
+   },
+   "sold_individually": false,
+   "add_to_cart": {
+    "text": "Выберите параметры",
+    "description": "Выберите опции для &ldquo;Xiaomi 17 Pro Max&rdquo;",
+    "url": "https://xn--80aaa8a4ab.xn--p1ai/product-card/xiaomi-17-pro-max/",
+    "single_text": "В корзину",
+    "minimum": 1,
+    "maximum": 9999,
+    "multiple_of": 1
+   },
+   "extensions": {}
+  },
+  {
+   "id": 5828,
+   "name": "Xiaomi 17 Pro",
+   "slug": "xiaomi-17-pro",
+   "parent": 0,
+   "type": "variable",
+   "variation": "",
+   "permalink": "https://xn--80aaa8a4ab.xn--p1ai/product-card/xiaomi-17-pro/",
+   "sku": "",
+   "short_description": "",
+   "description": "",
+   "on_sale": false,
+   "prices": {
+    "price": "10080000",
+    "regular_price": "10080000",
+    "sale_price": "10080000",
+    "price_range": {
+     "min_amount": "10080000",
+     "max_amount": "10890000"
+    },
+    "currency_code": "RUB",
+    "currency_symbol": "₽",
+    "currency_minor_unit": 2,
+    "currency_decimal_separator": ",",
+    "currency_thousand_separator": " ",
+    "currency_prefix": "",
+    "currency_suffix": " ₽"
+   },
+   "price_html": "<span class=\"woocommerce-Price-amount amount\" aria-hidden=\"true\">100 800,00&nbsp;<span class=\"woocommerce-Price-currencySymbol\">&#8381;</span></span> <span aria-hidden=\"true\">&ndash;</span> <span class=\"woocommerce-Price-amount amount\" aria-hidden=\"true\">108 900,00&nbsp;<span class=\"woocommerce-Price-currencySymbol\">&#8381;</span></span><span class=\"screen-reader-text\">Диапазон цен: 100 800,00&nbsp;&#8381; – 108 900,00&nbsp;&#8381;</span>",
+   "average_rating": "0",
+   "review_count": 0,
+   "images": [
+    {
+     "id": 5829,
+     "src": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/9b7f713b7b31f58f5a3aa40e.png",
+     "thumbnail": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/9b7f713b7b31f58f5a3aa40e-300x300.png",
+     "srcset": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/9b7f713b7b31f58f5a3aa40e.png 1500w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/9b7f713b7b31f58f5a3aa40e-300x300.png 300w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/9b7f713b7b31f58f5a3aa40e-1024x1024.png 1024w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/9b7f713b7b31f58f5a3aa40e-150x150.png 150w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/9b7f713b7b31f58f5a3aa40e-768x768.png 768w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/9b7f713b7b31f58f5a3aa40e-1320x1320.png 1320w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/9b7f713b7b31f58f5a3aa40e-600x600.png 600w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/9b7f713b7b31f58f5a3aa40e-100x100.png 100w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/9b7f713b7b31f58f5a3aa40e-50x50.png 50w",
+     "sizes": "(max-width: 1500px) 100vw, 1500px",
+     "name": "Xiaomi 17 Pro 12/256 Black",
+     "alt": "Xiaomi 17 Pro — Black"
+    },
+    {
+     "id": 5830,
+     "src": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/ba999b640d04f770f38a9046.png",
+     "thumbnail": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/ba999b640d04f770f38a9046-300x300.png",
+     "srcset": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/ba999b640d04f770f38a9046.png 1500w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/ba999b640d04f770f38a9046-300x300.png 300w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/ba999b640d04f770f38a9046-1024x1024.png 1024w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/ba999b640d04f770f38a9046-150x150.png 150w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/ba999b640d04f770f38a9046-768x768.png 768w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/ba999b640d04f770f38a9046-1320x1320.png 1320w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/ba999b640d04f770f38a9046-600x600.png 600w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/ba999b640d04f770f38a9046-100x100.png 100w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/ba999b640d04f770f38a9046-50x50.png 50w",
+     "sizes": "(max-width: 1500px) 100vw, 1500px",
+     "name": "Xiaomi 17 Pro 12/256 White",
+     "alt": "Xiaomi 17 Pro — White"
+    },
+    {
+     "id": 5831,
+     "src": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/f229468290a0059fb2f6a890.png",
+     "thumbnail": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/f229468290a0059fb2f6a890-300x300.png",
+     "srcset": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/f229468290a0059fb2f6a890.png 1500w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/f229468290a0059fb2f6a890-300x300.png 300w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/f229468290a0059fb2f6a890-1024x1024.png 1024w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/f229468290a0059fb2f6a890-150x150.png 150w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/f229468290a0059fb2f6a890-768x768.png 768w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/f229468290a0059fb2f6a890-1320x1320.png 1320w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/f229468290a0059fb2f6a890-600x600.png 600w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/f229468290a0059fb2f6a890-100x100.png 100w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/f229468290a0059fb2f6a890-50x50.png 50w",
+     "sizes": "(max-width: 1500px) 100vw, 1500px",
+     "name": "Xiaomi 17 Pro 12/256 Purple",
+     "alt": "Xiaomi 17 Pro — Purple"
+    },
+    {
+     "id": 5832,
+     "src": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/050cfb6842504345cd152642.png",
+     "thumbnail": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/050cfb6842504345cd152642-300x300.png",
+     "srcset": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/050cfb6842504345cd152642.png 1500w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/050cfb6842504345cd152642-300x300.png 300w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/050cfb6842504345cd152642-1024x1024.png 1024w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/050cfb6842504345cd152642-150x150.png 150w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/050cfb6842504345cd152642-768x768.png 768w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/050cfb6842504345cd152642-1320x1320.png 1320w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/050cfb6842504345cd152642-600x600.png 600w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/050cfb6842504345cd152642-100x100.png 100w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/050cfb6842504345cd152642-50x50.png 50w",
+     "sizes": "(max-width: 1500px) 100vw, 1500px",
+     "name": "Xiaomi 17 Pro 12/512 Green",
+     "alt": "Xiaomi 17 Pro — Green"
+    },
+    {
+     "id": 5829,
+     "src": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/9b7f713b7b31f58f5a3aa40e.png",
+     "thumbnail": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/9b7f713b7b31f58f5a3aa40e-300x300.png",
+     "srcset": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/9b7f713b7b31f58f5a3aa40e.png 1500w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/9b7f713b7b31f58f5a3aa40e-300x300.png 300w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/9b7f713b7b31f58f5a3aa40e-1024x1024.png 1024w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/9b7f713b7b31f58f5a3aa40e-150x150.png 150w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/9b7f713b7b31f58f5a3aa40e-768x768.png 768w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/9b7f713b7b31f58f5a3aa40e-1320x1320.png 1320w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/9b7f713b7b31f58f5a3aa40e-600x600.png 600w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/9b7f713b7b31f58f5a3aa40e-100x100.png 100w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/9b7f713b7b31f58f5a3aa40e-50x50.png 50w",
+     "sizes": "(max-width: 1500px) 100vw, 1500px",
+     "name": "Xiaomi 17 Pro 12/256 Black",
+     "alt": "Xiaomi 17 Pro — Black"
+    }
+   ],
+   "categories": [
+    {
+     "id": 219,
+     "name": "Android-смартфоны",
+     "slug": "android",
+     "link": "https://xn--80aaa8a4ab.xn--p1ai/catalog/android/"
+    },
+    {
+     "id": 29,
+     "name": "Xiaomi",
+     "slug": "xiaomi",
+     "link": "https://xn--80aaa8a4ab.xn--p1ai/catalog/xiaomi/"
+    }
+   ],
+   "tags": [],
+   "brands": [],
+   "attributes": [
+    {
+     "id": 1,
+     "name": "Цвет",
+     "taxonomy": "pa_color",
+     "has_variations": true,
+     "terms": [
+      {
+       "id": 180,
+       "name": "Black",
+       "slug": "black"
+      },
+      {
+       "id": 103,
+       "name": "Green",
+       "slug": "green"
+      },
+      {
+       "id": 91,
+       "name": "Purple",
+       "slug": "purple"
+      },
+      {
+       "id": 181,
+       "name": "White",
+       "slug": "white"
+      }
+     ]
+    },
+    {
+     "id": 2,
+     "name": "Память",
+     "taxonomy": "pa_storage",
+     "has_variations": true,
+     "terms": [
+      {
+       "id": 186,
+       "name": "12/256 ГБ",
+       "slug": "12-256-gb"
+      },
+      {
+       "id": 227,
+       "name": "12/512 ГБ",
+       "slug": "12-512-%d0%b3%d0%b1"
+      },
+      {
+       "id": 239,
+       "name": "16/512 ГБ",
+       "slug": "16-512-%d0%b3%d0%b1"
+      }
+     ]
+    }
+   ],
+   "variations": [
+    {
+     "id": 5833,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "black"
+      },
+      {
+       "name": "Память",
+       "value": "12-256-gb"
+      }
+     ]
+    },
+    {
+     "id": 5834,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "white"
+      },
+      {
+       "name": "Память",
+       "value": "12-256-gb"
+      }
+     ]
+    },
+    {
+     "id": 5835,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "purple"
+      },
+      {
+       "name": "Память",
+       "value": "12-256-gb"
+      }
+     ]
+    },
+    {
+     "id": 5836,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "white"
+      },
+      {
+       "name": "Память",
+       "value": "12-512-%d0%b3%d0%b1"
+      }
+     ]
+    },
+    {
+     "id": 5837,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "green"
+      },
+      {
+       "name": "Память",
+       "value": "12-512-%d0%b3%d0%b1"
+      }
+     ]
+    },
+    {
+     "id": 5838,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "purple"
+      },
+      {
+       "name": "Память",
+       "value": "12-512-%d0%b3%d0%b1"
+      }
+     ]
+    },
+    {
+     "id": 5839,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "black"
+      },
+      {
+       "name": "Память",
+       "value": "16-512-%d0%b3%d0%b1"
+      }
+     ]
+    },
+    {
+     "id": 5840,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "white"
+      },
+      {
+       "name": "Память",
+       "value": "16-512-%d0%b3%d0%b1"
+      }
+     ]
+    }
+   ],
+   "grouped_products": [],
+   "has_options": true,
+   "is_purchasable": true,
+   "is_in_stock": true,
+   "is_on_backorder": false,
+   "low_stock_remaining": null,
+   "stock_availability": {
+    "text": "",
+    "class": "in-stock"
+   },
+   "sold_individually": false,
+   "add_to_cart": {
+    "text": "Выберите параметры",
+    "description": "Выберите опции для &ldquo;Xiaomi 17 Pro&rdquo;",
+    "url": "https://xn--80aaa8a4ab.xn--p1ai/product-card/xiaomi-17-pro/",
+    "single_text": "В корзину",
+    "minimum": 1,
+    "maximum": 9999,
+    "multiple_of": 1
+   },
+   "extensions": {}
+  },
+  {
+   "id": 5823,
+   "name": "Xiaomi 17",
+   "slug": "xiaomi-17",
+   "parent": 0,
+   "type": "variable",
+   "variation": "",
+   "permalink": "https://xn--80aaa8a4ab.xn--p1ai/product-card/xiaomi-17/",
+   "sku": "",
+   "short_description": "",
+   "description": "",
+   "on_sale": false,
+   "prices": {
+    "price": "7690000",
+    "regular_price": "7690000",
+    "sale_price": "7690000",
+    "price_range": null,
+    "currency_code": "RUB",
+    "currency_symbol": "₽",
+    "currency_minor_unit": 2,
+    "currency_decimal_separator": ",",
+    "currency_thousand_separator": " ",
+    "currency_prefix": "",
+    "currency_suffix": " ₽"
+   },
+   "price_html": "<span class=\"woocommerce-Price-amount amount\">76 900,00&nbsp;<span class=\"woocommerce-Price-currencySymbol\">&#8381;</span></span>",
+   "average_rating": "0",
+   "review_count": 0,
+   "images": [
+    {
+     "id": 5824,
+     "src": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/8c38e2b71e5b874934a53a05.jpg",
+     "thumbnail": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/8c38e2b71e5b874934a53a05-300x300.jpg",
+     "srcset": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/8c38e2b71e5b874934a53a05.jpg 700w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/8c38e2b71e5b874934a53a05-300x300.jpg 300w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/8c38e2b71e5b874934a53a05-150x150.jpg 150w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/8c38e2b71e5b874934a53a05-600x600.jpg 600w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/8c38e2b71e5b874934a53a05-100x100.jpg 100w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/8c38e2b71e5b874934a53a05-50x50.jpg 50w",
+     "sizes": "(max-width: 700px) 100vw, 700px",
+     "name": "Xiaomi 17 12/256 Black",
+     "alt": "Xiaomi 17 — Black"
+    },
+    {
+     "id": 5825,
+     "src": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/e1269b1dc88184372f26787b.png",
+     "thumbnail": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/e1269b1dc88184372f26787b-300x300.png",
+     "srcset": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/e1269b1dc88184372f26787b.png 1500w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/e1269b1dc88184372f26787b-300x300.png 300w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/e1269b1dc88184372f26787b-1024x1024.png 1024w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/e1269b1dc88184372f26787b-150x150.png 150w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/e1269b1dc88184372f26787b-768x768.png 768w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/e1269b1dc88184372f26787b-1320x1320.png 1320w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/e1269b1dc88184372f26787b-600x600.png 600w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/e1269b1dc88184372f26787b-100x100.png 100w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/e1269b1dc88184372f26787b-50x50.png 50w",
+     "sizes": "(max-width: 1500px) 100vw, 1500px",
+     "name": "Xiaomi 17 12/256 White",
+     "alt": "Xiaomi 17 — White"
+    }
+   ],
+   "categories": [
+    {
+     "id": 219,
+     "name": "Android-смартфоны",
+     "slug": "android",
+     "link": "https://xn--80aaa8a4ab.xn--p1ai/catalog/android/"
+    },
+    {
+     "id": 29,
+     "name": "Xiaomi",
+     "slug": "xiaomi",
+     "link": "https://xn--80aaa8a4ab.xn--p1ai/catalog/xiaomi/"
+    }
+   ],
+   "tags": [],
+   "brands": [],
+   "attributes": [
+    {
+     "id": 1,
+     "name": "Цвет",
+     "taxonomy": "pa_color",
+     "has_variations": true,
+     "terms": [
+      {
+       "id": 180,
+       "name": "Black",
+       "slug": "black"
+      },
+      {
+       "id": 181,
+       "name": "White",
+       "slug": "white"
+      }
+     ]
+    },
+    {
+     "id": 2,
+     "name": "Память",
+     "taxonomy": "pa_storage",
+     "has_variations": true,
+     "terms": [
+      {
+       "id": 186,
+       "name": "12/256 ГБ",
+       "slug": "12-256-gb"
+      }
+     ]
+    }
+   ],
+   "variations": [
+    {
+     "id": 5826,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "black"
+      },
+      {
+       "name": "Память",
+       "value": "12-256-gb"
+      }
+     ]
+    },
+    {
+     "id": 5827,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "white"
+      },
+      {
+       "name": "Память",
+       "value": "12-256-gb"
+      }
+     ]
+    }
+   ],
+   "grouped_products": [],
+   "has_options": true,
+   "is_purchasable": true,
+   "is_in_stock": true,
+   "is_on_backorder": false,
+   "low_stock_remaining": null,
+   "stock_availability": {
+    "text": "",
+    "class": "in-stock"
+   },
+   "sold_individually": false,
+   "add_to_cart": {
+    "text": "Выберите параметры",
+    "description": "Выберите опции для &ldquo;Xiaomi 17&rdquo;",
+    "url": "https://xn--80aaa8a4ab.xn--p1ai/product-card/xiaomi-17/",
+    "single_text": "В корзину",
+    "minimum": 1,
+    "maximum": 9999,
+    "multiple_of": 1
+   },
+   "extensions": {}
+  },
+  {
+   "id": 5820,
+   "name": "Xiaomi 15T",
+   "slug": "xiaomi-15t",
+   "parent": 0,
+   "type": "variable",
+   "variation": "",
+   "permalink": "https://xn--80aaa8a4ab.xn--p1ai/product-card/xiaomi-15t/",
+   "sku": "",
+   "short_description": "",
+   "description": "",
+   "on_sale": false,
+   "prices": {
+    "price": "0",
+    "regular_price": "0",
+    "sale_price": "0",
+    "price_range": null,
+    "currency_code": "RUB",
+    "currency_symbol": "₽",
+    "currency_minor_unit": 2,
+    "currency_decimal_separator": ",",
+    "currency_thousand_separator": " ",
+    "currency_prefix": "",
+    "currency_suffix": " ₽"
+   },
+   "price_html": "",
+   "average_rating": "0",
+   "review_count": 0,
+   "images": [
+    {
+     "id": 5821,
+     "src": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/4d480b69c47512628c593ffa.jpg",
+     "thumbnail": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/4d480b69c47512628c593ffa-300x300.jpg",
+     "srcset": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/4d480b69c47512628c593ffa.jpg 700w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/4d480b69c47512628c593ffa-300x300.jpg 300w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/4d480b69c47512628c593ffa-150x150.jpg 150w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/4d480b69c47512628c593ffa-600x600.jpg 600w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/4d480b69c47512628c593ffa-100x100.jpg 100w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/4d480b69c47512628c593ffa-50x50.jpg 50w",
+     "sizes": "(max-width: 700px) 100vw, 700px",
+     "name": "Xiaomi 15T 12/512 Black",
+     "alt": "Xiaomi 15T — Black"
+    }
+   ],
+   "categories": [
+    {
+     "id": 219,
+     "name": "Android-смартфоны",
+     "slug": "android",
+     "link": "https://xn--80aaa8a4ab.xn--p1ai/catalog/android/"
+    },
+    {
+     "id": 29,
+     "name": "Xiaomi",
+     "slug": "xiaomi",
+     "link": "https://xn--80aaa8a4ab.xn--p1ai/catalog/xiaomi/"
+    }
+   ],
+   "tags": [],
+   "brands": [],
+   "attributes": [
+    {
+     "id": 1,
+     "name": "Цвет",
+     "taxonomy": "pa_color",
+     "has_variations": true,
+     "terms": [
+      {
+       "id": 180,
+       "name": "Black",
+       "slug": "black"
+      }
+     ]
+    },
+    {
+     "id": 2,
+     "name": "Память",
+     "taxonomy": "pa_storage",
+     "has_variations": true,
+     "terms": [
+      {
+       "id": 227,
+       "name": "12/512 ГБ",
+       "slug": "12-512-%d0%b3%d0%b1"
+      }
+     ]
+    }
+   ],
+   "variations": [
+    {
+     "id": 5822,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "black"
+      },
+      {
+       "name": "Память",
+       "value": "12-512-%d0%b3%d0%b1"
+      }
+     ]
+    }
+   ],
+   "grouped_products": [],
+   "has_options": true,
+   "is_purchasable": false,
+   "is_in_stock": true,
+   "is_on_backorder": false,
+   "low_stock_remaining": null,
+   "stock_availability": {
+    "text": "Нет в наличии",
+    "class": "out-of-stock"
+   },
+   "sold_individually": false,
+   "add_to_cart": {
+    "text": "Подробнее",
+    "description": "Выберите опции для &ldquo;Xiaomi 15T&rdquo;",
+    "url": "https://xn--80aaa8a4ab.xn--p1ai/product-card/xiaomi-15t/",
+    "single_text": "В корзину",
+    "minimum": 1,
+    "maximum": 9999,
+    "multiple_of": 1
+   },
+   "extensions": {}
+  },
+  {
+   "id": 5808,
+   "name": "Xiaomi 17T Pro",
+   "slug": "xiaomi-17t-pro",
+   "parent": 0,
+   "type": "variable",
+   "variation": "",
+   "permalink": "https://xn--80aaa8a4ab.xn--p1ai/product-card/xiaomi-17t-pro/",
+   "sku": "",
+   "short_description": "",
+   "description": "",
+   "on_sale": false,
+   "prices": {
+    "price": "7130000",
+    "regular_price": "7130000",
+    "sale_price": "7130000",
+    "price_range": {
+     "min_amount": "7130000",
+     "max_amount": "8310000"
+    },
+    "currency_code": "RUB",
+    "currency_symbol": "₽",
+    "currency_minor_unit": 2,
+    "currency_decimal_separator": ",",
+    "currency_thousand_separator": " ",
+    "currency_prefix": "",
+    "currency_suffix": " ₽"
+   },
+   "price_html": "<span class=\"woocommerce-Price-amount amount\" aria-hidden=\"true\">71 300,00&nbsp;<span class=\"woocommerce-Price-currencySymbol\">&#8381;</span></span> <span aria-hidden=\"true\">&ndash;</span> <span class=\"woocommerce-Price-amount amount\" aria-hidden=\"true\">83 100,00&nbsp;<span class=\"woocommerce-Price-currencySymbol\">&#8381;</span></span><span class=\"screen-reader-text\">Диапазон цен: 71 300,00&nbsp;&#8381; – 83 100,00&nbsp;&#8381;</span>",
+   "average_rating": "0",
+   "review_count": 0,
+   "images": [
+    {
+     "id": 5809,
+     "src": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/bfbd3185aa2739a8bce98c56.png",
+     "thumbnail": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/bfbd3185aa2739a8bce98c56-300x300.png",
+     "srcset": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/bfbd3185aa2739a8bce98c56.png 700w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/bfbd3185aa2739a8bce98c56-300x300.png 300w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/bfbd3185aa2739a8bce98c56-150x150.png 150w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/bfbd3185aa2739a8bce98c56-600x600.png 600w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/bfbd3185aa2739a8bce98c56-100x100.png 100w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/bfbd3185aa2739a8bce98c56-50x50.png 50w",
+     "sizes": "(max-width: 700px) 100vw, 700px",
+     "name": "Xiaomi 17T Pro 12/512 Black",
+     "alt": "Xiaomi 17T Pro — Black"
+    },
+    {
+     "id": 5810,
+     "src": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/7334eea8c720c33f336c9093.png",
+     "thumbnail": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/7334eea8c720c33f336c9093-300x300.png",
+     "srcset": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/7334eea8c720c33f336c9093.png 1600w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/7334eea8c720c33f336c9093-300x300.png 300w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/7334eea8c720c33f336c9093-1024x1024.png 1024w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/7334eea8c720c33f336c9093-150x150.png 150w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/7334eea8c720c33f336c9093-768x768.png 768w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/7334eea8c720c33f336c9093-1536x1536.png 1536w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/7334eea8c720c33f336c9093-1320x1320.png 1320w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/7334eea8c720c33f336c9093-600x600.png 600w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/7334eea8c720c33f336c9093-100x100.png 100w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/7334eea8c720c33f336c9093-50x50.png 50w",
+     "sizes": "(max-width: 1600px) 100vw, 1600px",
+     "name": "Xiaomi 17T Pro 12/512 Blue",
+     "alt": "Xiaomi 17T Pro — Blue"
+    },
+    {
+     "id": 5809,
+     "src": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/bfbd3185aa2739a8bce98c56.png",
+     "thumbnail": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/bfbd3185aa2739a8bce98c56-300x300.png",
+     "srcset": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/bfbd3185aa2739a8bce98c56.png 700w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/bfbd3185aa2739a8bce98c56-300x300.png 300w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/bfbd3185aa2739a8bce98c56-150x150.png 150w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/bfbd3185aa2739a8bce98c56-600x600.png 600w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/bfbd3185aa2739a8bce98c56-100x100.png 100w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/bfbd3185aa2739a8bce98c56-50x50.png 50w",
+     "sizes": "(max-width: 700px) 100vw, 700px",
+     "name": "Xiaomi 17T Pro 12/512 Black",
+     "alt": "Xiaomi 17T Pro — Black"
+    },
+    {
+     "id": 5811,
+     "src": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/4b1b85c9992b932e751df010.png",
+     "thumbnail": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/4b1b85c9992b932e751df010-300x300.png",
+     "srcset": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/4b1b85c9992b932e751df010.png 1600w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/4b1b85c9992b932e751df010-300x300.png 300w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/4b1b85c9992b932e751df010-1024x1024.png 1024w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/4b1b85c9992b932e751df010-150x150.png 150w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/4b1b85c9992b932e751df010-768x768.png 768w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/4b1b85c9992b932e751df010-1536x1536.png 1536w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/4b1b85c9992b932e751df010-1320x1320.png 1320w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/4b1b85c9992b932e751df010-600x600.png 600w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/4b1b85c9992b932e751df010-100x100.png 100w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/4b1b85c9992b932e751df010-50x50.png 50w",
+     "sizes": "(max-width: 1600px) 100vw, 1600px",
+     "name": "Xiaomi 17T Pro 12/256 Violet",
+     "alt": "Xiaomi 17T Pro — Violet"
+    }
+   ],
+   "categories": [
+    {
+     "id": 219,
+     "name": "Android-смартфоны",
+     "slug": "android",
+     "link": "https://xn--80aaa8a4ab.xn--p1ai/catalog/android/"
+    },
+    {
+     "id": 29,
+     "name": "Xiaomi",
+     "slug": "xiaomi",
+     "link": "https://xn--80aaa8a4ab.xn--p1ai/catalog/xiaomi/"
+    }
+   ],
+   "tags": [],
+   "brands": [],
+   "attributes": [
+    {
+     "id": 1,
+     "name": "Цвет",
+     "taxonomy": "pa_color",
+     "has_variations": true,
+     "terms": [
+      {
+       "id": 180,
+       "name": "Black",
+       "slug": "black"
+      },
+      {
+       "id": 88,
+       "name": "Blue",
+       "slug": "blue"
+      },
+      {
+       "id": 240,
+       "name": "Violet",
+       "slug": "violet"
+      }
+     ]
+    },
+    {
+     "id": 2,
+     "name": "Память",
+     "taxonomy": "pa_storage",
+     "has_variations": true,
+     "terms": [
+      {
+       "id": 257,
+       "name": "12/1 ТБ",
+       "slug": "12-1-%d1%82%d0%b1"
+      },
+      {
+       "id": 186,
+       "name": "12/256 ГБ",
+       "slug": "12-256-gb"
+      },
+      {
+       "id": 227,
+       "name": "12/512 ГБ",
+       "slug": "12-512-%d0%b3%d0%b1"
+      }
+     ]
+    }
+   ],
+   "variations": [
+    {
+     "id": 5812,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "black"
+      },
+      {
+       "name": "Память",
+       "value": "12-512-%d0%b3%d0%b1"
+      }
+     ]
+    },
+    {
+     "id": 5813,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "blue"
+      },
+      {
+       "name": "Память",
+       "value": "12-512-%d0%b3%d0%b1"
+      }
+     ]
+    },
+    {
+     "id": 5814,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "black"
+      },
+      {
+       "name": "Память",
+       "value": "12-1-%d1%82%d0%b1"
+      }
+     ]
+    },
+    {
+     "id": 5815,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "blue"
+      },
+      {
+       "name": "Память",
+       "value": "12-1-%d1%82%d0%b1"
+      }
+     ]
+    },
+    {
+     "id": 5816,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "black"
+      },
+      {
+       "name": "Память",
+       "value": "12-256-gb"
+      }
+     ]
+    },
+    {
+     "id": 5817,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "blue"
+      },
+      {
+       "name": "Память",
+       "value": "12-256-gb"
+      }
+     ]
+    },
+    {
+     "id": 5818,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "violet"
+      },
+      {
+       "name": "Память",
+       "value": "12-256-gb"
+      }
+     ]
+    },
+    {
+     "id": 5819,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "violet"
+      },
+      {
+       "name": "Память",
+       "value": "12-512-%d0%b3%d0%b1"
+      }
+     ]
+    }
+   ],
+   "grouped_products": [],
+   "has_options": true,
+   "is_purchasable": true,
+   "is_in_stock": true,
+   "is_on_backorder": false,
+   "low_stock_remaining": null,
+   "stock_availability": {
+    "text": "",
+    "class": "in-stock"
+   },
+   "sold_individually": false,
+   "add_to_cart": {
+    "text": "Выберите параметры",
+    "description": "Выберите опции для &ldquo;Xiaomi 17T Pro&rdquo;",
+    "url": "https://xn--80aaa8a4ab.xn--p1ai/product-card/xiaomi-17t-pro/",
+    "single_text": "В корзину",
+    "minimum": 1,
+    "maximum": 9999,
+    "multiple_of": 1
+   },
+   "extensions": {}
+  },
+  {
+   "id": 5796,
+   "name": "Xiaomi 17T",
+   "slug": "xiaomi-17t",
+   "parent": 0,
+   "type": "variable",
+   "variation": "",
+   "permalink": "https://xn--80aaa8a4ab.xn--p1ai/product-card/xiaomi-17t/",
+   "sku": "",
+   "short_description": "",
+   "description": "",
+   "on_sale": false,
+   "prices": {
+    "price": "5160000",
+    "regular_price": "5160000",
+    "sale_price": "5160000",
+    "price_range": {
+     "min_amount": "5160000",
+     "max_amount": "5730000"
+    },
+    "currency_code": "RUB",
+    "currency_symbol": "₽",
+    "currency_minor_unit": 2,
+    "currency_decimal_separator": ",",
+    "currency_thousand_separator": " ",
+    "currency_prefix": "",
+    "currency_suffix": " ₽"
+   },
+   "price_html": "<span class=\"woocommerce-Price-amount amount\" aria-hidden=\"true\">51 600,00&nbsp;<span class=\"woocommerce-Price-currencySymbol\">&#8381;</span></span> <span aria-hidden=\"true\">&ndash;</span> <span class=\"woocommerce-Price-amount amount\" aria-hidden=\"true\">57 300,00&nbsp;<span class=\"woocommerce-Price-currencySymbol\">&#8381;</span></span><span class=\"screen-reader-text\">Диапазон цен: 51 600,00&nbsp;&#8381; – 57 300,00&nbsp;&#8381;</span>",
+   "average_rating": "0",
+   "review_count": 0,
+   "images": [
+    {
+     "id": 5797,
+     "src": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/062515c900bb0b12bc86bf4a.png",
+     "thumbnail": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/062515c900bb0b12bc86bf4a-300x300.png",
+     "srcset": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/062515c900bb0b12bc86bf4a.png 700w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/062515c900bb0b12bc86bf4a-300x300.png 300w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/062515c900bb0b12bc86bf4a-150x150.png 150w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/062515c900bb0b12bc86bf4a-600x600.png 600w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/062515c900bb0b12bc86bf4a-100x100.png 100w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/062515c900bb0b12bc86bf4a-50x50.png 50w",
+     "sizes": "(max-width: 700px) 100vw, 700px",
+     "name": "Xiaomi 17T 12/256 Black",
+     "alt": "Xiaomi 17T — Black"
+    },
+    {
+     "id": 5798,
+     "src": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/de45ace23f87f26c026c7def.png",
+     "thumbnail": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/de45ace23f87f26c026c7def-300x300.png",
+     "srcset": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/de45ace23f87f26c026c7def.png 1600w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/de45ace23f87f26c026c7def-300x300.png 300w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/de45ace23f87f26c026c7def-1024x1024.png 1024w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/de45ace23f87f26c026c7def-150x150.png 150w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/de45ace23f87f26c026c7def-768x768.png 768w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/de45ace23f87f26c026c7def-1536x1536.png 1536w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/de45ace23f87f26c026c7def-1320x1320.png 1320w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/de45ace23f87f26c026c7def-600x600.png 600w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/de45ace23f87f26c026c7def-100x100.png 100w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/de45ace23f87f26c026c7def-50x50.png 50w",
+     "sizes": "(max-width: 1600px) 100vw, 1600px",
+     "name": "Xiaomi 17T 12/256 White",
+     "alt": "Xiaomi 17T — White"
+    },
+    {
+     "id": 5799,
+     "src": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/181a1a6a686ddad3efe03072.png",
+     "thumbnail": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/181a1a6a686ddad3efe03072-300x300.png",
+     "srcset": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/181a1a6a686ddad3efe03072.png 700w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/181a1a6a686ddad3efe03072-300x300.png 300w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/181a1a6a686ddad3efe03072-150x150.png 150w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/181a1a6a686ddad3efe03072-600x600.png 600w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/181a1a6a686ddad3efe03072-100x100.png 100w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/181a1a6a686ddad3efe03072-50x50.png 50w",
+     "sizes": "(max-width: 700px) 100vw, 700px",
+     "name": "Xiaomi 17T 12/256 Violet",
+     "alt": "Xiaomi 17T — Violet"
+    },
+    {
+     "id": 5797,
+     "src": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/062515c900bb0b12bc86bf4a.png",
+     "thumbnail": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/062515c900bb0b12bc86bf4a-300x300.png",
+     "srcset": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/062515c900bb0b12bc86bf4a.png 700w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/062515c900bb0b12bc86bf4a-300x300.png 300w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/062515c900bb0b12bc86bf4a-150x150.png 150w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/062515c900bb0b12bc86bf4a-600x600.png 600w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/062515c900bb0b12bc86bf4a-100x100.png 100w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/062515c900bb0b12bc86bf4a-50x50.png 50w",
+     "sizes": "(max-width: 700px) 100vw, 700px",
+     "name": "Xiaomi 17T 12/256 Black",
+     "alt": "Xiaomi 17T — Black"
+    },
+    {
+     "id": 5800,
+     "src": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/a68ec478b7997e4c6c82ca1c.png",
+     "thumbnail": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/a68ec478b7997e4c6c82ca1c-300x300.png",
+     "srcset": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/a68ec478b7997e4c6c82ca1c.png 700w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/a68ec478b7997e4c6c82ca1c-300x300.png 300w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/a68ec478b7997e4c6c82ca1c-150x150.png 150w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/a68ec478b7997e4c6c82ca1c-600x600.png 600w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/a68ec478b7997e4c6c82ca1c-100x100.png 100w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/a68ec478b7997e4c6c82ca1c-50x50.png 50w",
+     "sizes": "(max-width: 700px) 100vw, 700px",
+     "name": "Xiaomi 17T 12/512 Blue",
+     "alt": "Xiaomi 17T — Blue"
+    }
+   ],
+   "categories": [
+    {
+     "id": 219,
+     "name": "Android-смартфоны",
+     "slug": "android",
+     "link": "https://xn--80aaa8a4ab.xn--p1ai/catalog/android/"
+    },
+    {
+     "id": 29,
+     "name": "Xiaomi",
+     "slug": "xiaomi",
+     "link": "https://xn--80aaa8a4ab.xn--p1ai/catalog/xiaomi/"
+    }
+   ],
+   "tags": [],
+   "brands": [],
+   "attributes": [
+    {
+     "id": 1,
+     "name": "Цвет",
+     "taxonomy": "pa_color",
+     "has_variations": true,
+     "terms": [
+      {
+       "id": 180,
+       "name": "Black",
+       "slug": "black"
+      },
+      {
+       "id": 88,
+       "name": "Blue",
+       "slug": "blue"
+      },
+      {
+       "id": 240,
+       "name": "Violet",
+       "slug": "violet"
+      },
+      {
+       "id": 181,
+       "name": "White",
+       "slug": "white"
+      }
+     ]
+    },
+    {
+     "id": 2,
+     "name": "Память",
+     "taxonomy": "pa_storage",
+     "has_variations": true,
+     "terms": [
+      {
+       "id": 186,
+       "name": "12/256 ГБ",
+       "slug": "12-256-gb"
+      },
+      {
+       "id": 227,
+       "name": "12/512 ГБ",
+       "slug": "12-512-%d0%b3%d0%b1"
+      }
+     ]
+    }
+   ],
+   "variations": [
+    {
+     "id": 5801,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "black"
+      },
+      {
+       "name": "Память",
+       "value": "12-256-gb"
+      }
+     ]
+    },
+    {
+     "id": 5802,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "white"
+      },
+      {
+       "name": "Память",
+       "value": "12-256-gb"
+      }
+     ]
+    },
+    {
+     "id": 5803,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "violet"
+      },
+      {
+       "name": "Память",
+       "value": "12-256-gb"
+      }
+     ]
+    },
+    {
+     "id": 5804,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "black"
+      },
+      {
+       "name": "Память",
+       "value": "12-512-%d0%b3%d0%b1"
+      }
+     ]
+    },
+    {
+     "id": 5805,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "blue"
+      },
+      {
+       "name": "Память",
+       "value": "12-512-%d0%b3%d0%b1"
+      }
+     ]
+    },
+    {
+     "id": 5806,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "violet"
+      },
+      {
+       "name": "Память",
+       "value": "12-512-%d0%b3%d0%b1"
+      }
+     ]
+    },
+    {
+     "id": 5807,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "white"
+      },
+      {
+       "name": "Память",
+       "value": "12-512-%d0%b3%d0%b1"
+      }
+     ]
+    }
+   ],
+   "grouped_products": [],
+   "has_options": true,
+   "is_purchasable": true,
+   "is_in_stock": true,
+   "is_on_backorder": false,
+   "low_stock_remaining": null,
+   "stock_availability": {
+    "text": "",
+    "class": "in-stock"
+   },
+   "sold_individually": false,
+   "add_to_cart": {
+    "text": "Выберите параметры",
+    "description": "Выберите опции для &ldquo;Xiaomi 17T&rdquo;",
+    "url": "https://xn--80aaa8a4ab.xn--p1ai/product-card/xiaomi-17t/",
+    "single_text": "В корзину",
+    "minimum": 1,
+    "maximum": 9999,
+    "multiple_of": 1
+   },
+   "extensions": {}
+  },
+  {
+   "id": 5788,
+   "name": "Xiaomi 17 Ultra",
+   "slug": "xiaomi-17-ultra",
+   "parent": 0,
+   "type": "variable",
+   "variation": "",
+   "permalink": "https://xn--80aaa8a4ab.xn--p1ai/product-card/xiaomi-17-ultra/",
+   "sku": "",
+   "short_description": "",
+   "description": "",
+   "on_sale": false,
+   "prices": {
+    "price": "12000000",
+    "regular_price": "12000000",
+    "sale_price": "12000000",
+    "price_range": {
+     "min_amount": "12000000",
+     "max_amount": "13780000"
+    },
+    "currency_code": "RUB",
+    "currency_symbol": "₽",
+    "currency_minor_unit": 2,
+    "currency_decimal_separator": ",",
+    "currency_thousand_separator": " ",
+    "currency_prefix": "",
+    "currency_suffix": " ₽"
+   },
+   "price_html": "<span class=\"woocommerce-Price-amount amount\" aria-hidden=\"true\">120 000,00&nbsp;<span class=\"woocommerce-Price-currencySymbol\">&#8381;</span></span> <span aria-hidden=\"true\">&ndash;</span> <span class=\"woocommerce-Price-amount amount\" aria-hidden=\"true\">137 800,00&nbsp;<span class=\"woocommerce-Price-currencySymbol\">&#8381;</span></span><span class=\"screen-reader-text\">Диапазон цен: 120 000,00&nbsp;&#8381; – 137 800,00&nbsp;&#8381;</span>",
+   "average_rating": "0",
+   "review_count": 0,
+   "images": [
+    {
+     "id": 5789,
+     "src": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/29688aa5713b426fff7ef89a.jpg",
+     "thumbnail": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/29688aa5713b426fff7ef89a-300x300.jpg",
+     "srcset": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/29688aa5713b426fff7ef89a.jpg 700w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/29688aa5713b426fff7ef89a-300x300.jpg 300w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/29688aa5713b426fff7ef89a-150x150.jpg 150w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/29688aa5713b426fff7ef89a-600x600.jpg 600w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/29688aa5713b426fff7ef89a-100x100.jpg 100w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/29688aa5713b426fff7ef89a-50x50.jpg 50w",
+     "sizes": "(max-width: 700px) 100vw, 700px",
+     "name": "Xiaomi 17 Ultra 16/1TB Black",
+     "alt": "Xiaomi 17 Ultra — Black"
+    },
+    {
+     "id": 5790,
+     "src": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/3bdb616432e787fee6cee1fa.jpg",
+     "thumbnail": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/3bdb616432e787fee6cee1fa-300x300.jpg",
+     "srcset": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/3bdb616432e787fee6cee1fa.jpg 700w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/3bdb616432e787fee6cee1fa-300x300.jpg 300w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/3bdb616432e787fee6cee1fa-150x150.jpg 150w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/3bdb616432e787fee6cee1fa-600x600.jpg 600w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/3bdb616432e787fee6cee1fa-100x100.jpg 100w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/3bdb616432e787fee6cee1fa-50x50.jpg 50w",
+     "sizes": "(max-width: 700px) 100vw, 700px",
+     "name": "Xiaomi 17 Ultra 16/1TB Green",
+     "alt": "Xiaomi 17 Ultra — Green"
+    },
+    {
+     "id": 5789,
+     "src": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/29688aa5713b426fff7ef89a.jpg",
+     "thumbnail": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/29688aa5713b426fff7ef89a-300x300.jpg",
+     "srcset": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/29688aa5713b426fff7ef89a.jpg 700w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/29688aa5713b426fff7ef89a-300x300.jpg 300w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/29688aa5713b426fff7ef89a-150x150.jpg 150w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/29688aa5713b426fff7ef89a-600x600.jpg 600w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/29688aa5713b426fff7ef89a-100x100.jpg 100w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/29688aa5713b426fff7ef89a-50x50.jpg 50w",
+     "sizes": "(max-width: 700px) 100vw, 700px",
+     "name": "Xiaomi 17 Ultra 16/1TB Black",
+     "alt": "Xiaomi 17 Ultra — Black"
+    },
+    {
+     "id": 5791,
+     "src": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/c373ebf221546416e79b915a.jpg",
+     "thumbnail": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/c373ebf221546416e79b915a-300x300.jpg",
+     "srcset": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/c373ebf221546416e79b915a.jpg 700w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/c373ebf221546416e79b915a-300x300.jpg 300w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/c373ebf221546416e79b915a-150x150.jpg 150w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/c373ebf221546416e79b915a-600x600.jpg 600w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/c373ebf221546416e79b915a-100x100.jpg 100w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/c373ebf221546416e79b915a-50x50.jpg 50w",
+     "sizes": "(max-width: 700px) 100vw, 700px",
+     "name": "Xiaomi 17 Ultra 16/512 White",
+     "alt": "Xiaomi 17 Ultra — White"
+    }
+   ],
+   "categories": [
+    {
+     "id": 219,
+     "name": "Android-смартфоны",
+     "slug": "android",
+     "link": "https://xn--80aaa8a4ab.xn--p1ai/catalog/android/"
+    },
+    {
+     "id": 29,
+     "name": "Xiaomi",
+     "slug": "xiaomi",
+     "link": "https://xn--80aaa8a4ab.xn--p1ai/catalog/xiaomi/"
+    }
+   ],
+   "tags": [],
+   "brands": [],
+   "attributes": [
+    {
+     "id": 1,
+     "name": "Цвет",
+     "taxonomy": "pa_color",
+     "has_variations": true,
+     "terms": [
+      {
+       "id": 180,
+       "name": "Black",
+       "slug": "black"
+      },
+      {
+       "id": 103,
+       "name": "Green",
+       "slug": "green"
+      },
+      {
+       "id": 181,
+       "name": "White",
+       "slug": "white"
+      }
+     ]
+    },
+    {
+     "id": 2,
+     "name": "Память",
+     "taxonomy": "pa_storage",
+     "has_variations": true,
+     "terms": [
+      {
+       "id": 201,
+       "name": "16/1 ТБ",
+       "slug": "16-1-tb"
+      },
+      {
+       "id": 239,
+       "name": "16/512 ГБ",
+       "slug": "16-512-%d0%b3%d0%b1"
+      }
+     ]
+    }
+   ],
+   "variations": [
+    {
+     "id": 5792,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "black"
+      },
+      {
+       "name": "Память",
+       "value": "16-1-tb"
+      }
+     ]
+    },
+    {
+     "id": 5793,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "green"
+      },
+      {
+       "name": "Память",
+       "value": "16-1-tb"
+      }
+     ]
+    },
+    {
+     "id": 5794,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "black"
+      },
+      {
+       "name": "Память",
+       "value": "16-512-%d0%b3%d0%b1"
+      }
+     ]
+    },
+    {
+     "id": 5795,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "white"
+      },
+      {
+       "name": "Память",
+       "value": "16-512-%d0%b3%d0%b1"
+      }
+     ]
+    }
+   ],
+   "grouped_products": [],
+   "has_options": true,
+   "is_purchasable": true,
+   "is_in_stock": true,
+   "is_on_backorder": false,
+   "low_stock_remaining": null,
+   "stock_availability": {
+    "text": "",
+    "class": "in-stock"
+   },
+   "sold_individually": false,
+   "add_to_cart": {
+    "text": "Выберите параметры",
+    "description": "Выберите опции для &ldquo;Xiaomi 17 Ultra&rdquo;",
+    "url": "https://xn--80aaa8a4ab.xn--p1ai/product-card/xiaomi-17-ultra/",
+    "single_text": "В корзину",
+    "minimum": 1,
+    "maximum": 9999,
+    "multiple_of": 1
+   },
+   "extensions": {}
+  },
+  {
+   "id": 5785,
+   "name": "Xiaomi 15T Pro",
+   "slug": "xiaomi-15t-pro",
+   "parent": 0,
+   "type": "variable",
+   "variation": "",
+   "permalink": "https://xn--80aaa8a4ab.xn--p1ai/product-card/xiaomi-15t-pro/",
+   "sku": "",
+   "short_description": "",
+   "description": "",
+   "on_sale": false,
+   "prices": {
+    "price": "6310000",
+    "regular_price": "6310000",
+    "sale_price": "6310000",
+    "price_range": null,
+    "currency_code": "RUB",
+    "currency_symbol": "₽",
+    "currency_minor_unit": 2,
+    "currency_decimal_separator": ",",
+    "currency_thousand_separator": " ",
+    "currency_prefix": "",
+    "currency_suffix": " ₽"
+   },
+   "price_html": "<span class=\"woocommerce-Price-amount amount\">63 100,00&nbsp;<span class=\"woocommerce-Price-currencySymbol\">&#8381;</span></span>",
+   "average_rating": "0",
+   "review_count": 0,
+   "images": [
+    {
+     "id": 5786,
+     "src": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/7bd75bc034f89c721e828878.jpg",
+     "thumbnail": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/7bd75bc034f89c721e828878-300x300.jpg",
+     "srcset": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/7bd75bc034f89c721e828878.jpg 700w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/7bd75bc034f89c721e828878-300x300.jpg 300w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/7bd75bc034f89c721e828878-150x150.jpg 150w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/7bd75bc034f89c721e828878-600x600.jpg 600w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/7bd75bc034f89c721e828878-100x100.jpg 100w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/7bd75bc034f89c721e828878-50x50.jpg 50w",
+     "sizes": "(max-width: 700px) 100vw, 700px",
+     "name": "Xiaomi 15T Pro 12/256 Gray",
+     "alt": "Xiaomi 15T Pro — Gray"
+    }
+   ],
+   "categories": [
+    {
+     "id": 219,
+     "name": "Android-смартфоны",
+     "slug": "android",
+     "link": "https://xn--80aaa8a4ab.xn--p1ai/catalog/android/"
+    },
+    {
+     "id": 29,
+     "name": "Xiaomi",
+     "slug": "xiaomi",
+     "link": "https://xn--80aaa8a4ab.xn--p1ai/catalog/xiaomi/"
+    }
+   ],
+   "tags": [],
+   "brands": [],
+   "attributes": [
+    {
+     "id": 1,
+     "name": "Цвет",
+     "taxonomy": "pa_color",
+     "has_variations": true,
+     "terms": [
+      {
+       "id": 229,
+       "name": "Gray",
+       "slug": "gray"
+      }
+     ]
+    },
+    {
+     "id": 2,
+     "name": "Память",
+     "taxonomy": "pa_storage",
+     "has_variations": true,
+     "terms": [
+      {
+       "id": 186,
+       "name": "12/256 ГБ",
+       "slug": "12-256-gb"
+      }
+     ]
+    }
+   ],
+   "variations": [
+    {
+     "id": 5787,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "gray"
+      },
+      {
+       "name": "Память",
+       "value": "12-256-gb"
+      }
+     ]
+    }
+   ],
+   "grouped_products": [],
+   "has_options": true,
+   "is_purchasable": true,
+   "is_in_stock": true,
+   "is_on_backorder": false,
+   "low_stock_remaining": null,
+   "stock_availability": {
+    "text": "",
+    "class": "in-stock"
+   },
+   "sold_individually": false,
+   "add_to_cart": {
+    "text": "Выберите параметры",
+    "description": "Выберите опции для &ldquo;Xiaomi 15T Pro&rdquo;",
+    "url": "https://xn--80aaa8a4ab.xn--p1ai/product-card/xiaomi-15t-pro/",
+    "single_text": "В корзину",
+    "minimum": 1,
+    "maximum": 9999,
+    "multiple_of": 1
+   },
+   "extensions": {}
+  },
+  {
+   "id": 5775,
+   "name": "Xiaomi 15",
+   "slug": "xiaomi-15",
+   "parent": 0,
+   "type": "variable",
+   "variation": "",
+   "permalink": "https://xn--80aaa8a4ab.xn--p1ai/product-card/xiaomi-15/",
+   "sku": "",
+   "short_description": "",
+   "description": "",
+   "on_sale": false,
+   "prices": {
+    "price": "6110000",
+    "regular_price": "6110000",
+    "sale_price": "6110000",
+    "price_range": {
+     "min_amount": "6110000",
+     "max_amount": "7510000"
+    },
+    "currency_code": "RUB",
+    "currency_symbol": "₽",
+    "currency_minor_unit": 2,
+    "currency_decimal_separator": ",",
+    "currency_thousand_separator": " ",
+    "currency_prefix": "",
+    "currency_suffix": " ₽"
+   },
+   "price_html": "<span class=\"woocommerce-Price-amount amount\" aria-hidden=\"true\">61 100,00&nbsp;<span class=\"woocommerce-Price-currencySymbol\">&#8381;</span></span> <span aria-hidden=\"true\">&ndash;</span> <span class=\"woocommerce-Price-amount amount\" aria-hidden=\"true\">75 100,00&nbsp;<span class=\"woocommerce-Price-currencySymbol\">&#8381;</span></span><span class=\"screen-reader-text\">Диапазон цен: 61 100,00&nbsp;&#8381; – 75 100,00&nbsp;&#8381;</span>",
+   "average_rating": "0",
+   "review_count": 0,
+   "images": [
+    {
+     "id": 5776,
+     "src": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/e38a1a21d38f72b413b7125e.jpg",
+     "thumbnail": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/e38a1a21d38f72b413b7125e-300x300.jpg",
+     "srcset": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/e38a1a21d38f72b413b7125e.jpg 700w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/e38a1a21d38f72b413b7125e-300x300.jpg 300w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/e38a1a21d38f72b413b7125e-150x150.jpg 150w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/e38a1a21d38f72b413b7125e-600x600.jpg 600w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/e38a1a21d38f72b413b7125e-100x100.jpg 100w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/e38a1a21d38f72b413b7125e-50x50.jpg 50w",
+     "sizes": "(max-width: 700px) 100vw, 700px",
+     "name": "Xiaomi 15 12/256 Green",
+     "alt": "Xiaomi 15 — Green"
+    },
+    {
+     "id": 5777,
+     "src": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/69316ba3c6dc660418c50c2f.jpg",
+     "thumbnail": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/69316ba3c6dc660418c50c2f-300x300.jpg",
+     "srcset": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/69316ba3c6dc660418c50c2f.jpg 700w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/69316ba3c6dc660418c50c2f-300x300.jpg 300w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/69316ba3c6dc660418c50c2f-150x150.jpg 150w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/69316ba3c6dc660418c50c2f-600x600.jpg 600w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/69316ba3c6dc660418c50c2f-100x100.jpg 100w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/69316ba3c6dc660418c50c2f-50x50.jpg 50w",
+     "sizes": "(max-width: 700px) 100vw, 700px",
+     "name": "Xiaomi 15 12/512 Black",
+     "alt": "Xiaomi 15 — Black"
+    },
+    {
+     "id": 5776,
+     "src": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/e38a1a21d38f72b413b7125e.jpg",
+     "thumbnail": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/e38a1a21d38f72b413b7125e-300x300.jpg",
+     "srcset": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/e38a1a21d38f72b413b7125e.jpg 700w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/e38a1a21d38f72b413b7125e-300x300.jpg 300w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/e38a1a21d38f72b413b7125e-150x150.jpg 150w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/e38a1a21d38f72b413b7125e-600x600.jpg 600w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/e38a1a21d38f72b413b7125e-100x100.jpg 100w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/e38a1a21d38f72b413b7125e-50x50.jpg 50w",
+     "sizes": "(max-width: 700px) 100vw, 700px",
+     "name": "Xiaomi 15 12/256 Green",
+     "alt": "Xiaomi 15 — Green"
+    },
+    {
+     "id": 5778,
+     "src": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/cdaaf46c5ae0dac1d8fda6df.jpg",
+     "thumbnail": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/cdaaf46c5ae0dac1d8fda6df-300x300.jpg",
+     "srcset": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/cdaaf46c5ae0dac1d8fda6df.jpg 700w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/cdaaf46c5ae0dac1d8fda6df-300x300.jpg 300w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/cdaaf46c5ae0dac1d8fda6df-150x150.jpg 150w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/cdaaf46c5ae0dac1d8fda6df-600x600.jpg 600w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/cdaaf46c5ae0dac1d8fda6df-100x100.jpg 100w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/cdaaf46c5ae0dac1d8fda6df-50x50.jpg 50w",
+     "sizes": "(max-width: 700px) 100vw, 700px",
+     "name": "Xiaomi 15 12/512 White",
+     "alt": "Xiaomi 15 — White"
+    }
+   ],
+   "categories": [
+    {
+     "id": 219,
+     "name": "Android-смартфоны",
+     "slug": "android",
+     "link": "https://xn--80aaa8a4ab.xn--p1ai/catalog/android/"
+    },
+    {
+     "id": 29,
+     "name": "Xiaomi",
+     "slug": "xiaomi",
+     "link": "https://xn--80aaa8a4ab.xn--p1ai/catalog/xiaomi/"
+    }
+   ],
+   "tags": [],
+   "brands": [],
+   "attributes": [
+    {
+     "id": 1,
+     "name": "Цвет",
+     "taxonomy": "pa_color",
+     "has_variations": true,
+     "terms": [
+      {
+       "id": 180,
+       "name": "Black",
+       "slug": "black"
+      },
+      {
+       "id": 103,
+       "name": "Green",
+       "slug": "green"
+      },
+      {
+       "id": 181,
+       "name": "White",
+       "slug": "white"
+      }
+     ]
+    },
+    {
+     "id": 2,
+     "name": "Память",
+     "taxonomy": "pa_storage",
+     "has_variations": true,
+     "terms": [
+      {
+       "id": 186,
+       "name": "12/256 ГБ",
+       "slug": "12-256-gb"
+      },
+      {
+       "id": 227,
+       "name": "12/512 ГБ",
+       "slug": "12-512-%d0%b3%d0%b1"
+      },
+      {
+       "id": 239,
+       "name": "16/512 ГБ",
+       "slug": "16-512-%d0%b3%d0%b1"
+      }
+     ]
+    }
+   ],
+   "variations": [
+    {
+     "id": 5779,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "green"
+      },
+      {
+       "name": "Память",
+       "value": "12-256-gb"
+      }
+     ]
+    },
+    {
+     "id": 5780,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "black"
+      },
+      {
+       "name": "Память",
+       "value": "12-512-%d0%b3%d0%b1"
+      }
+     ]
+    },
+    {
+     "id": 5781,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "green"
+      },
+      {
+       "name": "Память",
+       "value": "12-512-%d0%b3%d0%b1"
+      }
+     ]
+    },
+    {
+     "id": 5782,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "white"
+      },
+      {
+       "name": "Память",
+       "value": "12-512-%d0%b3%d0%b1"
+      }
+     ]
+    },
+    {
+     "id": 5783,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "black"
+      },
+      {
+       "name": "Память",
+       "value": "12-256-gb"
+      }
+     ]
+    },
+    {
+     "id": 5784,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "black"
+      },
+      {
+       "name": "Память",
+       "value": "16-512-%d0%b3%d0%b1"
+      }
+     ]
+    }
+   ],
+   "grouped_products": [],
+   "has_options": true,
+   "is_purchasable": true,
+   "is_in_stock": true,
+   "is_on_backorder": false,
+   "low_stock_remaining": null,
+   "stock_availability": {
+    "text": "",
+    "class": "in-stock"
+   },
+   "sold_individually": false,
+   "add_to_cart": {
+    "text": "Выберите параметры",
+    "description": "Выберите опции для &ldquo;Xiaomi 15&rdquo;",
+    "url": "https://xn--80aaa8a4ab.xn--p1ai/product-card/xiaomi-15/",
+    "single_text": "В корзину",
+    "minimum": 1,
+    "maximum": 9999,
+    "multiple_of": 1
+   },
+   "extensions": {}
+  },
+  {
+   "id": 5772,
+   "name": "Xiaomi 13T Pro",
+   "slug": "xiaomi-13t-pro",
+   "parent": 0,
+   "type": "variable",
+   "variation": "",
+   "permalink": "https://xn--80aaa8a4ab.xn--p1ai/product-card/xiaomi-13t-pro/",
+   "sku": "",
+   "short_description": "",
+   "description": "",
+   "on_sale": false,
+   "prices": {
+    "price": "5000000",
+    "regular_price": "5000000",
+    "sale_price": "5000000",
+    "price_range": null,
+    "currency_code": "RUB",
+    "currency_symbol": "₽",
+    "currency_minor_unit": 2,
+    "currency_decimal_separator": ",",
+    "currency_thousand_separator": " ",
+    "currency_prefix": "",
+    "currency_suffix": " ₽"
+   },
+   "price_html": "<span class=\"woocommerce-Price-amount amount\">50 000,00&nbsp;<span class=\"woocommerce-Price-currencySymbol\">&#8381;</span></span>",
+   "average_rating": "0",
+   "review_count": 0,
+   "images": [
+    {
+     "id": 5773,
+     "src": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/7ab201438c39c8799f7b0859.png",
+     "thumbnail": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/7ab201438c39c8799f7b0859-300x300.png",
+     "srcset": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/7ab201438c39c8799f7b0859.png 1600w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/7ab201438c39c8799f7b0859-300x300.png 300w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/7ab201438c39c8799f7b0859-1024x1024.png 1024w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/7ab201438c39c8799f7b0859-150x150.png 150w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/7ab201438c39c8799f7b0859-768x768.png 768w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/7ab201438c39c8799f7b0859-1536x1536.png 1536w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/7ab201438c39c8799f7b0859-1320x1320.png 1320w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/7ab201438c39c8799f7b0859-600x600.png 600w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/7ab201438c39c8799f7b0859-100x100.png 100w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/7ab201438c39c8799f7b0859-50x50.png 50w",
+     "sizes": "(max-width: 1600px) 100vw, 1600px",
+     "name": "Xiaomi 13T Pro 12/512 Black",
+     "alt": "Xiaomi 13T Pro — Black"
+    }
+   ],
+   "categories": [
+    {
+     "id": 219,
+     "name": "Android-смартфоны",
+     "slug": "android",
+     "link": "https://xn--80aaa8a4ab.xn--p1ai/catalog/android/"
+    },
+    {
+     "id": 29,
+     "name": "Xiaomi",
+     "slug": "xiaomi",
+     "link": "https://xn--80aaa8a4ab.xn--p1ai/catalog/xiaomi/"
+    }
+   ],
+   "tags": [],
+   "brands": [],
+   "attributes": [
+    {
+     "id": 1,
+     "name": "Цвет",
+     "taxonomy": "pa_color",
+     "has_variations": true,
+     "terms": [
+      {
+       "id": 180,
+       "name": "Black",
+       "slug": "black"
+      }
+     ]
+    },
+    {
+     "id": 2,
+     "name": "Память",
+     "taxonomy": "pa_storage",
+     "has_variations": true,
+     "terms": [
+      {
+       "id": 227,
+       "name": "12/512 ГБ",
+       "slug": "12-512-%d0%b3%d0%b1"
+      }
+     ]
+    }
+   ],
+   "variations": [
+    {
+     "id": 5774,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "black"
+      },
+      {
+       "name": "Память",
+       "value": "12-512-%d0%b3%d0%b1"
+      }
+     ]
+    }
+   ],
+   "grouped_products": [],
+   "has_options": true,
+   "is_purchasable": true,
+   "is_in_stock": true,
+   "is_on_backorder": false,
+   "low_stock_remaining": null,
+   "stock_availability": {
+    "text": "",
+    "class": "in-stock"
+   },
+   "sold_individually": false,
+   "add_to_cart": {
+    "text": "Выберите параметры",
+    "description": "Выберите опции для &ldquo;Xiaomi 13T Pro&rdquo;",
+    "url": "https://xn--80aaa8a4ab.xn--p1ai/product-card/xiaomi-13t-pro/",
+    "single_text": "В корзину",
+    "minimum": 1,
+    "maximum": 9999,
+    "multiple_of": 1
+   },
+   "extensions": {}
+  },
+  {
+   "id": 5767,
+   "name": "Xiaomi 12",
+   "slug": "xiaomi-12",
+   "parent": 0,
+   "type": "variable",
+   "variation": "",
+   "permalink": "https://xn--80aaa8a4ab.xn--p1ai/product-card/xiaomi-12/",
+   "sku": "",
+   "short_description": "",
+   "description": "",
+   "on_sale": false,
+   "prices": {
+    "price": "0",
+    "regular_price": "0",
+    "sale_price": "0",
+    "price_range": null,
+    "currency_code": "RUB",
+    "currency_symbol": "₽",
+    "currency_minor_unit": 2,
+    "currency_decimal_separator": ",",
+    "currency_thousand_separator": " ",
+    "currency_prefix": "",
+    "currency_suffix": " ₽"
+   },
+   "price_html": "",
+   "average_rating": "0",
+   "review_count": 0,
+   "images": [
+    {
+     "id": 5768,
+     "src": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/da6d24f828ab8269d6802db0.jpg",
+     "thumbnail": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/da6d24f828ab8269d6802db0-300x300.jpg",
+     "srcset": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/da6d24f828ab8269d6802db0.jpg 682w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/da6d24f828ab8269d6802db0-104x300.jpg 104w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/da6d24f828ab8269d6802db0-354x1024.jpg 354w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/da6d24f828ab8269d6802db0-531x1536.jpg 531w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/da6d24f828ab8269d6802db0-600x1737.jpg 600w",
+     "sizes": "(max-width: 682px) 100vw, 682px",
+     "name": "Xiaomi 12 8/256 Blue",
+     "alt": "Xiaomi 12 — Blue"
+    },
+    {
+     "id": 5769,
+     "src": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/98918ec358dc18370a215676.jpg",
+     "thumbnail": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/98918ec358dc18370a215676-300x300.jpg",
+     "srcset": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/98918ec358dc18370a215676.jpg 682w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/98918ec358dc18370a215676-104x300.jpg 104w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/98918ec358dc18370a215676-354x1024.jpg 354w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/98918ec358dc18370a215676-531x1536.jpg 531w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/98918ec358dc18370a215676-600x1737.jpg 600w",
+     "sizes": "(max-width: 682px) 100vw, 682px",
+     "name": "Xiaomi 12 8/256 Purple",
+     "alt": "Xiaomi 12 — Purple"
+    }
+   ],
+   "categories": [
+    {
+     "id": 219,
+     "name": "Android-смартфоны",
+     "slug": "android",
+     "link": "https://xn--80aaa8a4ab.xn--p1ai/catalog/android/"
+    },
+    {
+     "id": 29,
+     "name": "Xiaomi",
+     "slug": "xiaomi",
+     "link": "https://xn--80aaa8a4ab.xn--p1ai/catalog/xiaomi/"
+    }
+   ],
+   "tags": [],
+   "brands": [],
+   "attributes": [
+    {
+     "id": 1,
+     "name": "Цвет",
+     "taxonomy": "pa_color",
+     "has_variations": true,
+     "terms": [
+      {
+       "id": 88,
+       "name": "Blue",
+       "slug": "blue"
+      },
+      {
+       "id": 91,
+       "name": "Purple",
+       "slug": "purple"
+      }
+     ]
+    },
+    {
+     "id": 2,
+     "name": "Память",
+     "taxonomy": "pa_storage",
+     "has_variations": true,
+     "terms": [
+      {
+       "id": 185,
+       "name": "8/256 ГБ",
+       "slug": "8-256-gb"
+      }
+     ]
+    }
+   ],
+   "variations": [
+    {
+     "id": 5770,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "blue"
+      },
+      {
+       "name": "Память",
+       "value": "8-256-gb"
+      }
+     ]
+    },
+    {
+     "id": 5771,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "purple"
+      },
+      {
+       "name": "Память",
+       "value": "8-256-gb"
+      }
+     ]
+    }
+   ],
+   "grouped_products": [],
+   "has_options": true,
+   "is_purchasable": false,
+   "is_in_stock": false,
+   "is_on_backorder": false,
+   "low_stock_remaining": null,
+   "stock_availability": {
+    "text": "Нет в наличии",
+    "class": "out-of-stock"
+   },
+   "sold_individually": false,
+   "add_to_cart": {
+    "text": "Подробнее",
+    "description": "Выберите опции для &ldquo;Xiaomi 12&rdquo;",
+    "url": "https://xn--80aaa8a4ab.xn--p1ai/product-card/xiaomi-12/",
+    "single_text": "В корзину",
+    "minimum": 1,
+    "maximum": 9999,
+    "multiple_of": 1
+   },
+   "extensions": {}
+  },
+  {
+   "id": 5764,
+   "name": "Redmi Note 14 5G",
+   "slug": "redmi-note-14-5g",
+   "parent": 0,
+   "type": "variable",
+   "variation": "",
+   "permalink": "https://xn--80aaa8a4ab.xn--p1ai/product-card/redmi-note-14-5g/",
+   "sku": "",
+   "short_description": "",
+   "description": "",
+   "on_sale": false,
+   "prices": {
+    "price": "2230000",
+    "regular_price": "2230000",
+    "sale_price": "2230000",
+    "price_range": null,
+    "currency_code": "RUB",
+    "currency_symbol": "₽",
+    "currency_minor_unit": 2,
+    "currency_decimal_separator": ",",
+    "currency_thousand_separator": " ",
+    "currency_prefix": "",
+    "currency_suffix": " ₽"
+   },
+   "price_html": "<span class=\"woocommerce-Price-amount amount\">22 300,00&nbsp;<span class=\"woocommerce-Price-currencySymbol\">&#8381;</span></span>",
+   "average_rating": "0",
+   "review_count": 0,
+   "images": [
+    {
+     "id": 5765,
+     "src": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/96a1207e7afae6f22d81434c.jpg",
+     "thumbnail": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/96a1207e7afae6f22d81434c-300x300.jpg",
+     "srcset": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/96a1207e7afae6f22d81434c.jpg 1932w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/96a1207e7afae6f22d81434c-300x181.jpg 300w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/96a1207e7afae6f22d81434c-1024x617.jpg 1024w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/96a1207e7afae6f22d81434c-768x463.jpg 768w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/96a1207e7afae6f22d81434c-1536x926.jpg 1536w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/96a1207e7afae6f22d81434c-1320x796.jpg 1320w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/96a1207e7afae6f22d81434c-600x362.jpg 600w",
+     "sizes": "(max-width: 1932px) 100vw, 1932px",
+     "name": "Redmi Note 14 5G 8/256 White",
+     "alt": "Redmi Note 14 5G — White"
+    }
+   ],
+   "categories": [
+    {
+     "id": 219,
+     "name": "Android-смартфоны",
+     "slug": "android",
+     "link": "https://xn--80aaa8a4ab.xn--p1ai/catalog/android/"
+    },
+    {
+     "id": 29,
+     "name": "Xiaomi",
+     "slug": "xiaomi",
+     "link": "https://xn--80aaa8a4ab.xn--p1ai/catalog/xiaomi/"
+    }
+   ],
+   "tags": [],
+   "brands": [],
+   "attributes": [
+    {
+     "id": 1,
+     "name": "Цвет",
+     "taxonomy": "pa_color",
+     "has_variations": true,
+     "terms": [
+      {
+       "id": 181,
+       "name": "White",
+       "slug": "white"
+      }
+     ]
+    },
+    {
+     "id": 2,
+     "name": "Память",
+     "taxonomy": "pa_storage",
+     "has_variations": true,
+     "terms": [
+      {
+       "id": 185,
+       "name": "8/256 ГБ",
+       "slug": "8-256-gb"
+      }
+     ]
+    }
+   ],
+   "variations": [
+    {
+     "id": 5766,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "white"
+      },
+      {
+       "name": "Память",
+       "value": "8-256-gb"
+      }
+     ]
+    }
+   ],
+   "grouped_products": [],
+   "has_options": true,
+   "is_purchasable": true,
+   "is_in_stock": true,
+   "is_on_backorder": false,
+   "low_stock_remaining": null,
+   "stock_availability": {
+    "text": "",
+    "class": "in-stock"
+   },
+   "sold_individually": false,
+   "add_to_cart": {
+    "text": "Выберите параметры",
+    "description": "Выберите опции для &ldquo;Redmi Note 14 5G&rdquo;",
+    "url": "https://xn--80aaa8a4ab.xn--p1ai/product-card/redmi-note-14-5g/",
+    "single_text": "В корзину",
+    "minimum": 1,
+    "maximum": 9999,
+    "multiple_of": 1
+   },
+   "extensions": {}
+  },
+  {
+   "id": 5747,
+   "name": "Redmi Note 17 Pro",
+   "slug": "redmi-note-17-pro",
+   "parent": 0,
+   "type": "variable",
+   "variation": "",
+   "permalink": "https://xn--80aaa8a4ab.xn--p1ai/product-card/redmi-note-17-pro/",
+   "sku": "",
+   "short_description": "",
+   "description": "",
+   "on_sale": false,
+   "prices": {
+    "price": "2990000",
+    "regular_price": "2990000",
+    "sale_price": "2990000",
+    "price_range": {
+     "min_amount": "2990000",
+     "max_amount": "4240000"
+    },
+    "currency_code": "RUB",
+    "currency_symbol": "₽",
+    "currency_minor_unit": 2,
+    "currency_decimal_separator": ",",
+    "currency_thousand_separator": " ",
+    "currency_prefix": "",
+    "currency_suffix": " ₽"
+   },
+   "price_html": "<span class=\"woocommerce-Price-amount amount\" aria-hidden=\"true\">29 900,00&nbsp;<span class=\"woocommerce-Price-currencySymbol\">&#8381;</span></span> <span aria-hidden=\"true\">&ndash;</span> <span class=\"woocommerce-Price-amount amount\" aria-hidden=\"true\">42 400,00&nbsp;<span class=\"woocommerce-Price-currencySymbol\">&#8381;</span></span><span class=\"screen-reader-text\">Диапазон цен: 29 900,00&nbsp;&#8381; – 42 400,00&nbsp;&#8381;</span>",
+   "average_rating": "0",
+   "review_count": 0,
+   "images": [
+    {
+     "id": 5748,
+     "src": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/3722cca22e3028138f61a6ef.png",
+     "thumbnail": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/3722cca22e3028138f61a6ef-300x300.png",
+     "srcset": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/3722cca22e3028138f61a6ef.png 1600w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/3722cca22e3028138f61a6ef-300x300.png 300w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/3722cca22e3028138f61a6ef-1024x1024.png 1024w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/3722cca22e3028138f61a6ef-150x150.png 150w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/3722cca22e3028138f61a6ef-768x768.png 768w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/3722cca22e3028138f61a6ef-1536x1536.png 1536w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/3722cca22e3028138f61a6ef-1320x1320.png 1320w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/3722cca22e3028138f61a6ef-600x600.png 600w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/3722cca22e3028138f61a6ef-100x100.png 100w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/3722cca22e3028138f61a6ef-50x50.png 50w",
+     "sizes": "(max-width: 1600px) 100vw, 1600px",
+     "name": "Redmi Note 17 Pro 6/128 Orange",
+     "alt": "Redmi Note 17 Pro — Orange"
+    },
+    {
+     "id": 5749,
+     "src": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/473c7f75feab89a72d5d2761.png",
+     "thumbnail": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/473c7f75feab89a72d5d2761-300x300.png",
+     "srcset": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/473c7f75feab89a72d5d2761.png 1600w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/473c7f75feab89a72d5d2761-300x300.png 300w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/473c7f75feab89a72d5d2761-1024x1024.png 1024w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/473c7f75feab89a72d5d2761-150x150.png 150w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/473c7f75feab89a72d5d2761-768x768.png 768w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/473c7f75feab89a72d5d2761-1536x1536.png 1536w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/473c7f75feab89a72d5d2761-1320x1320.png 1320w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/473c7f75feab89a72d5d2761-600x600.png 600w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/473c7f75feab89a72d5d2761-100x100.png 100w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/473c7f75feab89a72d5d2761-50x50.png 50w",
+     "sizes": "(max-width: 1600px) 100vw, 1600px",
+     "name": "Redmi Note 17 Pro 6/128 Black",
+     "alt": "Redmi Note 17 Pro — Black"
+    },
+    {
+     "id": 5750,
+     "src": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/daf4be69c1a028255450f9bb.png",
+     "thumbnail": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/daf4be69c1a028255450f9bb-300x300.png",
+     "srcset": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/daf4be69c1a028255450f9bb.png 1600w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/daf4be69c1a028255450f9bb-300x300.png 300w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/daf4be69c1a028255450f9bb-1024x1024.png 1024w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/daf4be69c1a028255450f9bb-150x150.png 150w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/daf4be69c1a028255450f9bb-768x768.png 768w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/daf4be69c1a028255450f9bb-1536x1536.png 1536w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/daf4be69c1a028255450f9bb-1320x1320.png 1320w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/daf4be69c1a028255450f9bb-600x600.png 600w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/daf4be69c1a028255450f9bb-100x100.png 100w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/daf4be69c1a028255450f9bb-50x50.png 50w",
+     "sizes": "(max-width: 1600px) 100vw, 1600px",
+     "name": "Redmi Note 17 Pro 6/128 Blue",
+     "alt": "Redmi Note 17 Pro — Blue"
+    },
+    {
+     "id": 5748,
+     "src": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/3722cca22e3028138f61a6ef.png",
+     "thumbnail": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/3722cca22e3028138f61a6ef-300x300.png",
+     "srcset": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/3722cca22e3028138f61a6ef.png 1600w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/3722cca22e3028138f61a6ef-300x300.png 300w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/3722cca22e3028138f61a6ef-1024x1024.png 1024w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/3722cca22e3028138f61a6ef-150x150.png 150w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/3722cca22e3028138f61a6ef-768x768.png 768w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/3722cca22e3028138f61a6ef-1536x1536.png 1536w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/3722cca22e3028138f61a6ef-1320x1320.png 1320w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/3722cca22e3028138f61a6ef-600x600.png 600w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/3722cca22e3028138f61a6ef-100x100.png 100w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/3722cca22e3028138f61a6ef-50x50.png 50w",
+     "sizes": "(max-width: 1600px) 100vw, 1600px",
+     "name": "Redmi Note 17 Pro 6/128 Orange",
+     "alt": "Redmi Note 17 Pro — Orange"
+    },
+    {
+     "id": 5751,
+     "src": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/60821636960f316488f25af3.png",
+     "thumbnail": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/60821636960f316488f25af3-300x300.png",
+     "srcset": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/60821636960f316488f25af3.png 1600w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/60821636960f316488f25af3-300x300.png 300w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/60821636960f316488f25af3-1024x1024.png 1024w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/60821636960f316488f25af3-150x150.png 150w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/60821636960f316488f25af3-768x768.png 768w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/60821636960f316488f25af3-1536x1536.png 1536w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/60821636960f316488f25af3-1320x1320.png 1320w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/60821636960f316488f25af3-600x600.png 600w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/60821636960f316488f25af3-100x100.png 100w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/60821636960f316488f25af3-50x50.png 50w",
+     "sizes": "(max-width: 1600px) 100vw, 1600px",
+     "name": "Redmi Note 17 Pro 8/512 Purple",
+     "alt": "Redmi Note 17 Pro — Purple"
+    }
+   ],
+   "categories": [
+    {
+     "id": 219,
+     "name": "Android-смартфоны",
+     "slug": "android",
+     "link": "https://xn--80aaa8a4ab.xn--p1ai/catalog/android/"
+    },
+    {
+     "id": 29,
+     "name": "Xiaomi",
+     "slug": "xiaomi",
+     "link": "https://xn--80aaa8a4ab.xn--p1ai/catalog/xiaomi/"
+    }
+   ],
+   "tags": [],
+   "brands": [],
+   "attributes": [
+    {
+     "id": 1,
+     "name": "Цвет",
+     "taxonomy": "pa_color",
+     "has_variations": true,
+     "terms": [
+      {
+       "id": 180,
+       "name": "Black",
+       "slug": "black"
+      },
+      {
+       "id": 88,
+       "name": "Blue",
+       "slug": "blue"
+      },
+      {
+       "id": 101,
+       "name": "Orange",
+       "slug": "orange"
+      },
+      {
+       "id": 91,
+       "name": "Purple",
+       "slug": "purple"
+      }
+     ]
+    },
+    {
+     "id": 2,
+     "name": "Память",
+     "taxonomy": "pa_storage",
+     "has_variations": true,
+     "terms": [
+      {
+       "id": 248,
+       "name": "6/128 ГБ",
+       "slug": "6-128-%d0%b3%d0%b1"
+      },
+      {
+       "id": 185,
+       "name": "8/256 ГБ",
+       "slug": "8-256-gb"
+      },
+      {
+       "id": 230,
+       "name": "8/512 ГБ",
+       "slug": "8-512-%d0%b3%d0%b1"
+      }
+     ]
+    }
+   ],
+   "variations": [
+    {
+     "id": 5752,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "orange"
+      },
+      {
+       "name": "Память",
+       "value": "6-128-%d0%b3%d0%b1"
+      }
+     ]
+    },
+    {
+     "id": 5753,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "black"
+      },
+      {
+       "name": "Память",
+       "value": "6-128-%d0%b3%d0%b1"
+      }
+     ]
+    },
+    {
+     "id": 5754,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "blue"
+      },
+      {
+       "name": "Память",
+       "value": "6-128-%d0%b3%d0%b1"
+      }
+     ]
+    },
+    {
+     "id": 5755,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "orange"
+      },
+      {
+       "name": "Память",
+       "value": "8-256-gb"
+      }
+     ]
+    },
+    {
+     "id": 5756,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "purple"
+      },
+      {
+       "name": "Память",
+       "value": "8-512-%d0%b3%d0%b1"
+      }
+     ]
+    },
+    {
+     "id": 5757,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "orange"
+      },
+      {
+       "name": "Память",
+       "value": "8-512-%d0%b3%d0%b1"
+      }
+     ]
+    },
+    {
+     "id": 5758,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "blue"
+      },
+      {
+       "name": "Память",
+       "value": "8-512-%d0%b3%d0%b1"
+      }
+     ]
+    },
+    {
+     "id": 5759,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "blue"
+      },
+      {
+       "name": "Память",
+       "value": "8-256-gb"
+      }
+     ]
+    },
+    {
+     "id": 5760,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "purple"
+      },
+      {
+       "name": "Память",
+       "value": "8-256-gb"
+      }
+     ]
+    },
+    {
+     "id": 5761,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "black"
+      },
+      {
+       "name": "Память",
+       "value": "8-512-%d0%b3%d0%b1"
+      }
+     ]
+    },
+    {
+     "id": 5762,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "black"
+      },
+      {
+       "name": "Память",
+       "value": "8-256-gb"
+      }
+     ]
+    },
+    {
+     "id": 5763,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "purple"
+      },
+      {
+       "name": "Память",
+       "value": "6-128-%d0%b3%d0%b1"
+      }
+     ]
+    }
+   ],
+   "grouped_products": [],
+   "has_options": true,
+   "is_purchasable": true,
+   "is_in_stock": true,
+   "is_on_backorder": false,
+   "low_stock_remaining": null,
+   "stock_availability": {
+    "text": "",
+    "class": "in-stock"
+   },
+   "sold_individually": false,
+   "add_to_cart": {
+    "text": "Выберите параметры",
+    "description": "Выберите опции для &ldquo;Redmi Note 17 Pro&rdquo;",
+    "url": "https://xn--80aaa8a4ab.xn--p1ai/product-card/redmi-note-17-pro/",
+    "single_text": "В корзину",
+    "minimum": 1,
+    "maximum": 9999,
+    "multiple_of": 1
+   },
+   "extensions": {}
+  },
+  {
+   "id": 5742,
+   "name": "Redmi Note 15 Pro Plus 5G",
+   "slug": "redmi-note-15-pro-plus-5g",
+   "parent": 0,
+   "type": "variable",
+   "variation": "",
+   "permalink": "https://xn--80aaa8a4ab.xn--p1ai/product-card/redmi-note-15-pro-plus-5g/",
+   "sku": "",
+   "short_description": "",
+   "description": "",
+   "on_sale": false,
+   "prices": {
+    "price": "4410000",
+    "regular_price": "4410000",
+    "sale_price": "4410000",
+    "price_range": null,
+    "currency_code": "RUB",
+    "currency_symbol": "₽",
+    "currency_minor_unit": 2,
+    "currency_decimal_separator": ",",
+    "currency_thousand_separator": " ",
+    "currency_prefix": "",
+    "currency_suffix": " ₽"
+   },
+   "price_html": "<span class=\"woocommerce-Price-amount amount\">44 100,00&nbsp;<span class=\"woocommerce-Price-currencySymbol\">&#8381;</span></span>",
+   "average_rating": "0",
+   "review_count": 0,
+   "images": [
+    {
+     "id": 5743,
+     "src": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/c2ae7691ddc6ab7f0c91fc2b.png",
+     "thumbnail": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/c2ae7691ddc6ab7f0c91fc2b-300x300.png",
+     "srcset": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/c2ae7691ddc6ab7f0c91fc2b.png 1600w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/c2ae7691ddc6ab7f0c91fc2b-300x300.png 300w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/c2ae7691ddc6ab7f0c91fc2b-1024x1024.png 1024w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/c2ae7691ddc6ab7f0c91fc2b-150x150.png 150w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/c2ae7691ddc6ab7f0c91fc2b-768x768.png 768w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/c2ae7691ddc6ab7f0c91fc2b-1536x1536.png 1536w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/c2ae7691ddc6ab7f0c91fc2b-1320x1320.png 1320w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/c2ae7691ddc6ab7f0c91fc2b-600x600.png 600w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/c2ae7691ddc6ab7f0c91fc2b-100x100.png 100w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/c2ae7691ddc6ab7f0c91fc2b-50x50.png 50w",
+     "sizes": "(max-width: 1600px) 100vw, 1600px",
+     "name": "Redmi Note 15 Pro Plus 5G 12/512 Brown",
+     "alt": "Redmi Note 15 Pro Plus 5G — Brown"
+    },
+    {
+     "id": 5744,
+     "src": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/fe4de50f3648f1a74f3c0406.png",
+     "thumbnail": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/fe4de50f3648f1a74f3c0406-300x300.png",
+     "srcset": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/fe4de50f3648f1a74f3c0406.png 1600w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/fe4de50f3648f1a74f3c0406-300x300.png 300w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/fe4de50f3648f1a74f3c0406-1024x1024.png 1024w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/fe4de50f3648f1a74f3c0406-150x150.png 150w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/fe4de50f3648f1a74f3c0406-768x768.png 768w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/fe4de50f3648f1a74f3c0406-1536x1536.png 1536w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/fe4de50f3648f1a74f3c0406-1320x1320.png 1320w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/fe4de50f3648f1a74f3c0406-600x600.png 600w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/fe4de50f3648f1a74f3c0406-100x100.png 100w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/fe4de50f3648f1a74f3c0406-50x50.png 50w",
+     "sizes": "(max-width: 1600px) 100vw, 1600px",
+     "name": "Redmi Note 15 Pro Plus 5G 12/512 Blue",
+     "alt": "Redmi Note 15 Pro Plus 5G — Blue"
+    }
+   ],
+   "categories": [
+    {
+     "id": 219,
+     "name": "Android-смартфоны",
+     "slug": "android",
+     "link": "https://xn--80aaa8a4ab.xn--p1ai/catalog/android/"
+    },
+    {
+     "id": 29,
+     "name": "Xiaomi",
+     "slug": "xiaomi",
+     "link": "https://xn--80aaa8a4ab.xn--p1ai/catalog/xiaomi/"
+    }
+   ],
+   "tags": [],
+   "brands": [],
+   "attributes": [
+    {
+     "id": 1,
+     "name": "Цвет",
+     "taxonomy": "pa_color",
+     "has_variations": true,
+     "terms": [
+      {
+       "id": 88,
+       "name": "Blue",
+       "slug": "blue"
+      },
+      {
+       "id": 269,
+       "name": "Brown",
+       "slug": "brown"
+      }
+     ]
+    },
+    {
+     "id": 2,
+     "name": "Память",
+     "taxonomy": "pa_storage",
+     "has_variations": true,
+     "terms": [
+      {
+       "id": 227,
+       "name": "12/512 ГБ",
+       "slug": "12-512-%d0%b3%d0%b1"
+      }
+     ]
+    }
+   ],
+   "variations": [
+    {
+     "id": 5745,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "brown"
+      },
+      {
+       "name": "Память",
+       "value": "12-512-%d0%b3%d0%b1"
+      }
+     ]
+    },
+    {
+     "id": 5746,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "blue"
+      },
+      {
+       "name": "Память",
+       "value": "12-512-%d0%b3%d0%b1"
+      }
+     ]
+    }
+   ],
+   "grouped_products": [],
+   "has_options": true,
+   "is_purchasable": true,
+   "is_in_stock": false,
+   "is_on_backorder": false,
+   "low_stock_remaining": null,
+   "stock_availability": {
+    "text": "Нет в наличии",
+    "class": "out-of-stock"
+   },
+   "sold_individually": false,
+   "add_to_cart": {
+    "text": "Выберите параметры",
+    "description": "Выберите опции для &ldquo;Redmi Note 15 Pro Plus 5G&rdquo;",
+    "url": "https://xn--80aaa8a4ab.xn--p1ai/product-card/redmi-note-15-pro-plus-5g/",
+    "single_text": "В корзину",
+    "minimum": 1,
+    "maximum": 9999,
+    "multiple_of": 1
+   },
+   "extensions": {}
+  },
+  {
+   "id": 5739,
+   "name": "Redmi Note 15 Pro 5G",
+   "slug": "redmi-note-15-pro-5g",
+   "parent": 0,
+   "type": "variable",
+   "variation": "",
+   "permalink": "https://xn--80aaa8a4ab.xn--p1ai/product-card/redmi-note-15-pro-5g/",
+   "sku": "",
+   "short_description": "",
+   "description": "",
+   "on_sale": false,
+   "prices": {
+    "price": "3870000",
+    "regular_price": "3870000",
+    "sale_price": "3870000",
+    "price_range": null,
+    "currency_code": "RUB",
+    "currency_symbol": "₽",
+    "currency_minor_unit": 2,
+    "currency_decimal_separator": ",",
+    "currency_thousand_separator": " ",
+    "currency_prefix": "",
+    "currency_suffix": " ₽"
+   },
+   "price_html": "<span class=\"woocommerce-Price-amount amount\">38 700,00&nbsp;<span class=\"woocommerce-Price-currencySymbol\">&#8381;</span></span>",
+   "average_rating": "0",
+   "review_count": 0,
+   "images": [
+    {
+     "id": 5740,
+     "src": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/1e1abc5a1fa61a31df55a7d8.png",
+     "thumbnail": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/1e1abc5a1fa61a31df55a7d8-300x300.png",
+     "srcset": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/1e1abc5a1fa61a31df55a7d8.png 1600w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/1e1abc5a1fa61a31df55a7d8-300x300.png 300w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/1e1abc5a1fa61a31df55a7d8-1024x1024.png 1024w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/1e1abc5a1fa61a31df55a7d8-150x150.png 150w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/1e1abc5a1fa61a31df55a7d8-768x768.png 768w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/1e1abc5a1fa61a31df55a7d8-1536x1536.png 1536w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/1e1abc5a1fa61a31df55a7d8-1320x1320.png 1320w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/1e1abc5a1fa61a31df55a7d8-600x600.png 600w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/1e1abc5a1fa61a31df55a7d8-100x100.png 100w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/1e1abc5a1fa61a31df55a7d8-50x50.png 50w",
+     "sizes": "(max-width: 1600px) 100vw, 1600px",
+     "name": "Redmi Note 15 Pro 5G 8/512 Blue",
+     "alt": "Redmi Note 15 Pro 5G — Blue"
+    }
+   ],
+   "categories": [
+    {
+     "id": 219,
+     "name": "Android-смартфоны",
+     "slug": "android",
+     "link": "https://xn--80aaa8a4ab.xn--p1ai/catalog/android/"
+    },
+    {
+     "id": 29,
+     "name": "Xiaomi",
+     "slug": "xiaomi",
+     "link": "https://xn--80aaa8a4ab.xn--p1ai/catalog/xiaomi/"
+    }
+   ],
+   "tags": [],
+   "brands": [],
+   "attributes": [
+    {
+     "id": 1,
+     "name": "Цвет",
+     "taxonomy": "pa_color",
+     "has_variations": true,
+     "terms": [
+      {
+       "id": 88,
+       "name": "Blue",
+       "slug": "blue"
+      }
+     ]
+    },
+    {
+     "id": 2,
+     "name": "Память",
+     "taxonomy": "pa_storage",
+     "has_variations": true,
+     "terms": [
+      {
+       "id": 230,
+       "name": "8/512 ГБ",
+       "slug": "8-512-%d0%b3%d0%b1"
+      }
+     ]
+    }
+   ],
+   "variations": [
+    {
+     "id": 5741,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "blue"
+      },
+      {
+       "name": "Память",
+       "value": "8-512-%d0%b3%d0%b1"
+      }
+     ]
+    }
+   ],
+   "grouped_products": [],
+   "has_options": true,
+   "is_purchasable": true,
+   "is_in_stock": true,
+   "is_on_backorder": false,
+   "low_stock_remaining": null,
+   "stock_availability": {
+    "text": "",
+    "class": "in-stock"
+   },
+   "sold_individually": false,
+   "add_to_cart": {
+    "text": "Выберите параметры",
+    "description": "Выберите опции для &ldquo;Redmi Note 15 Pro 5G&rdquo;",
+    "url": "https://xn--80aaa8a4ab.xn--p1ai/product-card/redmi-note-15-pro-5g/",
+    "single_text": "В корзину",
+    "minimum": 1,
+    "maximum": 9999,
+    "multiple_of": 1
+   },
+   "extensions": {}
+  },
+  {
+   "id": 5732,
+   "name": "Redmi Note 14S",
+   "slug": "redmi-note-14s",
+   "parent": 0,
+   "type": "variable",
+   "variation": "",
+   "permalink": "https://xn--80aaa8a4ab.xn--p1ai/product-card/redmi-note-14s/",
+   "sku": "",
+   "short_description": "",
+   "description": "",
+   "on_sale": false,
+   "prices": {
+    "price": "2260000",
+    "regular_price": "2260000",
+    "sale_price": "2260000",
+    "price_range": null,
+    "currency_code": "RUB",
+    "currency_symbol": "₽",
+    "currency_minor_unit": 2,
+    "currency_decimal_separator": ",",
+    "currency_thousand_separator": " ",
+    "currency_prefix": "",
+    "currency_suffix": " ₽"
+   },
+   "price_html": "<span class=\"woocommerce-Price-amount amount\">22 600,00&nbsp;<span class=\"woocommerce-Price-currencySymbol\">&#8381;</span></span>",
+   "average_rating": "0",
+   "review_count": 0,
+   "images": [
+    {
+     "id": 5733,
+     "src": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/26f91b925f9642d2b4f32819.jpg",
+     "thumbnail": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/26f91b925f9642d2b4f32819-300x300.jpg",
+     "srcset": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/26f91b925f9642d2b4f32819.jpg 1200w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/26f91b925f9642d2b4f32819-300x300.jpg 300w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/26f91b925f9642d2b4f32819-1024x1024.jpg 1024w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/26f91b925f9642d2b4f32819-150x150.jpg 150w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/26f91b925f9642d2b4f32819-768x768.jpg 768w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/26f91b925f9642d2b4f32819-600x600.jpg 600w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/26f91b925f9642d2b4f32819-100x100.jpg 100w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/26f91b925f9642d2b4f32819-50x50.jpg 50w",
+     "sizes": "(max-width: 1200px) 100vw, 1200px",
+     "name": "Redmi Note 14S 8/256 Black",
+     "alt": "Redmi Note 14S — Black"
+    },
+    {
+     "id": 5734,
+     "src": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/bcfd804ff39027ab284948cd.jpg",
+     "thumbnail": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/bcfd804ff39027ab284948cd-300x300.jpg",
+     "srcset": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/bcfd804ff39027ab284948cd.jpg 1200w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/bcfd804ff39027ab284948cd-300x300.jpg 300w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/bcfd804ff39027ab284948cd-1024x1024.jpg 1024w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/bcfd804ff39027ab284948cd-150x150.jpg 150w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/bcfd804ff39027ab284948cd-768x768.jpg 768w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/bcfd804ff39027ab284948cd-600x600.jpg 600w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/bcfd804ff39027ab284948cd-100x100.jpg 100w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/bcfd804ff39027ab284948cd-50x50.jpg 50w",
+     "sizes": "(max-width: 1200px) 100vw, 1200px",
+     "name": "Redmi Note 14S 8/256 Blue",
+     "alt": "Redmi Note 14S — Blue"
+    },
+    {
+     "id": 5735,
+     "src": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/6208f6a543e5cddd49dbd5c4.jpg",
+     "thumbnail": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/6208f6a543e5cddd49dbd5c4-300x300.jpg",
+     "srcset": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/6208f6a543e5cddd49dbd5c4.jpg 1200w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/6208f6a543e5cddd49dbd5c4-300x300.jpg 300w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/6208f6a543e5cddd49dbd5c4-1024x1024.jpg 1024w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/6208f6a543e5cddd49dbd5c4-150x150.jpg 150w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/6208f6a543e5cddd49dbd5c4-768x768.jpg 768w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/6208f6a543e5cddd49dbd5c4-600x600.jpg 600w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/6208f6a543e5cddd49dbd5c4-100x100.jpg 100w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/6208f6a543e5cddd49dbd5c4-50x50.jpg 50w",
+     "sizes": "(max-width: 1200px) 100vw, 1200px",
+     "name": "Redmi Note 14S 8/256 Purple",
+     "alt": "Redmi Note 14S — Purple"
+    }
+   ],
+   "categories": [
+    {
+     "id": 219,
+     "name": "Android-смартфоны",
+     "slug": "android",
+     "link": "https://xn--80aaa8a4ab.xn--p1ai/catalog/android/"
+    },
+    {
+     "id": 29,
+     "name": "Xiaomi",
+     "slug": "xiaomi",
+     "link": "https://xn--80aaa8a4ab.xn--p1ai/catalog/xiaomi/"
+    }
+   ],
+   "tags": [],
+   "brands": [],
+   "attributes": [
+    {
+     "id": 1,
+     "name": "Цвет",
+     "taxonomy": "pa_color",
+     "has_variations": true,
+     "terms": [
+      {
+       "id": 180,
+       "name": "Black",
+       "slug": "black"
+      },
+      {
+       "id": 88,
+       "name": "Blue",
+       "slug": "blue"
+      },
+      {
+       "id": 91,
+       "name": "Purple",
+       "slug": "purple"
+      }
+     ]
+    },
+    {
+     "id": 2,
+     "name": "Память",
+     "taxonomy": "pa_storage",
+     "has_variations": true,
+     "terms": [
+      {
+       "id": 185,
+       "name": "8/256 ГБ",
+       "slug": "8-256-gb"
+      }
+     ]
+    }
+   ],
+   "variations": [
+    {
+     "id": 5736,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "black"
+      },
+      {
+       "name": "Память",
+       "value": "8-256-gb"
+      }
+     ]
+    },
+    {
+     "id": 5737,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "blue"
+      },
+      {
+       "name": "Память",
+       "value": "8-256-gb"
+      }
+     ]
+    },
+    {
+     "id": 5738,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "purple"
+      },
+      {
+       "name": "Память",
+       "value": "8-256-gb"
+      }
+     ]
+    }
+   ],
+   "grouped_products": [],
+   "has_options": true,
+   "is_purchasable": true,
+   "is_in_stock": true,
+   "is_on_backorder": false,
+   "low_stock_remaining": null,
+   "stock_availability": {
+    "text": "",
+    "class": "in-stock"
+   },
+   "sold_individually": false,
+   "add_to_cart": {
+    "text": "Выберите параметры",
+    "description": "Выберите опции для &ldquo;Redmi Note 14S&rdquo;",
+    "url": "https://xn--80aaa8a4ab.xn--p1ai/product-card/redmi-note-14s/",
+    "single_text": "В корзину",
+    "minimum": 1,
+    "maximum": 9999,
+    "multiple_of": 1
+   },
+   "extensions": {}
+  },
+  {
+   "id": 5719,
+   "name": "Redmi Note 17 Pro Max",
+   "slug": "redmi-note-17-pro-max",
+   "parent": 0,
+   "type": "variable",
+   "variation": "",
+   "permalink": "https://xn--80aaa8a4ab.xn--p1ai/product-card/redmi-note-17-pro-max/",
+   "sku": "",
+   "short_description": "",
+   "description": "",
+   "on_sale": false,
+   "prices": {
+    "price": "4280000",
+    "regular_price": "4280000",
+    "sale_price": "4280000",
+    "price_range": {
+     "min_amount": "4280000",
+     "max_amount": "4810000"
+    },
+    "currency_code": "RUB",
+    "currency_symbol": "₽",
+    "currency_minor_unit": 2,
+    "currency_decimal_separator": ",",
+    "currency_thousand_separator": " ",
+    "currency_prefix": "",
+    "currency_suffix": " ₽"
+   },
+   "price_html": "<span class=\"woocommerce-Price-amount amount\" aria-hidden=\"true\">42 800,00&nbsp;<span class=\"woocommerce-Price-currencySymbol\">&#8381;</span></span> <span aria-hidden=\"true\">&ndash;</span> <span class=\"woocommerce-Price-amount amount\" aria-hidden=\"true\">48 100,00&nbsp;<span class=\"woocommerce-Price-currencySymbol\">&#8381;</span></span><span class=\"screen-reader-text\">Диапазон цен: 42 800,00&nbsp;&#8381; – 48 100,00&nbsp;&#8381;</span>",
+   "average_rating": "0",
+   "review_count": 0,
+   "images": [
+    {
+     "id": 5720,
+     "src": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/543e049c99f8158e885c7d3f.png",
+     "thumbnail": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/543e049c99f8158e885c7d3f-300x300.png",
+     "srcset": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/543e049c99f8158e885c7d3f.png 1600w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/543e049c99f8158e885c7d3f-300x300.png 300w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/543e049c99f8158e885c7d3f-1024x1024.png 1024w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/543e049c99f8158e885c7d3f-150x150.png 150w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/543e049c99f8158e885c7d3f-768x768.png 768w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/543e049c99f8158e885c7d3f-1536x1536.png 1536w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/543e049c99f8158e885c7d3f-1320x1320.png 1320w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/543e049c99f8158e885c7d3f-600x600.png 600w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/543e049c99f8158e885c7d3f-100x100.png 100w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/543e049c99f8158e885c7d3f-50x50.png 50w",
+     "sizes": "(max-width: 1600px) 100vw, 1600px",
+     "name": "Redmi Note 17 Pro Max 8/256 Blush",
+     "alt": "Redmi Note 17 Pro Max — Blush"
+    },
+    {
+     "id": 5721,
+     "src": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/66ca29877055c5b4d4145c02.png",
+     "thumbnail": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/66ca29877055c5b4d4145c02-300x300.png",
+     "srcset": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/66ca29877055c5b4d4145c02.png 1600w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/66ca29877055c5b4d4145c02-300x300.png 300w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/66ca29877055c5b4d4145c02-1024x1024.png 1024w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/66ca29877055c5b4d4145c02-150x150.png 150w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/66ca29877055c5b4d4145c02-768x768.png 768w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/66ca29877055c5b4d4145c02-1536x1536.png 1536w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/66ca29877055c5b4d4145c02-1320x1320.png 1320w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/66ca29877055c5b4d4145c02-600x600.png 600w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/66ca29877055c5b4d4145c02-100x100.png 100w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/66ca29877055c5b4d4145c02-50x50.png 50w",
+     "sizes": "(max-width: 1600px) 100vw, 1600px",
+     "name": "Redmi Note 17 Pro Max 8/512 Purple",
+     "alt": "Redmi Note 17 Pro Max — Purple"
+    },
+    {
+     "id": 5722,
+     "src": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/aac4b2ff52ba1866026feca7.png",
+     "thumbnail": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/aac4b2ff52ba1866026feca7-300x300.png",
+     "srcset": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/aac4b2ff52ba1866026feca7.png 1600w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/aac4b2ff52ba1866026feca7-300x300.png 300w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/aac4b2ff52ba1866026feca7-1024x1024.png 1024w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/aac4b2ff52ba1866026feca7-150x150.png 150w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/aac4b2ff52ba1866026feca7-768x768.png 768w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/aac4b2ff52ba1866026feca7-1536x1536.png 1536w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/aac4b2ff52ba1866026feca7-1320x1320.png 1320w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/aac4b2ff52ba1866026feca7-600x600.png 600w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/aac4b2ff52ba1866026feca7-100x100.png 100w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/aac4b2ff52ba1866026feca7-50x50.png 50w",
+     "sizes": "(max-width: 1600px) 100vw, 1600px",
+     "name": "Redmi Note 17 Pro Max 8/512 Green",
+     "alt": "Redmi Note 17 Pro Max — Green"
+    },
+    {
+     "id": 5723,
+     "src": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/383fa839792d96e7ded8f4ce.png",
+     "thumbnail": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/383fa839792d96e7ded8f4ce-300x300.png",
+     "srcset": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/383fa839792d96e7ded8f4ce.png 1600w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/383fa839792d96e7ded8f4ce-300x300.png 300w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/383fa839792d96e7ded8f4ce-1024x1024.png 1024w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/383fa839792d96e7ded8f4ce-150x150.png 150w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/383fa839792d96e7ded8f4ce-768x768.png 768w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/383fa839792d96e7ded8f4ce-1536x1536.png 1536w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/383fa839792d96e7ded8f4ce-1320x1320.png 1320w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/383fa839792d96e7ded8f4ce-600x600.png 600w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/383fa839792d96e7ded8f4ce-100x100.png 100w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/383fa839792d96e7ded8f4ce-50x50.png 50w",
+     "sizes": "(max-width: 1600px) 100vw, 1600px",
+     "name": "Redmi Note 17 Pro Max 8/256 Black",
+     "alt": "Redmi Note 17 Pro Max — Black"
+    },
+    {
+     "id": 5720,
+     "src": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/543e049c99f8158e885c7d3f.png",
+     "thumbnail": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/543e049c99f8158e885c7d3f-300x300.png",
+     "srcset": "https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/543e049c99f8158e885c7d3f.png 1600w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/543e049c99f8158e885c7d3f-300x300.png 300w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/543e049c99f8158e885c7d3f-1024x1024.png 1024w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/543e049c99f8158e885c7d3f-150x150.png 150w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/543e049c99f8158e885c7d3f-768x768.png 768w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/543e049c99f8158e885c7d3f-1536x1536.png 1536w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/543e049c99f8158e885c7d3f-1320x1320.png 1320w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/543e049c99f8158e885c7d3f-600x600.png 600w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/543e049c99f8158e885c7d3f-100x100.png 100w, https://xn--80aaa8a4ab.xn--p1ai/wp-content/uploads/2026/09/543e049c99f8158e885c7d3f-50x50.png 50w",
+     "sizes": "(max-width: 1600px) 100vw, 1600px",
+     "name": "Redmi Note 17 Pro Max 8/256 Blush",
+     "alt": "Redmi Note 17 Pro Max — Blush"
+    }
+   ],
+   "categories": [
+    {
+     "id": 219,
+     "name": "Android-смартфоны",
+     "slug": "android",
+     "link": "https://xn--80aaa8a4ab.xn--p1ai/catalog/android/"
+    },
+    {
+     "id": 29,
+     "name": "Xiaomi",
+     "slug": "xiaomi",
+     "link": "https://xn--80aaa8a4ab.xn--p1ai/catalog/xiaomi/"
+    }
+   ],
+   "tags": [],
+   "brands": [],
+   "attributes": [
+    {
+     "id": 1,
+     "name": "Цвет",
+     "taxonomy": "pa_color",
+     "has_variations": true,
+     "terms": [
+      {
+       "id": 180,
+       "name": "Black",
+       "slug": "black"
+      },
+      {
+       "id": 268,
+       "name": "Blush",
+       "slug": "blush"
+      },
+      {
+       "id": 103,
+       "name": "Green",
+       "slug": "green"
+      },
+      {
+       "id": 91,
+       "name": "Purple",
+       "slug": "purple"
+      }
+     ]
+    },
+    {
+     "id": 2,
+     "name": "Память",
+     "taxonomy": "pa_storage",
+     "has_variations": true,
+     "terms": [
+      {
+       "id": 185,
+       "name": "8/256 ГБ",
+       "slug": "8-256-gb"
+      },
+      {
+       "id": 230,
+       "name": "8/512 ГБ",
+       "slug": "8-512-%d0%b3%d0%b1"
+      }
+     ]
+    }
+   ],
+   "variations": [
+    {
+     "id": 5724,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "blush"
+      },
+      {
+       "name": "Память",
+       "value": "8-256-gb"
+      }
+     ]
+    },
+    {
+     "id": 5725,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "purple"
+      },
+      {
+       "name": "Память",
+       "value": "8-512-%d0%b3%d0%b1"
+      }
+     ]
+    },
+    {
+     "id": 5726,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "green"
+      },
+      {
+       "name": "Память",
+       "value": "8-512-%d0%b3%d0%b1"
+      }
+     ]
+    },
+    {
+     "id": 5727,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "black"
+      },
+      {
+       "name": "Память",
+       "value": "8-256-gb"
+      }
+     ]
+    },
+    {
+     "id": 5728,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "black"
+      },
+      {
+       "name": "Память",
+       "value": "8-512-%d0%b3%d0%b1"
+      }
+     ]
+    },
+    {
+     "id": 5729,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "green"
+      },
+      {
+       "name": "Память",
+       "value": "8-256-gb"
+      }
+     ]
+    },
+    {
+     "id": 5730,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "purple"
+      },
+      {
+       "name": "Память",
+       "value": "8-256-gb"
+      }
+     ]
+    },
+    {
+     "id": 5731,
+     "attributes": [
+      {
+       "name": "Цвет",
+       "value": "blush"
+      },
+      {
+       "name": "Память",
+       "value": "8-512-%d0%b3%d0%b1"
+      }
+     ]
+    }
+   ],
+   "grouped_products": [],
+   "has_options": true,
+   "is_purchasable": true,
+   "is_in_stock": true,
+   "is_on_backorder": false,
+   "low_stock_remaining": null,
+   "stock_availability": {
+    "text": "",
+    "class": "in-stock"
+   },
+   "sold_individually": false,
+   "add_to_cart": {
+    "text": "Выберите параметры",
+    "description": "Выберите опции для &ldquo;Redmi Note 17 Pro Max&rdquo;",
+    "url": "https://xn--80aaa8a4ab.xn--p1ai/product-card/redmi-note-17-pro-max/",
+    "single_text": "В корзину",
+    "minimum": 1,
+    "maximum": 9999,
+    "multiple_of": 1
+   },
+   "extensions": {}
+  }
+ ]
+}

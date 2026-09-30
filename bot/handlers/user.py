@@ -4,12 +4,13 @@ from __future__ import annotations
 import logging
 from html import escape
 
-from aiogram import F, Router
+from aiogram import Bot, F, Router
 from aiogram.exceptions import TelegramBadRequest
 from aiogram.filters import Command, CommandStart
 from aiogram.types import CallbackQuery, InlineKeyboardMarkup, LinkPreviewOptions, Message
 
 from bot import keyboards as kb
+from bot.handlers.webapp import app_url, offer_app, refresh_menu_button
 from bot.formatting import product_card
 from config import Config
 from db.repo import Repo
@@ -43,16 +44,22 @@ async def show(target: Message | CallbackQuery, text: str,
 
 # ---------- меню ----------
 
-async def cmd_start(message: Message) -> None:
-    await message.answer(WELCOME, reply_markup=kb.main_menu())
+async def main_menu(bot: Bot, config: Config, repo: Repo, tg_id: int) -> InlineKeyboardMarkup:
+    url = await app_url(bot, config, repo, tg_id) if config.miniapp_url else ""
+    return kb.main_menu(url)
 
 
-async def cmd_menu(message: Message) -> None:
-    await message.answer(WELCOME, reply_markup=kb.main_menu())
+async def cmd_start(message: Message, bot: Bot, config: Config, repo: Repo) -> None:
+    await message.answer(WELCOME, reply_markup=await main_menu(bot, config, repo, message.chat.id))
+    await offer_app(message, bot, config, repo)
 
 
-async def cb_main(call: CallbackQuery) -> None:
-    await show(call, WELCOME, kb.main_menu())
+async def cmd_menu(message: Message, bot: Bot, config: Config, repo: Repo) -> None:
+    await message.answer(WELCOME, reply_markup=await main_menu(bot, config, repo, message.chat.id))
+
+
+async def cb_main(call: CallbackQuery, bot: Bot, config: Config, repo: Repo) -> None:
+    await show(call, WELCOME, await main_menu(bot, config, repo, call.from_user.id))
 
 
 async def cb_search(call: CallbackQuery) -> None:
@@ -114,7 +121,10 @@ async def render_product(target: Message | CallbackQuery, repo: Repo, config: Co
     user_id = target.from_user.id
     subs = await repo.subscribed_ids(user_id)
     subscribed = product["id"] in subs or any(v["id"] in subs for v in variations)
-    await show(target, text, kb.product_kb(product["id"], cat, page, subscribed), preview)
+    url = ""
+    if config.miniapp_url:
+        url = await app_url(target.bot, config, repo, user_id, product_id=product["id"])
+    await show(target, text, kb.product_kb(product["id"], cat, page, subscribed, url), preview)
 
 
 async def cb_product(call: CallbackQuery, callback_data: kb.ProdCb, repo: Repo, config: Config) -> None:
@@ -135,7 +145,8 @@ async def cb_sub_menu(call: CallbackQuery, callback_data: kb.SubMenuCb, repo: Re
     await show(call, text, kb.subscribe_kb(product, variations, subs, callback_data.page))
 
 
-async def cb_sub_toggle(call: CallbackQuery, callback_data: kb.SubAddCb, repo: Repo) -> None:
+async def cb_sub_toggle(call: CallbackQuery, callback_data: kb.SubAddCb, repo: Repo,
+                        bot: Bot, config: Config) -> None:
     user_id = call.from_user.id
     if callback_data.id in await repo.subscribed_ids(user_id):
         await repo.remove_subscription_by_product(user_id, callback_data.id)
@@ -143,6 +154,7 @@ async def cb_sub_toggle(call: CallbackQuery, callback_data: kb.SubAddCb, repo: R
     else:
         await repo.add_subscription(user_id, callback_data.id)
         note = "✅ Подписка оформлена"
+    await refresh_menu_button(bot, config, repo, user_id)
     product = await repo.get_product(callback_data.pid)
     if not product:
         await call.answer(note)
@@ -175,8 +187,10 @@ async def cmd_subs(message: Message, repo: Repo) -> None:
     await render_subscriptions(message, repo)
 
 
-async def cb_unsub(call: CallbackQuery, callback_data: kb.UnsubCb, repo: Repo) -> None:
+async def cb_unsub(call: CallbackQuery, callback_data: kb.UnsubCb, repo: Repo,
+                   bot: Bot, config: Config) -> None:
     await repo.remove_subscription(call.from_user.id, callback_data.sub_id)
+    await refresh_menu_button(bot, config, repo, call.from_user.id)
     await render_subscriptions(call, repo)
 
 

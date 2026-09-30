@@ -70,6 +70,22 @@ def search_terms(query: str) -> list[str]:
     return [w for w in re.split(r"[\s,;]+", normalize_text(query)) if w]
 
 
+def pick_image(image: dict[str, Any], min_width: int = 600) -> str:
+    """Из srcset — самое маленькое изображение шириной не меньше min_width."""
+    best: tuple[int, str] | None = None
+    for part in str(image.get("srcset") or "").split(","):
+        bits = part.strip().rsplit(" ", 1)
+        if len(bits) != 2 or not bits[1].endswith("w"):
+            continue
+        try:
+            width = int(bits[1][:-1])
+        except ValueError:
+            continue
+        if width >= min_width and (best is None or width < best[0]):
+            best = (width, bits[0])
+    return best[1] if best else str(image.get("src") or "")
+
+
 @dataclass
 class ProductRow:
     id: int
@@ -80,6 +96,7 @@ class ProductRow:
     sku: str
     permalink: str
     image_url: str
+    image_thumb: str
     price: int
     regular_price: int
     sale_price: int
@@ -99,7 +116,8 @@ def parse_product(raw: dict[str, Any]) -> ProductRow:
         variation_label=parse_variation_label(raw.get("variation")),
         sku=str(raw.get("sku") or ""),
         permalink=str(raw.get("permalink") or ""),
-        image_url=str(images[0].get("src") or "") if images else "",
+        image_url=pick_image(images[0]) if images else "",
+        image_thumb=str(images[0].get("thumbnail") or images[0].get("src") or "") if images else "",
         price=parse_price(prices.get("price"), minor),
         regular_price=parse_price(prices.get("regular_price"), minor),
         sale_price=parse_price(prices.get("sale_price"), minor),

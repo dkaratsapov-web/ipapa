@@ -4,7 +4,7 @@ from __future__ import annotations
 from typing import Any, Mapping, Sequence
 
 from aiogram.filters.callback_data import CallbackData
-from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
+from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup, WebAppInfo
 from aiogram.utils.keyboard import InlineKeyboardBuilder
 
 from bot.formatting import item_title, product_list_line
@@ -50,12 +50,14 @@ def _cut(text: str, limit: int = 60) -> str:
     return text if len(text) <= limit else text[: limit - 1] + "…"
 
 
-def main_menu() -> InlineKeyboardMarkup:
+def main_menu(app_url: str = "") -> InlineKeyboardMarkup:
     kb = InlineKeyboardBuilder()
+    if app_url:
+        kb.button(text="🛍 Открыть магазин", web_app=WebAppInfo(url=app_url))
     kb.button(text="📱 Каталог", callback_data=MenuCb(action="catalog"))
     kb.button(text="🔎 Поиск", callback_data=MenuCb(action="search"))
     kb.button(text="🔔 Мои подписки", callback_data=MenuCb(action="subs"))
-    kb.adjust(2, 1)
+    kb.adjust(*([1] if app_url else []), 2, 1)
     return kb.as_markup()
 
 
@@ -115,14 +117,17 @@ def search_results_kb(rows: Sequence[Mapping[str, Any]]) -> InlineKeyboardMarkup
     return kb.as_markup()
 
 
-def product_kb(product_id: int, cat: int, page: int, subscribed: bool) -> InlineKeyboardMarkup:
+def product_kb(product_id: int, cat: int, page: int, subscribed: bool,
+               app_url: str = "") -> InlineKeyboardMarkup:
     kb = InlineKeyboardBuilder()
+    if app_url:
+        kb.button(text="🛍 Открыть в приложении", web_app=WebAppInfo(url=app_url))
     kb.button(text="🔔 Следить за ценой" + (" ✓" if subscribed else ""),
               callback_data=SubMenuCb(pid=product_id))
     if cat:
         kb.button(text="⬅️ К списку", callback_data=CatCb(id=cat, page=page))
     kb.button(text="🏠 Меню", callback_data=MenuCb(action="main"))
-    kb.adjust(1, 2)
+    kb.adjust(*([1] if app_url else []), 1, 2)
     return kb.as_markup()
 
 

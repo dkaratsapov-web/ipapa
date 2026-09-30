@@ -7,6 +7,7 @@ from dataclasses import dataclass
 from bot.formatting import sync_summary
 from config import Config
 from db.repo import Repo
+from services.export import export_catalog, run_publish_cmd
 from services.notifier import Notifier
 from services.reports import daily_digest
 from services.sync import SyncResult, SyncService
@@ -25,10 +26,21 @@ class Jobs:
         result = await self.sync.run()
         if result.ok:
             await self.notifier.process_queue()
+            await self.export()
         elif alert_admins:
             await self.notifier.to_admins(self.config.admin_ids,
                                           "⚠️ " + sync_summary(result, self.config.tz))
         return result
+
+    async def export(self) -> None:
+        if not self.config.export_path:
+            return
+        try:
+            await export_catalog(self.repo.conn, self.config.export_path)
+            if self.config.export_cmd:
+                await run_publish_cmd(self.config.export_cmd)
+        except Exception:  # noqa: BLE001 — сбой выгрузки не должен ломать синхронизацию
+            log.exception("Ошибка выгрузки каталога")
 
     async def scheduled_sync(self) -> None:
         if self.sync.running:

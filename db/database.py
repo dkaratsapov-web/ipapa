@@ -23,6 +23,7 @@ CREATE TABLE IF NOT EXISTS products (
     sku             TEXT NOT NULL DEFAULT '',
     permalink       TEXT NOT NULL DEFAULT '',
     image_url       TEXT NOT NULL DEFAULT '',
+    image_thumb     TEXT NOT NULL DEFAULT '',
     price           INTEGER NOT NULL DEFAULT 0,  -- копейки
     regular_price   INTEGER NOT NULL DEFAULT 0,
     sale_price      INTEGER NOT NULL DEFAULT 0,
@@ -86,6 +87,20 @@ def parse_ts(value: str) -> datetime:
     return datetime.fromisoformat(value)
 
 
+# Колонки, добавленные после первой версии схемы: (таблица, колонка, определение)
+MIGRATIONS = [
+    ("products", "image_thumb", "TEXT NOT NULL DEFAULT ''"),
+]
+
+
+async def migrate(conn: aiosqlite.Connection) -> None:
+    for table, column, definition in MIGRATIONS:
+        async with conn.execute(f"PRAGMA table_info({table})") as cur:
+            columns = {row[1] for row in await cur.fetchall()}
+        if column not in columns:
+            await conn.execute(f"ALTER TABLE {table} ADD COLUMN {column} {definition}")
+
+
 async def connect(path: str) -> aiosqlite.Connection:
     if path != ":memory:":
         os.makedirs(os.path.dirname(os.path.abspath(path)), exist_ok=True)
@@ -94,5 +109,6 @@ async def connect(path: str) -> aiosqlite.Connection:
     await conn.execute("PRAGMA journal_mode=WAL")
     await conn.execute("PRAGMA foreign_keys=ON")
     await conn.executescript(SCHEMA)
+    await migrate(conn)
     await conn.commit()
     return conn

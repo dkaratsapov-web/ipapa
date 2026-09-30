@@ -14,7 +14,7 @@ concurrency:
   cancel-in-progress: false
 
 permissions:
-  contents: read
+  contents: write   # публикация catalog.json в ветку webapp-data
 
 jobs:
   run:
@@ -47,6 +47,10 @@ jobs:
           DB_PATH: data/ipapa.db
           LOG_PATH: data/bot.log
           RUN_DURATION_MIN: "340"
+          MINIAPP_URL: ${{ vars.MINIAPP_URL || 'https://dkaratsapov-web.github.io/ipapa/' }}
+          EXPORT_PATH: data/export/catalog.json
+          EXPORT_CMD: scripts/publish_catalog.sh data/export/catalog.json
+          DATA_REMOTE: https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git
         run: python main.py
 
       - name: Сохранить базу
