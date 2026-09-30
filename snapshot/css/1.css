@@ -1,0 +1,68 @@
+.ipapa-showcase-card[data-price-state="preorder"] .ipapa-showcase-card__price-label,
+[data-product-card-form][data-price-state="preorder"] .ipapa-product-card__price-label { display: none; }
+.ipapa-showcase-card[data-price-state="preorder"] .ipapa-showcase-card__price-current,
+[data-product-card-form][data-price-state="preorder"] .ipapa-product-card__price-current { color: #c83128; }
+.ipapa-showcase-card[data-price-state="preorder"] .ipapa-showcase-card__price-note { display: block; line-height: 1.45; }
+.ipapa-preorder-intro { max-width: 410px; color: #555; line-height: 1.6; margin: 14px 0 24px; }
+.ipapa-preorder-intro p { margin: 0 0 12px; }
+.ipapa-preorder-intro small { display: block; font-size: 13px; color: #777; }
+.ipapa-preorder-options { display: flex; flex-direction: column; gap: 16px; margin: 0 0 24px; }
+.ipapa-preorder-options .ipapa-preorder-storage { margin: 0; }
+.ipapa-preorder-configuration { display: flex; flex-direction: column; gap: 7px; min-width: 0; max-width: 100%; margin: 0; color: #555; font: 14px/1.4 "Roboto", sans-serif; }
+.ipapa-preorder-configuration select { width: 100%; max-width: 100%; min-height: 44px; padding: 9px 30px 9px 12px; border: 1px solid #d9d9d9; border-radius: 5px; background-color: #fafafa; color: #070709; font: inherit; }
+.ipapa-preorder-configuration--card { font-size: 12px; }
+.ipapa-preorder-configuration select:focus-visible { outline: 2px solid #c83128; outline-offset: 2px; }
+.ipapa-preorder-color { min-width: 0; margin: 0; padding: 0; border: 0; }
+.ipapa-preorder-color legend { margin: 0 0 6px; padding: 0; color: #555; font-size: 14px; line-height: 1.3; }
+.ipapa-preorder-color__options { display: flex; flex-wrap: wrap; gap: 6px; }
+.ipapa-preorder-color__option { position: relative; display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; margin: 0; cursor: pointer; }
+.ipapa-preorder-color__option input { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+.ipapa-preorder-color__swatch { display: block; width: 32px; height: 32px; border: 3px solid #fff; border-radius: 50%; background: var(--preorder-swatch); box-shadow: 0 0 0 1px #ddd; }
+.ipapa-preorder-color__option input:checked + .ipapa-preorder-color__swatch { box-shadow: 0 0 0 2px #070709; }
+.ipapa-preorder-color__option input:focus-visible + .ipapa-preorder-color__swatch { outline: 2px solid #c83128; outline-offset: 4px; }
+.ipapa-preorder-options--card { gap: 8px; margin: 14px 0 0; }
+.ipapa-preorder-color--card legend { font-size: 12px; }
+.ipapa-preorder-color--card .ipapa-preorder-color__swatch { width: 28px; height: 28px; }
+.ipapa-preorder-storage { min-width: 0; max-width: 360px; margin: 0 0 24px; padding: 0; border: 0; }
+.ipapa-preorder-storage legend { float: none; width: auto; margin: 0 0 10px; padding: 0; color: #555; font-size: 14px; line-height: 1.3; }
+.ipapa-preorder-storage__options { display: flex; border: 1px solid #d9d9d9; border-radius: 5px; overflow: hidden; background: #fafafa; }
+.ipapa-preorder-storage__option { position: relative; flex: 1 1 0; min-width: 0; margin: 0; cursor: pointer; }
+.ipapa-preorder-storage__option + .ipapa-preorder-storage__option { border-left: 1px solid #d9d9d9; }
+.ipapa-preorder-storage__option input { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+.ipapa-preorder-storage__option span { display: flex; align-items: center; justify-content: center; min-height: 44px; height: 100%; padding: 6px 8px; color: #555; font-family: "Roboto", sans-serif; font-size: 14px; font-weight: 400; line-height: 1.2; white-space: normal; text-align: center; overflow-wrap: anywhere; transition: background-color 150ms ease, color 150ms ease; }
+.ipapa-preorder-storage__option:hover span { background: #eee; color: #070709; }
+.ipapa-preorder-storage__option input:checked + span { background: #070709; color: #fff; }
+.ipapa-preorder-storage__option input:focus-visible + span { outline: 2px solid #c83128; outline-offset: -3px; }
+.ipapa-preorder-storage--card { max-width: none; margin: 14px 0 0; }
+.ipapa-preorder-storage--card legend { margin-bottom: 7px; font-size: 12px; }
+.ipapa-preorder-storage--card .ipapa-preorder-storage__option span { min-height: 36px; padding: 0 4px; font-size: 12px; }
+[data-product-card-form][data-price-state="preorder"] .ipapa-product-card__actions { grid-template-columns: 1fr; }
+[data-product-card-form][data-price-state="preorder"] .ipapa-product-card__action { width: 100%; }
+@media (min-width: 1181px) {
+ .ipapa-product-card__hero--preorder { height: auto; min-height: var(--ipapa-product-card-viewport-height); grid-template-rows: auto auto; overflow: visible; }
+ .ipapa-product-card__hero--preorder [data-product-card-form] { height: auto; }
+ .ipapa-product-card__hero--preorder .ipapa-product-card__content { overflow: visible; }
+ .ipapa-product-card__hero--preorder .ipapa-product-card__visual { align-self: start; height: clamp(380px, calc(100svh - 150px), 680px); }
+}
+@media (max-width: 600px) {
+ [data-product-card-form][data-price-state="preorder"] .ipapa-product-card__price-current { font-size: 30px; }
+ .ipapa-preorder-intro { margin: 10px 0 16px; }
+ .ipapa-preorder-storage { margin-bottom: 18px; }
+ .ipapa-preorder-storage--card { margin-bottom: 0; }
+ .ipapa-preorder-storage--card .ipapa-preorder-storage__option span { min-height: 44px; }
+}
+@media (max-width: 767px) {
+ [data-product-card-form][data-price-state="preorder"] {
+  grid-template-areas: "header" "visual" "preorder-intro" "preorder-storage" "purchase";
+ }
+ [data-product-card-form][data-price-state="preorder"] .ipapa-preorder-intro { grid-area: preorder-intro; margin: 0; }
+ [data-product-card-form][data-price-state="preorder"] .ipapa-preorder-intro p { margin: 0; }
+ [data-product-card-form][data-price-state="preorder"] .ipapa-preorder-options { grid-area: preorder-storage; margin: 0; }
+ [data-product-card-form][data-price-state="preorder"] .ipapa-preorder-storage { width: 100%; max-width: none; margin: 0; }
+ [data-product-card-form][data-price-state="preorder"] .ipapa-product-card__device-frame {
+  height: clamp(260px, 38svh, 340px); min-height: 0; padding-block: 0;
+ }
+ [data-product-card-form][data-price-state="preorder"] .ipapa-product-card__device {
+  height: 100%; width: auto; max-width: 100%; object-fit: contain;
+ }
+}

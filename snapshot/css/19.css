@@ -1,0 +1,567 @@
+body {
+	--ipapa-messenger-widget-viewport-height: 100dvh;
+}
+
+body.ipapa-messenger-widget-open {
+	overflow: hidden;
+}
+
+body.ipapa-messenger-widget-open > :not(.ipapa-messenger-widget) {
+	filter: blur(10px);
+	pointer-events: none;
+	user-select: none;
+	transition: filter 180ms ease;
+}
+
+.ipapa-messenger-widget {
+	position: fixed;
+	right: 24px;
+	bottom: 24px;
+	z-index: 2147483640;
+	isolation: isolate;
+	font-family: "Roboto", sans-serif;
+}
+
+.ipapa-messenger-widget__trigger {
+	position: relative;
+	z-index: 2147483641;
+	display: inline-flex;
+	align-items: center;
+	padding: 0;
+	border: 0;
+	border-radius: 0;
+	background: transparent;
+	box-shadow: none;
+	cursor: pointer;
+	transition: none;
+}
+
+.ipapa-messenger-widget__trigger:hover,
+.ipapa-messenger-widget__trigger:focus-visible {
+	transform: none;
+	background: transparent;
+	box-shadow: none;
+	outline: none;
+}
+
+.ipapa-messenger-widget__trigger-shell {
+	display: inline-flex;
+	align-items: center;
+	gap: 0;
+	min-width: 0;
+	padding: 0;
+	border-radius: 0;
+	background: transparent;
+}
+
+.ipapa-messenger-widget__trigger-badge {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	flex: 0 0 calc(42px * 1.3);
+	width: calc(42px * 1.3);
+	height: calc(42px * 1.3);
+	border-radius: calc(12px * 1.3);
+	background: #e22828;
+	color: #ffffff;
+	box-shadow:
+		0 0 0 2px #ffffff,
+		0 14px 28px rgba(7, 7, 9, 0.18);
+}
+
+.ipapa-messenger-widget__trigger-badge svg {
+	display: block;
+	width: calc(18px * 1.3);
+	height: calc(18px * 1.3);
+	fill: none;
+	stroke: currentColor;
+	stroke-width: 1.8;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+}
+
+.ipapa-messenger-widget__trigger-copy {
+	display: none;
+	gap: 4px;
+	min-width: 0;
+	text-align: left;
+}
+
+.ipapa-messenger-widget__trigger-title {
+	color: #111111;
+	font-size: 15px;
+	font-weight: 700;
+	line-height: 1.1;
+}
+
+.ipapa-messenger-widget__trigger-note {
+	color: #65656d;
+	font-size: 11px;
+	line-height: 1.35;
+}
+
+.ipapa-messenger-widget__modal {
+	position: fixed;
+	inset: 0;
+	z-index: 2147483647;
+	display: grid;
+	place-items: center;
+	min-height: var(--ipapa-messenger-widget-viewport-height);
+	padding: 24px;
+	opacity: 0;
+	pointer-events: none;
+	visibility: hidden;
+}
+
+.ipapa-messenger-widget__modal.is-open {
+	opacity: 1;
+	pointer-events: auto;
+	visibility: visible;
+}
+
+.ipapa-messenger-widget__modal[hidden] {
+	display: none !important;
+}
+
+.ipapa-messenger-widget__backdrop {
+	position: absolute;
+	inset: 0;
+	background: rgba(7, 7, 9, 0.4);
+}
+
+.ipapa-messenger-widget__dialog {
+	position: relative;
+	z-index: 1;
+	width: min(100%, 540px);
+	max-height: min(calc(var(--ipapa-messenger-widget-viewport-height) - 48px), 100%);
+	padding: 34px 34px 30px;
+	border: 1px solid rgba(216, 216, 220, 0.9);
+	border-radius: 28px;
+	background: #ffffff;
+	box-shadow: 0 28px 60px rgba(7, 7, 9, 0.18);
+	overflow-y: auto;
+	overscroll-behavior: contain;
+	-webkit-overflow-scrolling: touch;
+	transform: translateY(24px) scale(0.98);
+	opacity: 0;
+	transition: transform 220ms ease, opacity 220ms ease;
+}
+
+.ipapa-messenger-widget__modal.is-open .ipapa-messenger-widget__dialog {
+	transform: translateY(0) scale(1);
+	opacity: 1;
+}
+
+.ipapa-messenger-widget__close {
+	position: absolute;
+	top: 18px;
+	right: 18px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 42px;
+	height: 42px;
+	border: 0;
+	border-radius: 50%;
+	background: rgba(7, 7, 9, 0.06);
+	cursor: pointer;
+	transition: background-color 180ms ease, transform 180ms ease;
+}
+
+.ipapa-messenger-widget__close:hover,
+.ipapa-messenger-widget__close:focus-visible {
+	background: rgba(238, 35, 35, 0.12);
+	transform: rotate(90deg);
+	outline: none;
+}
+
+.ipapa-messenger-widget__close span {
+	position: absolute;
+	width: 16px;
+	height: 2px;
+	border-radius: 999px;
+	background: #070709;
+}
+
+.ipapa-messenger-widget__close span:first-child {
+	transform: rotate(45deg);
+}
+
+.ipapa-messenger-widget__close span:last-child {
+	transform: rotate(-45deg);
+}
+
+.ipapa-messenger-widget__panel {
+	display: none;
+}
+
+.ipapa-messenger-widget__panel.is-active {
+	display: block;
+}
+
+.ipapa-messenger-widget__panel[hidden] {
+	display: none !important;
+}
+
+.ipapa-messenger-widget__hero {
+	display: grid;
+	gap: 14px;
+	padding-right: 44px;
+}
+
+.ipapa-messenger-widget__eyebrow {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: fit-content;
+	padding: 8px 14px;
+	border-radius: 999px;
+	background: rgba(238, 35, 35, 0.08);
+	color: #cf1f1f;
+	font-size: 11px;
+	font-weight: 700;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+}
+
+.ipapa-messenger-widget__title {
+	margin: 0;
+	color: #070709;
+	font-size: clamp(30px, 5.5vw, 40px);
+	font-weight: 700;
+	line-height: 0.98;
+	letter-spacing: -0.05em;
+}
+
+.ipapa-messenger-widget__lead,
+.ipapa-messenger-widget__success-text,
+.ipapa-messenger-widget__empty-state {
+	margin: 0;
+	color: #585861;
+	font-size: 15px;
+	line-height: 1.55;
+}
+
+.ipapa-messenger-widget__channels {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 12px;
+	margin-top: 24px;
+}
+
+.ipapa-messenger-widget__channel {
+	display: grid;
+	grid-template-columns: auto minmax(0, 1fr) auto;
+	align-items: center;
+	gap: 12px;
+	padding: 16px;
+	border: 1px solid rgba(7, 7, 9, 0.08);
+	border-radius: 20px;
+	background: #fafafa;
+	box-shadow: none;
+	color: #111111;
+	text-decoration: none;
+	transition: transform 180ms ease, border-color 180ms ease, background-color 180ms ease;
+}
+
+.ipapa-messenger-widget__channel:hover,
+.ipapa-messenger-widget__channel:focus-visible {
+	transform: translateY(-1px);
+	border-color: rgba(226, 40, 40, 0.28);
+	background: #ffffff;
+	outline: none;
+}
+
+.ipapa-messenger-widget__channel-badge {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 54px;
+	min-height: 54px;
+	padding: 12px;
+	border-radius: 18px;
+	background: #e22828;
+	color: #ffffff;
+	font-size: 13px;
+	font-weight: 700;
+	letter-spacing: 0.02em;
+}
+
+.ipapa-messenger-widget__channel-copy {
+	display: grid;
+	gap: 4px;
+	min-width: 0;
+}
+
+.ipapa-messenger-widget__channel-copy strong {
+	color: #111111;
+	font-size: 16px;
+	line-height: 1.15;
+}
+
+.ipapa-messenger-widget__channel-copy span {
+	color: #66666d;
+	font-size: 13px;
+	line-height: 1.4;
+}
+
+.ipapa-messenger-widget__channel-arrow {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 18px;
+	height: 18px;
+	color: #cf1f1f;
+}
+
+.ipapa-messenger-widget__channel-arrow svg {
+	display: block;
+	width: 18px;
+	height: 18px;
+	fill: none;
+	stroke: currentColor;
+	stroke-width: 1.8;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+}
+
+.ipapa-messenger-widget__divider {
+	display: flex;
+	align-items: center;
+	gap: 14px;
+	margin-top: 22px;
+	color: #8a8a92;
+	font-size: 13px;
+	font-weight: 500;
+	line-height: 1;
+}
+
+.ipapa-messenger-widget__divider::before,
+.ipapa-messenger-widget__divider::after {
+	content: "";
+	flex: 1 1 auto;
+	height: 1px;
+	background: rgba(7, 7, 9, 0.1);
+}
+
+.ipapa-messenger-widget__form {
+	display: grid;
+	gap: 16px;
+	margin-top: 22px;
+}
+
+.ipapa-messenger-widget__field {
+	display: grid;
+	gap: 10px;
+}
+
+.ipapa-messenger-widget__field-label {
+	color: #070709;
+	font-size: 14px;
+	font-weight: 500;
+	line-height: 1;
+}
+
+.ipapa-messenger-widget__field input {
+	width: 100%;
+	min-height: 60px;
+	padding: 0 18px;
+	border: 1px solid rgba(7, 7, 9, 0.12);
+	border-radius: 16px;
+	background: rgba(255, 255, 255, 0.92);
+	color: #070709;
+	font-size: 18px;
+	line-height: 1;
+	transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+}
+
+.ipapa-messenger-widget__field input::placeholder {
+	color: #b2b2b9;
+}
+
+.ipapa-messenger-widget__field input:focus {
+	border-color: rgba(7, 7, 9, 0.18);
+	box-shadow: 0 0 0 4px rgba(7, 7, 9, 0.06);
+	outline: none;
+	transform: translateY(-1px);
+}
+
+.ipapa-messenger-widget__feedback {
+	margin: 0;
+	padding: 14px 16px;
+	border-radius: 16px;
+	font-size: 14px;
+	line-height: 1.45;
+}
+
+.ipapa-messenger-widget__feedback.is-hidden {
+	display: none;
+}
+
+.ipapa-messenger-widget__feedback.is-error {
+	background: rgba(180, 35, 24, 0.08);
+	color: #9f291d;
+}
+
+.ipapa-messenger-widget__feedback.is-success {
+	background: rgba(22, 101, 52, 0.08);
+	color: #166534;
+}
+
+.ipapa-messenger-widget__submit,
+.ipapa-messenger-widget__ack {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	min-height: 60px;
+	padding: 16px 20px;
+	border: 0;
+	border-radius: 18px;
+	background: #e22828;
+	color: #ffffff;
+	font-size: 16px;
+	font-weight: 700;
+	line-height: 1;
+	cursor: pointer;
+	box-shadow: 0 14px 28px rgba(7, 7, 9, 0.08);
+	transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
+}
+
+.ipapa-messenger-widget__submit:hover,
+.ipapa-messenger-widget__submit:focus-visible,
+.ipapa-messenger-widget__ack:hover,
+.ipapa-messenger-widget__ack:focus-visible {
+	transform: translateY(-1px);
+	background: #d51f1f;
+	box-shadow: 0 18px 34px rgba(7, 7, 9, 0.12);
+	outline: none;
+}
+
+.ipapa-messenger-widget__submit:disabled {
+	cursor: default;
+	opacity: 0.72;
+	transform: none;
+	box-shadow: 0 10px 20px rgba(7, 7, 9, 0.05);
+}
+
+.ipapa-messenger-widget__consent {
+	margin: 0;
+	display: grid;
+	grid-template-columns: 16px minmax(0, 1fr);
+	gap: 10px;
+	align-items: start;
+	color: #73737b;
+	font-size: 12px;
+	line-height: 1.5;
+}
+
+.ipapa-messenger-widget__consent input {
+	width: 16px;
+	height: 16px;
+	margin: 2px 0 0;
+	accent-color: #cf1f1f;
+}
+
+.ipapa-messenger-widget__consent span {
+	display: block;
+}
+
+.ipapa-messenger-widget__consent a {
+	color: #cf1f1f;
+	text-decoration: underline;
+	text-underline-offset: 3px;
+}
+
+.ipapa-messenger-widget__panel--success.is-active {
+	display: grid;
+	justify-items: center;
+	gap: 18px;
+	padding: 18px 6px 6px;
+	text-align: center;
+}
+
+.ipapa-messenger-widget__success-icon {
+	display: grid;
+	place-items: center;
+	width: 108px;
+	height: 108px;
+	border-radius: 50%;
+	background:
+		radial-gradient(circle at top, rgba(255, 255, 255, 0.92), transparent 60%),
+		linear-gradient(180deg, rgba(238, 35, 35, 0.12), rgba(238, 35, 35, 0.04));
+	box-shadow:
+		inset 0 1px 0 rgba(255, 255, 255, 0.9),
+		0 20px 40px rgba(238, 35, 35, 0.14);
+}
+
+.ipapa-messenger-widget__success-icon svg {
+	display: block;
+	width: 72px;
+	height: 72px;
+}
+
+.ipapa-messenger-widget__success-icon circle,
+.ipapa-messenger-widget__success-icon path {
+	fill: none;
+	stroke: #ee2323;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+}
+
+.ipapa-messenger-widget__success-icon circle {
+	stroke-width: 2;
+	opacity: 0.34;
+}
+
+.ipapa-messenger-widget__success-icon path {
+	stroke-width: 4.2;
+}
+
+@media (max-width: 767px) {
+	.ipapa-messenger-widget {
+		right: 12px;
+		bottom: 12px;
+		width: auto;
+	}
+
+	.ipapa-messenger-widget__modal {
+		place-items: end center;
+		padding: 12px 12px max(12px, env(safe-area-inset-bottom));
+	}
+
+	.ipapa-messenger-widget__dialog {
+		width: 100%;
+		max-height: calc(var(--ipapa-messenger-widget-viewport-height) - 24px);
+		padding: 26px 18px 20px;
+		border-radius: 24px;
+	}
+
+	.ipapa-messenger-widget__hero {
+		padding-right: 38px;
+	}
+
+	.ipapa-messenger-widget__title {
+		font-size: clamp(26px, 10vw, 34px);
+	}
+
+	.ipapa-messenger-widget__channels {
+		grid-template-columns: minmax(0, 1fr);
+	}
+
+	.ipapa-messenger-widget__field input,
+	.ipapa-messenger-widget__submit,
+	.ipapa-messenger-widget__ack {
+		min-height: 56px;
+	}
+}
+
+@media (max-width: 480px) {
+	.ipapa-messenger-widget__trigger-title {
+		font-size: 15px;
+	}
+
+	.ipapa-messenger-widget__trigger-note {
+		font-size: 11px;
+	}
+}

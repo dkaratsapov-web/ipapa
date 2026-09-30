@@ -1,0 +1,272 @@
+/* Product search — header live search + dropdown. Scoped & additive. */
+
+.ipapa-product-search,
+.ipapa-product-search *,
+.ipapa-product-search *::before,
+.ipapa-product-search *::after {
+	box-sizing: border-box;
+}
+
+.ipapa-product-search__toggle svg,
+.ipapa-product-search__field-icon svg,
+.ipapa-product-search__clear svg {
+	width: 20px;
+	height: 20px;
+	display: block;
+	fill: none;
+	stroke: currentColor;
+	stroke-width: 2;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+}
+
+.ipapa-product-search__input {
+	font: inherit;
+	color: #111111;
+	width: 100%;
+	min-width: 0;
+	border: 0;
+	background: transparent;
+	outline: none;
+	appearance: none;
+	-webkit-appearance: none;
+}
+
+.ipapa-product-search__input::-webkit-search-cancel-button {
+	display: none;
+}
+
+/* shared results list */
+.ipapa-product-search__results {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+}
+
+.ipapa-product-search__result {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	padding: 8px 10px;
+	border-radius: 10px;
+	text-decoration: none;
+	color: #111111;
+}
+
+.ipapa-product-search__result:hover,
+.ipapa-product-search__result.is-active {
+	background: #f2f3f5;
+}
+
+.ipapa-product-search__result-media {
+	flex: 0 0 auto;
+	width: 48px;
+	height: 48px;
+	border-radius: 8px;
+	overflow: hidden;
+	background: #f5f5f7;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.ipapa-product-search__result-media img,
+.ipapa-product-search__result-image {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+}
+
+.ipapa-product-search__result-body {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+	min-width: 0;
+}
+
+.ipapa-product-search__result-title {
+	font-size: 14px;
+	line-height: 1.3;
+	font-weight: 500;
+	color: #111111;
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+}
+
+.ipapa-product-search__result-price {
+	font-size: 13px;
+	color: #6e6e6e;
+}
+
+.ipapa-product-search__status {
+	margin: 6px 4px 0;
+	font-size: 13px;
+	color: #6e6e6e;
+}
+
+.ipapa-product-search__status:empty {
+	display: none;
+}
+
+.ipapa-product-search__all {
+	display: block;
+	margin-top: 8px;
+	padding: 10px;
+	text-align: center;
+	font-size: 14px;
+	font-weight: 600;
+	color: #ffffff;
+	background: #ee2323;
+	border-radius: 10px;
+	text-decoration: none;
+}
+
+.ipapa-product-search__all[hidden] {
+	display: none;
+}
+
+.ipapa-product-search__clear {
+	flex: 0 0 auto;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 24px;
+	height: 24px;
+	border: 0;
+	border-radius: 50%;
+	background: #e9ebef;
+	color: #555555;
+	cursor: pointer;
+	padding: 0;
+}
+
+.ipapa-product-search__clear[hidden] {
+	display: none;
+}
+
+/* ===== Desktop: icon button that expands to an absolute overlay input ===== */
+@media (min-width: 1101px) {
+	.ipapa-product-search--mobile {
+		display: none;
+	}
+
+	.ipapa-product-search--desktop {
+		position: relative;
+		flex: 0 0 auto;
+		display: flex;
+		align-items: center;
+	}
+
+	.ipapa-product-search__toggle {
+		width: 42px;
+		height: 42px;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		border: 0;
+		border-radius: 12px;
+		background: transparent;
+		color: #111111;
+		cursor: pointer;
+		padding: 0;
+		transition: background-color 160ms ease;
+	}
+
+	.ipapa-product-search__toggle:hover,
+	.ipapa-product-search--desktop.is-open .ipapa-product-search__toggle {
+		background: #f2f3f5;
+	}
+
+	.ipapa-product-search--desktop .ipapa-product-search__field {
+		position: absolute;
+		right: 0;
+		top: 50%;
+		transform: translateY(-50%);
+		display: flex;
+		align-items: center;
+		gap: 6px;
+		width: 0;
+		max-width: 60vw;
+		opacity: 0;
+		overflow: hidden;
+		pointer-events: none;
+		padding: 0;
+		background: #ffffff;
+		border-radius: 12px;
+		box-shadow: 0 10px 30px rgba(7, 7, 9, 0.16);
+		transition: width 240ms ease, opacity 180ms ease, padding 240ms ease;
+		z-index: 30;
+	}
+
+	.ipapa-product-search--desktop.is-open .ipapa-product-search__field {
+		width: 420px;
+		opacity: 1;
+		pointer-events: auto;
+		padding: 8px 12px;
+	}
+
+	.ipapa-product-search--desktop .ipapa-product-search__input {
+		height: 26px;
+	}
+
+	.ipapa-product-search--desktop .ipapa-product-search__panel {
+		position: absolute;
+		top: calc(100% + 10px);
+		right: 0;
+		width: 420px;
+		max-width: 80vw;
+		max-height: min(70vh, 560px);
+		overflow-y: auto;
+		background: #ffffff;
+		border-radius: 16px;
+		box-shadow: 0 18px 48px rgba(7, 7, 9, 0.18);
+		padding: 10px;
+		z-index: 30;
+	}
+
+	.ipapa-product-search--desktop .ipapa-product-search__panel[hidden] {
+		display: none;
+	}
+}
+
+/* ===== Mobile: full-width field at the top of the mobile panel ===== */
+@media (max-width: 1100px) {
+	.ipapa-product-search--desktop {
+		display: none;
+	}
+
+	.ipapa-product-search--mobile {
+		display: block;
+		margin-bottom: 14px;
+	}
+
+	.ipapa-product-search--mobile .ipapa-product-search__field {
+		display: flex;
+		align-items: center;
+		gap: 8px;
+		width: 100%;
+		padding: 10px 12px;
+		background: #f4f5f7;
+		border-radius: 12px;
+	}
+
+	.ipapa-product-search--mobile .ipapa-product-search__field-icon {
+		color: #6e6e6e;
+		display: inline-flex;
+		flex: 0 0 auto;
+	}
+
+	.ipapa-product-search--mobile .ipapa-product-search__input {
+		height: 24px;
+	}
+
+	.ipapa-product-search--mobile .ipapa-product-search__panel {
+		margin-top: 10px;
+	}
+
+	.ipapa-product-search--mobile .ipapa-product-search__panel[hidden] {
+		display: none;
+	}
+}

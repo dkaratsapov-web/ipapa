@@ -1,0 +1,120 @@
+.ipapa-cookie-banner[hidden] {
+	display: none !important;
+}
+
+.ipapa-cookie-banner {
+	position: fixed;
+	left: 24px;
+	right: 24px;
+	bottom: 24px;
+	z-index: 10020;
+	display: flex;
+	justify-content: center;
+	pointer-events: none;
+}
+
+.ipapa-cookie-banner.is-hidden {
+	display: none !important;
+}
+
+.ipapa-cookie-banner__card {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) auto;
+	gap: 18px 20px;
+	align-items: end;
+	width: min(100%, 880px);
+	padding: 20px 22px;
+	border: 1px solid rgba(255, 255, 255, 0.7);
+	border-radius: 24px;
+	background:
+		radial-gradient(circle at top right, rgba(238, 35, 35, 0.14), transparent 32%),
+		linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(248, 248, 249, 0.97));
+	box-shadow:
+		0 24px 60px rgba(7, 7, 9, 0.16),
+		inset 0 1px 0 rgba(255, 255, 255, 0.82);
+	backdrop-filter: blur(12px);
+	pointer-events: auto;
+}
+
+.ipapa-cookie-banner__copy {
+	display: grid;
+	gap: 8px;
+}
+
+.ipapa-cookie-banner__title {
+	margin: 0;
+	color: #070709;
+	font-family: "Roboto", sans-serif;
+	font-size: 18px;
+	font-weight: 700;
+	line-height: 1.2;
+}
+
+.ipapa-cookie-banner__text {
+	margin: 0;
+	color: #585861;
+	font-family: "Roboto", sans-serif;
+	font-size: 14px;
+	line-height: 1.6;
+}
+
+.ipapa-cookie-banner__text a {
+	color: #cf1f1f;
+	text-decoration: underline;
+	text-underline-offset: 3px;
+}
+
+.ipapa-cookie-banner__actions {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+}
+
+.ipapa-cookie-banner__accept {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 52px;
+	padding: 0 22px;
+	border: 0;
+	border-radius: 999px;
+	background: linear-gradient(180deg, #ee2323 0%, #d91d1d 100%);
+	color: #ffffff;
+	font-family: "Roboto", sans-serif;
+	font-size: 15px;
+	font-weight: 700;
+	line-height: 1;
+	cursor: pointer;
+	box-shadow: 0 18px 36px rgba(7, 7, 9, 0.08);
+	transition: transform 180ms ease, box-shadow 180ms ease, filter 180ms ease;
+}
+
+.ipapa-cookie-banner__accept:hover,
+.ipapa-cookie-banner__accept:focus-visible {
+	transform: translateY(-1px);
+	box-shadow: 0 24px 44px rgba(7, 7, 9, 0.12);
+	filter: saturate(1.04);
+	outline: none;
+}
+
+@media (max-width: 767px) {
+	.ipapa-cookie-banner {
+		left: 14px;
+		right: 14px;
+		bottom: 14px;
+	}
+
+	.ipapa-cookie-banner__card {
+		grid-template-columns: 1fr;
+		padding: 18px 18px 16px;
+		border-radius: 20px;
+	}
+
+	.ipapa-cookie-banner__actions {
+		justify-content: stretch;
+	}
+
+	.ipapa-cookie-banner__accept {
+		width: 100%;
+	}
+}

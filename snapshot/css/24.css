@@ -1,0 +1,922 @@
+.ipapa-gift-collections {
+	padding: 0 20px 96px;
+}
+
+.ipapa-gift-collections__shell {
+	width: 100%;
+	max-width: 1320px;
+	margin: 0 auto;
+}
+
+.ipapa-gift-collections__header {
+	display: flex;
+	align-items: flex-end;
+	justify-content: space-between;
+	gap: 18px 24px;
+	margin-bottom: 28px;
+}
+
+.ipapa-gift-collections__heading {
+	display: grid;
+	gap: 10px;
+	max-width: 760px;
+}
+
+.ipapa-gift-collections__title {
+	margin: 0;
+	color: #070709;
+	font-family: "Bebas Neue Pro", "Proxima Nova", "Roboto", sans-serif;
+	font-size: clamp(4.1rem, 6.8vw, 5.4rem);
+	font-weight: 700;
+	line-height: 0.9;
+	letter-spacing: 0.01em;
+	text-transform: uppercase;
+}
+
+.ipapa-gift-collections__lead {
+	margin: 0;
+	color: #4b4f58;
+	font-family: "Manrope", "Roboto", sans-serif;
+	font-size: 18px;
+	font-weight: 500;
+	line-height: 1.55;
+}
+
+.ipapa-gift-collections__all-link {
+	flex-shrink: 0;
+	color: #3d3d3d;
+	font-family: "Roboto", sans-serif;
+	font-size: 22px;
+	line-height: 1.15;
+	text-decoration: underline;
+	text-underline-offset: 0.16em;
+	white-space: nowrap;
+}
+
+.ipapa-gift-collections__all-link:hover,
+.ipapa-gift-collections__all-link:focus-visible {
+	color: var(--ipapa-site-accent, #ee2323);
+}
+
+.ipapa-gift-collections__layout {
+	display: grid;
+	grid-template-columns: minmax(220px, 252px) minmax(0, 1fr);
+	gap: 24px;
+	align-items: start;
+}
+
+.ipapa-gift-collections__nav {
+	position: sticky;
+	top: 112px;
+	display: grid;
+	gap: 12px;
+	scroll-behavior: smooth;
+}
+
+.ipapa-gift-collections__trigger {
+	display: grid;
+	gap: 8px;
+	width: 100%;
+	padding: 18px 20px;
+	border: 1px solid rgba(7, 7, 9, 0.1);
+	border-radius: 24px;
+	background: #ffffff;
+	box-shadow: 0 18px 40px rgba(7, 7, 9, 0.06);
+	color: #070709;
+	text-align: left;
+	cursor: pointer;
+	transition:
+		transform 180ms ease,
+		box-shadow 180ms ease,
+		border-color 180ms ease,
+		background-color 180ms ease,
+		color 180ms ease;
+}
+
+.ipapa-gift-collections__trigger:hover,
+.ipapa-gift-collections__trigger:focus-visible {
+	transform: translateY(-1px);
+	border-color: rgba(7, 7, 9, 0.18);
+	box-shadow: 0 22px 46px rgba(7, 7, 9, 0.09);
+}
+
+.ipapa-gift-collections__trigger:focus-visible {
+	outline: 2px solid rgba(7, 7, 9, 0.24);
+	outline-offset: 3px;
+}
+
+.ipapa-gift-collections__trigger.is-active {
+	border-color: #070709;
+	background: linear-gradient(180deg, #14151a 0%, #070709 100%);
+	color: #ffffff;
+	box-shadow: 0 24px 56px rgba(7, 7, 9, 0.16);
+}
+
+.ipapa-gift-collections__trigger-title {
+	font-family: "Manrope", "Roboto", sans-serif;
+	font-size: 19px;
+	font-weight: 800;
+	line-height: 1.2;
+}
+
+.ipapa-gift-collections__trigger-meta {
+	color: rgba(7, 7, 9, 0.58);
+	font-family: "Roboto", sans-serif;
+	font-size: 14px;
+	line-height: 1.35;
+}
+
+.ipapa-gift-collections__trigger.is-active .ipapa-gift-collections__trigger-meta {
+	color: rgba(255, 255, 255, 0.72);
+}
+
+/* Panel ---------------------------------------------------------------- */
+.ipapa-gift-collections__panel {
+	--ipapa-gift-panel-accent: #ee2323;
+	--ipapa-gift-panel-from: #ffffff;
+	--ipapa-gift-panel-to: #fbfbfd;
+	--ipapa-gift-panel-glow: rgba(238, 35, 35, 0.12);
+	--ipapa-gift-panel-border: rgba(7, 7, 9, 0.08);
+	position: relative;
+	padding: 32px;
+	border: 1px solid var(--ipapa-gift-panel-border);
+	border-radius: 36px;
+	background: linear-gradient(145deg, var(--ipapa-gift-panel-from) 0%, var(--ipapa-gift-panel-to) 100%);
+	box-shadow: 0 24px 56px rgba(7, 7, 9, 0.1);
+	overflow: hidden;
+	isolation: isolate;
+}
+
+.ipapa-gift-collections__panel::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background:
+		radial-gradient(circle at 50% 34%, var(--ipapa-gift-panel-glow) 0%, rgba(255, 255, 255, 0) 42%),
+		linear-gradient(180deg, rgba(255, 255, 255, 0.72) 0%, rgba(255, 255, 255, 0) 34%);
+	opacity: 1;
+	pointer-events: none;
+}
+
+.ipapa-gift-collections__panel--all {
+	--ipapa-gift-panel-accent: #cb2020;
+	--ipapa-gift-panel-from: #fff9f8;
+	--ipapa-gift-panel-to: #ffffff;
+	--ipapa-gift-panel-glow: rgba(238, 35, 35, 0.1);
+	--ipapa-gift-panel-border: rgba(203, 32, 32, 0.12);
+}
+
+.ipapa-gift-collections__panel--birthday {
+	--ipapa-gift-panel-accent: #cf1f4f;
+	--ipapa-gift-panel-from: #fff7fa;
+	--ipapa-gift-panel-to: #ffffff;
+	--ipapa-gift-panel-glow: rgba(220, 60, 120, 0.12);
+	--ipapa-gift-panel-border: rgba(207, 31, 79, 0.12);
+}
+
+.ipapa-gift-collections__panel--female {
+	--ipapa-gift-panel-accent: #a4408a;
+	--ipapa-gift-panel-from: #fdf6fb;
+	--ipapa-gift-panel-to: #ffffff;
+	--ipapa-gift-panel-glow: rgba(190, 90, 170, 0.12);
+	--ipapa-gift-panel-border: rgba(164, 64, 138, 0.12);
+}
+
+.ipapa-gift-collections__panel--male {
+	--ipapa-gift-panel-accent: #245f99;
+	--ipapa-gift-panel-from: #f7fbff;
+	--ipapa-gift-panel-to: #ffffff;
+	--ipapa-gift-panel-glow: rgba(65, 132, 220, 0.1);
+	--ipapa-gift-panel-border: rgba(36, 95, 153, 0.12);
+}
+
+.ipapa-gift-collections__panel--student {
+	--ipapa-gift-panel-accent: #1e7d5d;
+	--ipapa-gift-panel-from: #f7fcfa;
+	--ipapa-gift-panel-to: #ffffff;
+	--ipapa-gift-panel-glow: rgba(45, 176, 120, 0.1);
+	--ipapa-gift-panel-border: rgba(30, 125, 93, 0.12);
+}
+
+.ipapa-gift-collections__panel--travel {
+	--ipapa-gift-panel-accent: #1f7d86;
+	--ipapa-gift-panel-from: #f4fbfc;
+	--ipapa-gift-panel-to: #ffffff;
+	--ipapa-gift-panel-glow: rgba(45, 160, 176, 0.12);
+	--ipapa-gift-panel-border: rgba(31, 125, 134, 0.12);
+}
+
+.ipapa-gift-collections__panel--budget {
+	--ipapa-gift-panel-accent: #2c7a4b;
+	--ipapa-gift-panel-from: #f5fbf7;
+	--ipapa-gift-panel-to: #ffffff;
+	--ipapa-gift-panel-glow: rgba(60, 170, 110, 0.12);
+	--ipapa-gift-panel-border: rgba(44, 122, 75, 0.12);
+}
+
+.ipapa-gift-collections__panel--premium {
+	--ipapa-gift-panel-accent: #9a7430;
+	--ipapa-gift-panel-from: #fdfaf2;
+	--ipapa-gift-panel-to: #ffffff;
+	--ipapa-gift-panel-glow: rgba(190, 150, 70, 0.14);
+	--ipapa-gift-panel-border: rgba(154, 116, 48, 0.14);
+}
+
+.ipapa-gift-collections__panel-head,
+.ipapa-gift-collections__grid {
+	position: relative;
+	z-index: 1;
+}
+
+.ipapa-gift-collections__panel-head {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) auto;
+	gap: 16px 20px;
+	margin-bottom: 28px;
+}
+
+.ipapa-gift-collections__panel-copy {
+	display: grid;
+	gap: 12px;
+	max-width: 620px;
+}
+
+.ipapa-gift-collections__eyebrow {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	color: var(--ipapa-gift-panel-accent);
+	font-family: "Roboto", sans-serif;
+	font-size: 12px;
+	font-weight: 700;
+	line-height: 1;
+	letter-spacing: 0.18em;
+	text-transform: uppercase;
+}
+
+.ipapa-gift-collections__panel-title {
+	margin: 0;
+	color: #070709;
+	font-family: "Manrope", "Roboto", sans-serif;
+	font-size: clamp(2rem, 4vw, 3rem);
+	font-weight: 800;
+	line-height: 0.96;
+}
+
+.ipapa-gift-collections__panel-text {
+	margin: 0;
+	color: #4f5562;
+	font-family: "Roboto", sans-serif;
+	font-size: 16px;
+	line-height: 1.6;
+}
+
+.ipapa-gift-collections__panel-stats {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	align-items: flex-start;
+	justify-content: flex-end;
+}
+
+.ipapa-gift-collections__panel-stat {
+	display: inline-flex;
+	align-items: center;
+	min-height: 40px;
+	padding: 0 16px;
+	border: 1px solid var(--ipapa-gift-panel-border);
+	border-radius: 999px;
+	background: rgba(255, 255, 255, 0.92);
+	color: #070709;
+	font-family: "Roboto", sans-serif;
+	font-size: 14px;
+	font-weight: 500;
+	line-height: 1;
+	box-shadow: 0 10px 22px rgba(7, 7, 9, 0.05);
+}
+
+/* Grid + cards --------------------------------------------------------- */
+.ipapa-gift-collections__grid {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 18px;
+}
+
+.ipapa-gift-collections__card:last-child:nth-child(odd) {
+	grid-column: 1 / -1;
+}
+
+.ipapa-gift-collections__card {
+	--ipapa-gift-card-from: #181b22;
+	--ipapa-gift-card-to: #06070a;
+	--ipapa-gift-card-glow: rgba(255, 255, 255, 0.12);
+	position: relative;
+	min-height: 328px;
+	border: 1px solid rgba(7, 7, 9, 0.08);
+	border-radius: 32px;
+	background: linear-gradient(145deg, var(--ipapa-gift-card-from) 0%, var(--ipapa-gift-card-to) 100%);
+	box-shadow: 0 22px 50px rgba(7, 7, 9, 0.16);
+	overflow: hidden;
+	isolation: isolate;
+}
+
+.ipapa-gift-collections__card::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background:
+		radial-gradient(circle at 50% 36%, var(--ipapa-gift-card-glow) 0%, rgba(255, 255, 255, 0.06) 14%, rgba(255, 255, 255, 0) 44%),
+		linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0) 36%);
+	pointer-events: none;
+}
+
+.ipapa-gift-collections__card--graphite {
+	--ipapa-gift-card-from: #1b2330;
+	--ipapa-gift-card-to: #0d1219;
+	--ipapa-gift-card-glow: rgba(125, 156, 212, 0.16);
+}
+
+.ipapa-gift-collections__card--linen {
+	--ipapa-gift-card-from: #2a1d18;
+	--ipapa-gift-card-to: #15100d;
+	--ipapa-gift-card-glow: rgba(192, 132, 101, 0.17);
+}
+
+.ipapa-gift-collections__card--sunrise {
+	--ipapa-gift-card-from: #35161c;
+	--ipapa-gift-card-to: #1a0b0e;
+	--ipapa-gift-card-glow: rgba(203, 86, 86, 0.18);
+}
+
+.ipapa-gift-collections__card--violet {
+	--ipapa-gift-card-from: #241a35;
+	--ipapa-gift-card-to: #110b1c;
+	--ipapa-gift-card-glow: rgba(150, 110, 220, 0.18);
+}
+
+.ipapa-gift-collections__card--emerald {
+	--ipapa-gift-card-from: #14271f;
+	--ipapa-gift-card-to: #0a1510;
+	--ipapa-gift-card-glow: rgba(70, 180, 130, 0.18);
+}
+
+.ipapa-gift-collections__card--gold {
+	--ipapa-gift-card-from: #2c2413;
+	--ipapa-gift-card-to: #160f06;
+	--ipapa-gift-card-glow: rgba(212, 170, 80, 0.18);
+}
+
+.ipapa-gift-collections__card-content {
+	position: relative;
+	z-index: 1;
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	padding: 24px;
+}
+
+.ipapa-gift-collections__card-kicker {
+	display: inline-flex;
+	align-items: center;
+	color: rgba(255, 255, 255, 0.68);
+	font-family: "Roboto", sans-serif;
+	font-size: 11px;
+	font-weight: 700;
+	line-height: 1;
+	letter-spacing: 0.16em;
+	text-transform: uppercase;
+}
+
+.ipapa-gift-collections__card-title {
+	margin: 12px 0 0;
+	color: #ffffff;
+	font-family: "Manrope", "Roboto", sans-serif;
+	font-size: clamp(1.75rem, 2.4vw, 2.4rem);
+	font-weight: 800;
+	line-height: 1.02;
+}
+
+.ipapa-gift-collections__card-description {
+	max-width: 440px;
+	margin: 14px 0 0;
+	color: rgba(255, 255, 255, 0.82);
+	font-family: "Roboto", sans-serif;
+	font-size: 15px;
+	line-height: 1.55;
+}
+
+/* Specific product variants (live) ------------------------------------- */
+.ipapa-gift-collections__card-products {
+	display: grid;
+	gap: 10px;
+	margin-top: auto;
+	padding-top: 24px;
+}
+
+.ipapa-gift-collections__card-product {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 16px;
+	padding: 12px 14px;
+	border: 1px solid rgba(255, 255, 255, 0.12);
+	border-radius: 18px;
+	background: rgba(255, 255, 255, 0.08);
+	color: #ffffff;
+	text-decoration: none;
+	transition:
+		transform 180ms ease,
+		background-color 180ms ease,
+		border-color 180ms ease;
+}
+
+.ipapa-gift-collections__card-product:visited,
+.ipapa-gift-collections__card-product:hover,
+.ipapa-gift-collections__card-product:focus-visible,
+.ipapa-gift-collections__card-product:active {
+	color: #ffffff;
+}
+
+.ipapa-gift-collections__card-product:hover,
+.ipapa-gift-collections__card-product:focus-visible {
+	transform: translateY(-1px);
+	border-color: rgba(255, 255, 255, 0.22);
+	background: rgba(255, 255, 255, 0.12);
+}
+
+.ipapa-gift-collections__card-product:focus-visible {
+	outline: 2px solid rgba(255, 255, 255, 0.34);
+	outline-offset: 2px;
+}
+
+.ipapa-gift-collections__card-product-title {
+	max-width: min(100%, 74%);
+	font-family: "Roboto", sans-serif;
+	font-size: 14px;
+	font-weight: 500;
+	line-height: 1.45;
+}
+
+.ipapa-gift-collections__card-product-price {
+	flex-shrink: 0;
+	font-family: "Manrope", "Roboto", sans-serif;
+	font-size: 15px;
+	font-weight: 800;
+	line-height: 1;
+	white-space: nowrap;
+}
+
+/* Fallback bullet list (used only when no live products are available) -- */
+.ipapa-gift-collections__card-items {
+	display: grid;
+	gap: 8px;
+	margin: 16px 0 0;
+	padding: 0;
+	list-style: none;
+}
+
+.ipapa-gift-collections__card-items--fallback {
+	margin-top: auto;
+	padding-top: 24px;
+}
+
+.ipapa-gift-collections__card-item {
+	display: flex;
+	gap: 10px;
+	color: rgba(255, 255, 255, 0.82);
+	font-family: "Roboto", sans-serif;
+	font-size: 14px;
+	line-height: 1.45;
+}
+
+.ipapa-gift-collections__card-item::before {
+	content: "";
+	flex: 0 0 auto;
+	width: 5px;
+	height: 5px;
+	margin-top: 8px;
+	border-radius: 50%;
+	background: rgba(255, 255, 255, 0.55);
+}
+
+.ipapa-gift-collections__card-footer {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 14px;
+	margin-top: 16px;
+}
+
+.ipapa-gift-collections__card-count {
+	color: rgba(255, 255, 255, 0.72);
+	font-family: "Roboto", sans-serif;
+	font-size: 14px;
+	line-height: 1.4;
+}
+
+.ipapa-gift-collections__card-links {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-end;
+	gap: 8px;
+}
+
+.ipapa-gift-collections__card-link {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 42px;
+	padding: 0 18px;
+	border: 1px solid rgba(255, 255, 255, 0.18);
+	border-radius: 999px;
+	background: rgba(255, 255, 255, 0.12);
+	color: #ffffff;
+	font-family: "Roboto", sans-serif;
+	font-size: 14px;
+	font-weight: 500;
+	line-height: 1;
+	text-decoration: none;
+	transition:
+		transform 180ms ease,
+		border-color 180ms ease,
+		background-color 180ms ease;
+}
+
+.ipapa-gift-collections__card-link:visited,
+.ipapa-gift-collections__card-link:hover,
+.ipapa-gift-collections__card-link:focus-visible,
+.ipapa-gift-collections__card-link:active {
+	color: #ffffff;
+}
+
+.ipapa-gift-collections__card-link:hover,
+.ipapa-gift-collections__card-link:focus-visible {
+	transform: translateY(-1px);
+	border-color: rgba(255, 255, 255, 0.28);
+	background: rgba(255, 255, 255, 0.16);
+}
+
+.ipapa-gift-collections__card-link:focus-visible {
+	outline: 2px solid rgba(255, 255, 255, 0.32);
+	outline-offset: 2px;
+}
+
+/* Lone full-width card: keep copy and products comfortably sized. */
+.ipapa-gift-collections__card:last-child:nth-child(odd) .ipapa-gift-collections__card-products,
+.ipapa-gift-collections__card:last-child:nth-child(odd) .ipapa-gift-collections__card-items {
+	max-width: 520px;
+}
+
+/* Consultation banner -------------------------------------------------- */
+.ipapa-gift-collections__banner {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 24px;
+	margin-top: 24px;
+	padding: 30px 32px;
+	border-radius: 24px;
+	background:
+		radial-gradient(circle at top right, rgba(238, 35, 35, 0.16), transparent 48%),
+		linear-gradient(180deg, #14151a 0%, #070709 100%);
+	color: #ffffff;
+}
+
+.ipapa-gift-collections__banner-copy {
+	display: grid;
+	gap: 6px;
+	max-width: 720px;
+}
+
+.ipapa-gift-collections__banner-title {
+	margin: 0;
+	font-family: "Manrope", "Roboto", sans-serif;
+	font-size: 28px;
+	font-weight: 800;
+	line-height: 1.12;
+	letter-spacing: -0.02em;
+}
+
+.ipapa-gift-collections__banner-text {
+	margin: 0;
+	color: #d8dbe2;
+	font-family: "Manrope", "Roboto", sans-serif;
+	font-size: 16px;
+	line-height: 1.5;
+}
+
+.ipapa-gift-collections__banner-button {
+	flex: 0 0 auto;
+	padding: 14px 24px;
+	border-radius: 999px;
+	background: #ffffff;
+	color: #070709;
+	font-family: "Manrope", "Roboto", sans-serif;
+	font-size: 15px;
+	font-weight: 800;
+	text-decoration: none;
+	white-space: nowrap;
+	transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.ipapa-gift-collections__banner-button:hover,
+.ipapa-gift-collections__banner-button:focus-visible {
+	transform: translateY(-1px);
+	box-shadow: 0 16px 32px rgba(0, 0, 0, 0.28);
+}
+
+/* Responsive ----------------------------------------------------------- */
+@media (max-width: 1180px) {
+	.ipapa-gift-collections__layout {
+		grid-template-columns: 1fr;
+	}
+
+	.ipapa-gift-collections__nav {
+		position: static;
+		grid-auto-flow: column;
+		grid-auto-columns: minmax(220px, 1fr);
+		overflow-x: auto;
+		padding-bottom: 6px;
+		-webkit-overflow-scrolling: touch;
+		scrollbar-width: none;
+		scroll-snap-type: x proximity;
+		overscroll-behavior-x: contain;
+	}
+
+	.ipapa-gift-collections__nav::-webkit-scrollbar {
+		display: none;
+	}
+
+	.ipapa-gift-collections__trigger {
+		scroll-snap-align: start;
+	}
+}
+
+@media (max-width: 940px) {
+	.ipapa-gift-collections__panel {
+		padding: 24px;
+		border-radius: 28px;
+	}
+
+	.ipapa-gift-collections__panel-head {
+		grid-template-columns: 1fr;
+	}
+
+	.ipapa-gift-collections__panel-stats {
+		justify-content: flex-start;
+	}
+
+	.ipapa-gift-collections__grid {
+		grid-auto-flow: column;
+		grid-auto-columns: minmax(290px, 84%);
+		grid-template-columns: none;
+		overflow-x: auto;
+		padding-bottom: 6px;
+		-webkit-overflow-scrolling: touch;
+		scrollbar-width: none;
+		scroll-snap-type: x mandatory;
+		overscroll-behavior-x: contain;
+	}
+
+	.ipapa-gift-collections__card:last-child:nth-child(odd) {
+		grid-column: auto;
+	}
+
+	.ipapa-gift-collections__grid::-webkit-scrollbar {
+		display: none;
+	}
+
+	.ipapa-gift-collections__card {
+		scroll-snap-align: start;
+		min-height: 308px;
+	}
+}
+
+@media (max-width: 767px) {
+	.ipapa-gift-collections {
+		padding: 0 16px 76px;
+	}
+
+	.ipapa-gift-collections__header {
+		flex-direction: column;
+		align-items: flex-start;
+		margin-bottom: 22px;
+	}
+
+	.ipapa-gift-collections__title {
+		font-size: clamp(2.7rem, 16vw, 4rem);
+	}
+
+	.ipapa-gift-collections__lead {
+		font-size: 15px;
+		line-height: 1.5;
+	}
+
+	.ipapa-gift-collections__all-link {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		min-height: 46px;
+		padding: 0 18px;
+		border-radius: 999px;
+		background: #070709;
+		color: #ffffff;
+		font-size: 15px;
+		font-weight: 500;
+		line-height: 1;
+		text-decoration: none;
+	}
+
+	.ipapa-gift-collections__all-link:hover,
+	.ipapa-gift-collections__all-link:focus-visible {
+		color: #ffffff;
+	}
+
+	.ipapa-gift-collections__nav {
+		grid-auto-columns: max-content;
+		gap: 8px;
+		padding-inline: 2px;
+	}
+
+	.ipapa-gift-collections__trigger {
+		min-width: 152px;
+		padding: 14px 16px;
+		border-radius: 18px;
+		box-shadow: 0 14px 30px rgba(7, 7, 9, 0.06);
+	}
+
+	.ipapa-gift-collections__trigger-title {
+		font-size: 16px;
+		line-height: 1.15;
+	}
+
+	.ipapa-gift-collections__trigger-meta {
+		font-size: 12px;
+		line-height: 1.25;
+	}
+
+	.ipapa-gift-collections__panel {
+		padding: 20px;
+		border-radius: 24px;
+	}
+
+	.ipapa-gift-collections__panel-title {
+		font-size: clamp(1.8rem, 9vw, 2.4rem);
+	}
+
+	.ipapa-gift-collections__panel-text {
+		font-size: 14px;
+		line-height: 1.5;
+	}
+
+	.ipapa-gift-collections__panel-head {
+		margin-bottom: 18px;
+	}
+
+	.ipapa-gift-collections__panel-stat {
+		min-height: 36px;
+		padding: 0 14px;
+		font-size: 13px;
+	}
+
+	.ipapa-gift-collections__grid {
+		grid-auto-columns: minmax(84%, 84%);
+		gap: 12px;
+		margin-right: -6px;
+		padding-bottom: 4px;
+	}
+
+	.ipapa-gift-collections__card {
+		min-height: 0;
+		border-radius: 22px;
+		box-shadow: 0 18px 36px rgba(7, 7, 9, 0.16);
+	}
+
+	.ipapa-gift-collections__card-content {
+		padding: 18px;
+	}
+
+	.ipapa-gift-collections__card-title {
+		font-size: clamp(1.55rem, 8vw, 2rem);
+	}
+
+	.ipapa-gift-collections__card-description {
+		font-size: 14px;
+		line-height: 1.45;
+		max-width: none;
+	}
+
+	.ipapa-gift-collections__card-products {
+		gap: 8px;
+		padding-top: 16px;
+	}
+
+	.ipapa-gift-collections__card-product {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) auto;
+		align-items: start;
+		gap: 10px;
+		padding: 12px;
+		border-radius: 16px;
+	}
+
+	.ipapa-gift-collections__card-product-title {
+		max-width: 100%;
+		font-size: 13px;
+		line-height: 1.35;
+	}
+
+	.ipapa-gift-collections__card-product-price {
+		font-size: 14px;
+		padding-top: 1px;
+	}
+
+	.ipapa-gift-collections__card-item {
+		font-size: 13px;
+		line-height: 1.4;
+	}
+
+	.ipapa-gift-collections__card-footer {
+		flex-direction: column;
+		align-items: stretch;
+		gap: 10px;
+		margin-top: 14px;
+	}
+
+	.ipapa-gift-collections__card-link {
+		width: 100%;
+		min-height: 40px;
+		font-size: 13px;
+	}
+
+	.ipapa-gift-collections__card-links {
+		width: 100%;
+	}
+
+	.ipapa-gift-collections__banner {
+		flex-direction: column;
+		align-items: flex-start;
+		padding: 26px 22px;
+	}
+
+	.ipapa-gift-collections__banner-button {
+		align-self: stretch;
+		text-align: center;
+	}
+}
+
+@media (max-width: 480px) {
+	.ipapa-gift-collections__title {
+		font-size: clamp(2.45rem, 15vw, 3.4rem);
+	}
+
+	.ipapa-gift-collections__lead {
+		font-size: 14px;
+	}
+
+	.ipapa-gift-collections__all-link {
+		width: 100%;
+	}
+
+	.ipapa-gift-collections__trigger {
+		min-width: 140px;
+		padding: 13px 14px;
+	}
+
+	.ipapa-gift-collections__panel {
+		padding: 18px;
+		border-radius: 22px;
+	}
+
+	.ipapa-gift-collections__panel-title {
+		font-size: clamp(1.65rem, 8.8vw, 2.15rem);
+	}
+
+	.ipapa-gift-collections__grid {
+		grid-auto-columns: minmax(88%, 88%);
+	}
+
+	.ipapa-gift-collections__card-content {
+		padding: 16px;
+	}
+
+	.ipapa-gift-collections__card-kicker {
+		font-size: 10px;
+	}
+
+	.ipapa-gift-collections__card-title {
+		font-size: clamp(1.45rem, 7.8vw, 1.9rem);
+	}
+
+	.ipapa-gift-collections__card-description {
+		font-size: 13px;
+	}
+
+	.ipapa-gift-collections__card-product {
+		grid-template-columns: 1fr;
+	}
+
+	.ipapa-gift-collections__card-product-price {
+		padding-top: 0;
+	}
+}
