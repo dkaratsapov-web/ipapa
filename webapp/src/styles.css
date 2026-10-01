@@ -1942,3 +1942,42 @@ input[type="search"]::-webkit-search-cancel-button {
   font-weight: 600;
   min-height: 32px;
 }
+
+/*
+ * Картинка внутри рамки всегда вписывается целиком. Проценты высоты в grid-ячейке с авто-высотой
+ * не вычисляются, и вытянутые фото выходили за рамку (наезжали на подписи / обрезались) —
+ * поэтому картинку позиционируем абсолютно внутри рамки с отступом.
+ */
+.cat-img,
+.card-media,
+.row-img,
+.compare-img,
+.pd-media {
+  position: relative;
+  overflow: hidden;
+}
+
+.cat-img img,
+.row-img img,
+.card-media img,
+.compare-img img {
+  position: absolute;
+  inset: 9%;
+  width: 82%;
+  height: 82%;
+  object-fit: contain;
+}
+
+.cat-img img {
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.pd-media img {
+  position: absolute;
+  inset: 11%;
+  width: 78%;
+  height: 78%;
+  object-fit: contain;
+}
