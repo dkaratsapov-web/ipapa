@@ -21,7 +21,7 @@ export interface RawProduct {
   stock: number;
   sku?: string;
   v?: RawVariation[];
-  /** характеристики из Википедии: [название, значение] */
+  /** характеристики из справочника reference/specs.yaml: [название, значение] */
   specs?: [string, string][];
   specs_src?: string;
   /** все фото по порядку (первое — главное), если их больше одного */

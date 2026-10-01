@@ -33,21 +33,19 @@ def price_html(price: int, regular: int) -> str:
     return f"<b>{format_price(price)}</b>" if price else format_price(0)
 
 
-def specs_block(specs: list[list[str]] | None, url: str = "") -> list[str]:
-    """Короткий блок ключевых характеристик из Википедии."""
+def specs_block(specs: list[list[str]] | None) -> list[str]:
+    """Короткий блок ключевых характеристик из справочника."""
     items = card_specs(specs or [])
     if not items:
         return []
     block = ["", "<b>Характеристики</b>"]
     block += [f"• {escape(label)}: {escape(value)}" for label, value in items]
-    if url:
-        block.append(f'<a href="{escape(url)}">По данным Википедии</a>')
     return block
 
 
 def product_card(product: Mapping[str, Any], variations: list[Mapping[str, Any]],
                  updated_at: str | None, tz: ZoneInfo,
-                 specs: list[list[str]] | None = None, specs_url: str = "") -> str:
+                 specs: list[list[str]] | None = None) -> str:
     head = [f"<b>{escape(product['name'])}</b>"]
     if product["permalink"]:
         head.append(f'<a href="{escape(product["permalink"])}">Открыть на сайте</a>')
@@ -64,7 +62,7 @@ def product_card(product: Mapping[str, Any], variations: list[Mapping[str, Any]]
         lines.append(f"{price_html(product['price'], product['regular_price'])} · {mark}")
 
     tail = ["", f"<i>Обновлено: {fmt_dt(updated_at, tz)}</i>"]
-    text = "\n".join(head + lines + specs_block(specs, specs_url) + tail)
+    text = "\n".join(head + lines + specs_block(specs) + tail)
     if len(text) > MAX_TEXT:  # сначала жертвуем характеристиками
         text = "\n".join(head + lines + tail)
     if len(text) > MAX_TEXT:  # обрезаем список вариантов

@@ -14,7 +14,7 @@ from services.images import ImageMatcher, clean_model, resize_wiki_thumb, title_
     ("Apple Watch SE 3 Starlight 44mm", "Apple Watch SE 3"),
     ("Apple Watch S9 41mm Midnight", "Apple Watch Series 9"),
     ("Samsung Galaxy S26, 12/256 ГБ, SIM + eSIM", "Samsung Galaxy S26"),
-    ("MacBook Pro 13″ (2020) M1/8/256GB Space Gray", "MacBook Pro 13"),
+    ("MacBook Pro 13″ (2020) M1/8/256GB Space Gray", "MacBook Pro 13 M1"),
     ("iPad Mini 6 2021 Sapce Gray 64GB Wi-Fi+Sim", "iPad Mini 6"),
     ("Стабилизатор DJI Ronin RSC 2", "DJI Ronin RSC 2"),
 ])

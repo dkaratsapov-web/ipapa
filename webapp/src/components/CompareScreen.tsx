@@ -83,8 +83,7 @@ export function CompareScreen({ store, onProduct, onCatalog, onBack }: { store: 
               })}
             </tbody>
           </table>
-          {specLabels.length === 0 && <p className="form-note pad">Характеристики подгружаются из Википедии — появятся после ближайшего обновления каталога.</p>}
-          {items.some((p) => p.specsSrc) && <p className="form-note pad">Характеристики — по данным Википедии (CC BY-SA).</p>}
+          {specLabels.length === 0 && <p className="form-note pad">Для этих моделей характеристик в справочнике пока нет.</p>}
           <button className="follow-all muted" onClick={() => lists.clearCompare()}>
             Очистить сравнение
           </button>

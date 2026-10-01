@@ -13,8 +13,8 @@ import aiosqlite
 
 from services import tradein
 
-from services.specs_format import humanize
-from services.specs import accessory_category_ids, device_model, load_model_images, load_specs
+from services.specs import accessory_category_ids, device_model, load_model_images
+from services.specs_ref import book
 
 log = logging.getLogger(__name__)
 _DIMS = re.compile(r"-(\d+)x(\d+)\.\w+(?:\?|$)")
@@ -38,7 +38,7 @@ async def build_catalog(conn: aiosqlite.Connection) -> dict[str, Any]:
     Формат варианта: [id, variation_label, price, regular_price, in_stock, image_url, thumb].
     Картинки варианта пустые, если совпадают с картинкой товара.
     Цены — в копейках.
-    Характеристики из Википедии (если нашлись): "specs": [[подпись, значение], …], "specs_src": url.
+    Характеристики из справочника reference/specs.yaml: "specs": [[подпись, значение], …], "specs_src": url (если указан).
     """
     async with conn.execute(
         "SELECT id, name, parent_id, count FROM categories WHERE count > 0 ORDER BY name"
@@ -67,13 +67,12 @@ async def build_catalog(conn: aiosqlite.Connection) -> dict[str, Any]:
         rows = await cur.fetchall()
 
     accessories = await accessory_category_ids(conn)
-    specs = await load_specs(conn)
     model_images = await load_model_images(conn)
     products = []
     for pid, ptype, name, url, img, thumb, cats, price, reg, stock, sku, gallery in rows:
         vs = variations.get(pid, []) if ptype == "variable" else []
         model = device_model(name, cats, accessories)
-        # Галерея: фото товара, фото цветов, при нехватке — фото модели из Википедии
+        # Галерея: фото товара, фото цветов, при нехватке — ранее подобранное фото модели
         photos = list(dict.fromkeys([img, *json.loads(gallery or "[]"), *(v[5] for v in vs)]))
         photos = [u for u in photos if u]
         if len(photos) < 2 and model_images.get(model):
@@ -99,14 +98,15 @@ async def build_catalog(conn: aiosqlite.Connection) -> dict[str, Any]:
                 if v[5] == img:
                     v[5] = v[6] = ""
             item["v"] = vs
-        found = specs.get(model)
+        found = book.find(name) if model else None  # справочник reference/specs.yaml
         if found:
-            nice = humanize(found[0], name)  # коротко, по-русски и только для своей модели
-            if nice:
-                item["specs"], item["specs_src"] = nice, found[1]
-                year = re.search(r"(19|20)\d{2}$", dict(nice).get("Дата выхода", ""))
-                if year:
-                    item["year"] = int(year[0])  # год выхода — для сортировки «сначала новые»
+            _, nice, source = found
+            item["specs"] = nice
+            if source:
+                item["specs_src"] = source
+            year = re.search(r"(19|20)\d{2}$", dict(nice).get("Дата выхода", ""))
+            if year:
+                item["year"] = int(year[0])  # год выхода — для сортировки «сначала новые»
         products.append(item)
 
     async with conn.execute(

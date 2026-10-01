@@ -12,7 +12,6 @@ from services import tradein
 from services.images import ImageMatcher
 from services.notifier import Notifier
 from services.reports import daily_digest
-from services.specs import SpecsMatcher
 from services.sync import SyncResult, SyncService
 
 log = logging.getLogger(__name__)
@@ -32,9 +31,6 @@ class Jobs:
             await tradein.refresh(self.repo.conn, self.sync.client, self.config.site_url)
             await self.match_images()
             await self.export()
-            # характеристики ищутся долго (1 запрос/с) — каталог уже выгружен, перевыгружаем при находках
-            if await self.match_specs():
-                await self.export()
         elif alert_admins:
             await self.notifier.to_admins(self.config.admin_ids,
                                           "⚠️ " + sync_summary(result, self.config.tz))
@@ -48,19 +44,6 @@ class Jobs:
                 log.info("Подобрано картинок: %d", found)
         except Exception:  # noqa: BLE001 — подбор картинок не должен ломать синхронизацию
             log.exception("Ошибка подбора картинок")
-        finally:
-            await matcher.close()
-
-    async def match_specs(self) -> int:
-        matcher = SpecsMatcher(self.repo.conn)
-        try:
-            found = await matcher.run()
-            if found:
-                log.info("Найдено характеристик моделей: %d", found)
-            return found
-        except Exception:  # noqa: BLE001 — подбор характеристик не должен ломать синхронизацию
-            log.exception("Ошибка подбора характеристик")
-            return 0
         finally:
             await matcher.close()
 

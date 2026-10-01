@@ -7,7 +7,8 @@ import aiosqlite
 
 from db.database import utcnow
 from services.stats import log_event
-from services.specs import accessory_category_ids, device_model, load_specs
+from services.specs import accessory_category_ids, device_model
+from services.specs_ref import book
 
 # Карточка «родительского» товара с минимальной ценой по активным вариантам.
 _PRODUCT_SUMMARY = """
@@ -103,15 +104,12 @@ class Repo:
             (product_id,),
         )
 
-    async def specs_for_model(self, model: str) -> tuple[list[list[str]], str] | None:
-        """Характеристики модели из Википедии: (specs, url) или None."""
-        return (await load_specs(self.conn, [model.lower()])).get(model.lower())
-
-    async def specs_for_product(self, product: Any) -> tuple[list[list[str]], str] | None:
-        """Характеристики товара (для аксессуаров и моделей без цифр — None)."""
-        model = device_model(product["name"], product["category_ids"],
-                             await accessory_category_ids(self.conn))
-        return await self.specs_for_model(model) if model else None
+    async def specs_for_product(self, product: Any) -> list[list[str]] | None:
+        """Характеристики устройства из справочника reference/specs.yaml (для аксессуаров — None)."""
+        if not device_model(product["name"], product["category_ids"], await accessory_category_ids(self.conn)):
+            return None
+        found = book.find(product["name"])
+        return found[1] if found else None
 
     async def get_product_summary(self, product_id: int) -> aiosqlite.Row | None:
         return await self._one(f"{_PRODUCT_SUMMARY} WHERE p.id = ?", (product_id,))

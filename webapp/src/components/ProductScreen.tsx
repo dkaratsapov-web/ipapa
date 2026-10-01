@@ -268,7 +268,7 @@ export function ProductScreen({
             </dl>
             {product.specsSrc && (
               <button className="spec-src" onClick={() => openExternal(product.specsSrc)}>
-                По данным Википедии <IconExternal size={14} />
+                Источник <IconExternal size={14} />
               </button>
             )}
           </section>

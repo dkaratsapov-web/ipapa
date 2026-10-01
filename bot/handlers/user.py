@@ -15,7 +15,6 @@ from bot.formatting import product_card
 from config import Config
 from db.repo import Repo
 from services.parsing import search_terms
-from services.specs_format import humanize
 from services.stats import log_event
 
 log = logging.getLogger(__name__)
@@ -117,10 +116,8 @@ async def render_product(target: Message | CallbackQuery, repo: Repo, config: Co
             await target.answer("Товар не найден", show_alert=True)
         return
     variations = await repo.get_variations(product["id"]) if product["type"] == "variable" else []
-    specs, specs_url = await repo.specs_for_product(product) or ([], "")
-    specs = humanize(specs, product["name"])
-    text = product_card(product, variations, await repo.last_update_time(), config.tz,
-                        specs=specs, specs_url=specs_url)
+    specs = await repo.specs_for_product(product) or []
+    text = product_card(product, variations, await repo.last_update_time(), config.tz, specs=specs)
     image = product["image_url"] or next((v["image_url"] for v in variations if v["image_url"]), "")
     preview = (LinkPreviewOptions(url=image, prefer_large_media=True, show_above_text=True)
                if image else NO_PREVIEW)
