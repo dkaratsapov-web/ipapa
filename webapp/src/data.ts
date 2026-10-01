@@ -38,6 +38,10 @@ function classify(name: string, cats: string[]): { device: DeviceKey; apple: boo
   return { device, apple: !!apple, used };
 }
 
+/** Запрос про аксессуары — тогда в поиске показываем и их. */
+const ACC_QUERY =
+  /чех|стекл|пл[её]нк|кабел|провод|заряд|адаптер|переходник|ремеш|браслет|футляр|кейс|держател|подстав|стилус|pencil|аксесс|защит|magsafe|case|glass|cable|charger|strap|airtag/;
+
 const DEFAULT_DATA_URL =
   "https://raw.githubusercontent.com/dkaratsapov-web/ipapa/webapp-data/catalog.json";
 
@@ -236,9 +240,20 @@ export class Store {
     return this.products.filter((p) => p.cats.some((c) => ids.has(c)));
   }
 
-  /** Обложка категории — фото дорогого товара в наличии, без баннеров и коллажей. */
+  /**
+   * Обложка категории — студийное фото дорогого товара в наличии, без баннеров и коллажей.
+   * У Б/У на сайте живые фото (крупный план, фон), поэтому для них берём фото новой той же модели.
+   */
   cover(id: number): string {
-    return coverOf(this.inCategory(id));
+    const items = this.inCategory(id);
+    const fresh = items.filter((p) => !p.used);
+    if (fresh.length) return coverOf(fresh);
+    // самый частый тип устройства среди Б/У (обычно смартфоны) -> студийное фото нового такого же
+    const counts = new Map<DeviceKey, number>();
+    for (const p of items) counts.set(p.device, (counts.get(p.device) ?? 0) + 1);
+    const top = [...counts].sort((a, b) => b[1] - a[1])[0]?.[0];
+    const twins = this.products.filter((p) => !p.used && p.device === top && p.apple === items.some((i) => i.apple));
+    return coverOf(twins.length ? twins : items);
   }
 
   /** Новые (или Б/У) товары типа устройства; apple: true/false — разбивка по ОС. */
@@ -263,10 +278,13 @@ export class Store {
     // limit + 1, чтобы понять, что результатов больше лимита
     const words = terms(query);
     if (!words.length) return [];
-    return this.products
-      .filter((p) => words.every((w) => p.search.includes(w)))
-      .sort((a, b) => Number(a.used) - Number(b.used) || Store.byNewest(a, b))
-      .slice(0, limit);
+    // Только товары в наличии; аксессуары — если их ищут явно («чехол iPhone 17»)
+    let found = this.products.filter((p) => p.inStock && words.every((w) => p.search.includes(w)));
+    if (!ACC_QUERY.test(query.toLowerCase())) {
+      const devices = found.filter((p) => p.device !== "acc");
+      if (devices.length) found = devices;
+    }
+    return found.sort((a, b) => Number(a.used) - Number(b.used) || Store.byNewest(a, b)).slice(0, limit);
   }
 
   /** Товар и (если есть) вариант по ID подписки. */

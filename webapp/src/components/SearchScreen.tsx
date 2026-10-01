@@ -93,7 +93,7 @@ export function SearchScreen({
       </header>
 
       <div className="sr-only" role="status">
-        {deferred.trim() ? (results.length ? `Найдено: ${found.length > LIMIT ? `больше ${LIMIT}` : results.length}` : "Ничего не нашли") : ""}
+        {deferred.trim() ? (results.length ? `Найдено: ${found.length > LIMIT ? `больше ${LIMIT}` : results.length}` : "В наличии ничего не нашли") : ""}
       </div>
 
       {!deferred.trim() ? (
@@ -110,8 +110,8 @@ export function SearchScreen({
           <div className="empty-icon">
             <IconSearch size={30} />
           </div>
-          <h2>Ничего не нашли по «{deferred.trim()}»</h2>
-          <p>Проверьте написание или посмотрите похожее:</p>
+          <h2>В наличии ничего не нашли по «{deferred.trim()}»</h2>
+          <p>Проверьте написание или посмотрите похожее. Товары под заказ — в каталоге.</p>
           <div style={{ marginTop: 16 }}>{chips}</div>
           <motion.button className="btn btn-dark" style={{ margin: "20px auto 0", padding: "0 24px" }} whileTap={{ scale: 0.96 }} onClick={onCatalog}>
             Открыть каталог
