@@ -1,4 +1,4 @@
-# Ручная диагностика подбора характеристик: ответы Википедии -> ветка wiki-probe.
+# Разовый черновик справочника характеристик (scripts/seed_specs.py) -> ветка wiki-probe.
 name: wiki-probe
 
 on:
@@ -15,16 +15,16 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - run: pip install httpx
-      - run: python scripts/wiki_probe.py
+      - run: pip install -r requirements.txt
+      - run: python scripts/seed_specs.py
       - name: Коммит в ветку wiki-probe
         run: |
-          cp wiki_probe.json /tmp/
+          cp specs_seed.json /tmp/
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git checkout --orphan wiki-probe
           git rm -rfq .
-          cp /tmp/wiki_probe.json .
+          cp /tmp/specs_seed.json .
           git add -A
           git commit -qm "Wiki probe $(date -u +%FT%TZ)"
           git push -f origin wiki-probe

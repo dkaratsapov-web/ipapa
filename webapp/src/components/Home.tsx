@@ -97,10 +97,9 @@ export function Home({
                     {rub(p.minPrice)}
                   </span>
                   {p.img && (
-                    <>
-                      <span className="hero-glow" aria-hidden="true" />
+                    <span className="hero-plate" aria-hidden="true">
                       <img className="hero-img" src={p.img} alt="" loading={i < 2 ? "eager" : "lazy"} decoding="async" />
-                    </>
+                    </span>
                   )}
                 </motion.button>
               );

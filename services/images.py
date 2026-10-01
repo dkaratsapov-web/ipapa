@@ -28,32 +28,57 @@ RETRY_MISS_AFTER = timedelta(days=7)
 
 # Что отрезаем от названия, чтобы получить модель
 _NOISE = [
-    r"\b(i[3579]|m[1-5](\s*(pro|max))?)\s*/\s*\d+.*$",   # i5/8/512GB …, M1/8/256GB …
+    r"\bi[3579]\s*/\s*\d+.*$",                               # i5/8/512GB …
+    r"\b\d+\s*/\s*\d+\s*(гб|gb|тб|tb)?\b.*$",                # 24/1024 Starlight 10C 10G, 12/256 ГБ
     r"\b(19|20)\d\d\b",                                  # год
-    r"\b\d+\s*/\s*\d+\s*(гб|gb|тб|tb)?\b",          # 12/256 ГБ
     r"\b\d+\s*(гб|gb|тб|tb|mm|мм)\b",                 # 256 ГБ, 44mm
-    r"\b(wi-?fi|cellular|lte|5g|sim|esim|nano-sim|2\s*sim|dual\s*sim)\b",
-    r"\b(space\s*gr[ae]y|space\s*black|silver|gold|starlight|midnight|black|white|blue|"
-    r"green|pink|purple|red|yellow|graphite|natural\s*titanium|titanium|sierra\s*blue|"
-    r"deep\s*purple|cosmic\s*orange|deep\s*blue|sapce\s*gray|rose\s*gold)\b",
+    r"\b\d{1,2}\s*c(pu)?\s+\d{1,2}\s*g(pu)?\b",            # 10C 10G — ядра
+    r"\b(wi-?fi|cellular|lte|[45]g|sim|esim|nano-sim|2\s*sim|dual\s*sim)\b",
+    r"\b(space\s*gr[ae]y|space\s*black|jet\s*black|silver|gold|light\s*gold|starlight|midnight|black|white|"
+    r"cloud\s*white|blue|sky\s*blue|mist\s*blue|green|pink|purple|red|yellow|orange|graphite|"
+    r"natural\s*titanium|titanium|sierra\s*blue|deep\s*purple|cosmic\s*orange|deep\s*blue|sapce\s*gray|"
+    r"rose\s*gold|lavender|sage|teal|ultramarine|blush|indigo|citrus)\b",
     r"\bбез\s+\S+.*$",                                     # «без шумоподавления»
-    r"\(\d{4}\)",                                          # (2019)
+    r"\s[—–-]\s.*$",                                       # «Series 12 — Титан»
 ]
 _GENERATION = re.compile(r"\b(\d+)[-\s]*(поколени[ея]|th|nd|rd|st)\b", re.I)
 
 
+# Кириллица, похожая на латиницу: «Сitrus», «16е» в латинских названиях
+_LOOKALIKE = str.maketrans("АВЕКМНОРСТХаеорсухі", "ABEKMHOPCTXaeopcyxi")
+_CHIP_IN_NAME = re.compile(r"\b([MA]\d{1,2}(?:\s*(?:Pro|Max|Ultra))?)\b", re.I)
+
+
+def _fix_lookalikes(s: str) -> str:
+    def fix(m: re.Match) -> str:
+        w = m[0]
+        if re.search(r"[a-z0-9]", w, re.I) and not re.search(r"[а-яё]", w.translate(_LOOKALIKE), re.I):
+            return w.translate(_LOOKALIKE)
+        return w
+    return re.sub(r"\w+", fix, s)
+
+
+def _parens(m: re.Match) -> str:
+    """Из скобок оставляем только чип: «(2026, M5)» -> « M5 »."""
+    chip = _CHIP_IN_NAME.search(m[1] or "")
+    return f" {chip[1]} " if chip else " "
+
+
 def clean_model(name: str) -> str:
-    """«iPhone 15 Pro Max, 256 ГБ, SIM + eSIM» -> «iPhone 15 Pro Max»."""
-    s = name.split(",")[0]
+    """«iPhone 15 Pro Max, 256 ГБ, SIM + eSIM» -> «iPhone 15 Pro Max»; «MacBook Air 13 (2026,M5)» -> «MacBook Air 13 M5»."""
+    s = _fix_lookalikes(name)
     s = s.replace("″", " ").replace('"', " ").replace("&#8243;", " ")
+    s = re.sub(r"\(([^()]*)\)?", _parens, s)  # и незакрытая скобка
+    s = s.split(",")[0]
+    s = re.sub(r"\b(m[1-5](?:\s*(?:pro|max))?)\s*/\s*\d+.*$", r"\1", s, flags=re.I)  # M1/8/256GB -> M1
     s = _GENERATION.sub(lambda m: f"{m[1]}", s)
     s = re.sub(r"\b(watch)\s+s(\d+)\b", r"\1 Series \2", s, flags=re.I)  # Watch S9 -> Series 9
     for pattern in _NOISE:
         s = re.sub(pattern, " ", s, flags=re.I)
     s = re.sub(r"[+/]", " ", s)
-    s = re.sub(r"\(\s*\)", " ", s)
     s = re.sub(r"[а-яё]+", " ", s, flags=re.I)  # русские слова мешают поиску в en-wiki
-    return re.sub(r"\s+", " ", s).strip()
+    s = re.sub(r"\b([MA]\d{1,2})\b", lambda m: m[1].upper(), s, flags=re.I)  # m4 -> M4
+    return re.sub(r"\s+", " ", s).strip(" -")
 
 
 def _tokens(text: str) -> list[str]:
