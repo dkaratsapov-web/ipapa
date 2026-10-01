@@ -23,7 +23,7 @@ import aiosqlite
 import httpx
 
 from db.database import utcnow
-from services.images import RETRY_MISS_AFTER, USER_AGENT, WIKI_API, _tokens, clean_model, title_matches
+from services.images import _OPTIONAL, RETRY_MISS_AFTER, USER_AGENT, WIKI_API, _tokens, clean_model, title_matches
 
 log = logging.getLogger(__name__)
 
@@ -281,6 +281,17 @@ async def load_specs(conn: aiosqlite.Connection, models: Iterable[str] | None = 
     return {r[0]: (json.loads(r[1]), r[2]) for r in rows}
 
 
+def _missing_core_word(model: str, title: str) -> bool:
+    """Статья про другую линейку: в заголовке нет значимого слова модели («Nord»).
+
+    Числа не проверяем — после редиректа заголовок их часто теряет
+    («MacBook Air 13» -> «MacBook Air (Apple silicon)»).
+    """
+    have = set(_tokens(title))
+    missing = [t for t in _tokens(model) if not t.isdigit() and t not in have]
+    return len(missing) > 1 or (len(missing) == 1 and missing[0] not in _OPTIONAL)
+
+
 async def load_model_images(conn: aiosqlite.Connection) -> dict[str, str]:
     """Фото моделей из Википедии: {модель: url}."""
     async with conn.execute("SELECT model, image FROM model_specs WHERE image IS NOT NULL AND image != ''") as cur:
@@ -364,8 +375,16 @@ class SpecsMatcher:
                 models[key] = clean_model(name)
 
         retry_before = (datetime.now(timezone.utc) - RETRY_MISS_AFTER).isoformat(timespec="microseconds")
-        async with self.conn.execute("SELECT model, specs, checked_at FROM model_specs") as cur:
-            cached = {r[0]: (r[1], r[2]) for r in await cur.fetchall()}
+        async with self.conn.execute("SELECT model, specs, checked_at, title FROM model_specs") as cur:
+            rows = await cur.fetchall()
+        cached = {}
+        for model_key, specs_json, checked, title in rows:
+            # совпадение по старым, менее строгим правилам — ищем заново
+            if title and model_key in models and _missing_core_word(models[model_key], title):
+                await self.conn.execute("DELETE FROM model_specs WHERE model = ?", (model_key,))
+                log.info("Характеристики «%s» -> «%s» больше не подходят, ищем заново", model_key, title)
+                continue
+            cached[model_key] = (specs_json, checked)
         todo = [k for k in models
                 if k not in cached or (cached[k][0] == "[]" and cached[k][1] < retry_before)][:limit]
 

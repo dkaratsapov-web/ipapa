@@ -179,6 +179,7 @@ function buildProduct(raw: RawProduct, catNames: (ids: number[]) => string[]): P
     specsSrc: raw.specs_src ?? "",
     gallery: raw.gal?.length ? raw.gal : raw.img ? [raw.img] : [],
     ...classify(raw.name, catNames(raw.cats)),
+    newness: raw.id,
   };
 }
 
@@ -205,6 +206,7 @@ export class Store {
       return out;
     };
     this.products = catalog.products.map((p) => buildProduct(p, catNames));
+    rankNewness(this.products);
     for (const p of this.products) {
       this.byId.set(p.id, p);
       p.variations.forEach((v) => this.variationById.set(v.id, v));
@@ -252,13 +254,17 @@ export class Store {
     }).filter((d) => d.count > 0);
   }
 
+  /** Новые модели — первыми; при равенстве — в наличии и с ценой. */
+  static byNewest = (a: Product, b: Product) =>
+    b.newness - a.newness || Number(b.inStock) - Number(a.inStock) || Number(!a.minPrice) - Number(!b.minPrice);
+
   search(query: string, limit = 60): Product[] {
     // limit + 1, чтобы понять, что результатов больше лимита
     const words = terms(query);
     if (!words.length) return [];
     return this.products
       .filter((p) => words.every((w) => p.search.includes(w)))
-      .sort((a, b) => Number(b.inStock) - Number(a.inStock) || a.name.length - b.name.length)
+      .sort((a, b) => Number(a.used) - Number(b.used) || Store.byNewest(a, b))
       .slice(0, limit);
   }
 
@@ -318,4 +324,50 @@ function coverOf(items: Product[]): string {
   };
   const best = items.filter((p) => p.thumb).sort((a, b) => score(a) - score(b))[0];
   return best?.thumb ?? "";
+}
+
+/**
+ * Линейка и поколение модели по названию: «Redmi Note 17 Pro» -> [«redmi note», 17],
+ * «Galaxy S26» -> [«galaxy s», 26], «MacBook Air 15 (2023) M2» -> [«macbook air», 2023].
+ * Год и чип (M4, A16) важнее первого числа: у ноутбуков первое число — диагональ.
+ */
+export function modelGeneration(name: string): { line: string; gen: number | null } {
+  const n = name.toLowerCase().split(",")[0].replace(/[″"()]/g, " ");
+  const year = n.match(/\b(20[12]\d)\b/);
+  const chip = n.match(/\b(?:m([1-9])|a(1[0-9]|[2-9]\d))\b/);
+  const tokens = n.split(/\s+/).filter(Boolean);
+  const line: string[] = [];
+  let first: number | null = null;
+  for (const t of tokens) {
+    const m = t.match(/^([a-zа-я]*)(\d+)/);
+    if (m) {
+      if (m[1]) line.push(m[1]);
+      first = Number(m[2]);
+      break;
+    }
+    line.push(t);
+  }
+  const gen = year ? Number(year[1]) : chip ? (chip[1] ? 100 + Number(chip[1]) : Number(chip[2])) : first;
+  return { line: line.slice(0, 3).join(" "), gen };
+}
+
+/**
+ * Новизна: ID товара растёт по мере добавления в магазин, но внутри одной линейки
+ * порядок поправляем по поколению (Redmi Note 17 новее Note 14, даже если 14 добавили позже).
+ */
+function rankNewness(products: Product[]): void {
+  const lines = new Map<string, { p: Product; gen: number }[]>();
+  for (const p of products) {
+    const { line, gen } = modelGeneration(p.name);
+    if (gen === null || !line) continue;
+    const key = `${p.used ? "u" : "n"}:${line}`;
+    if (!lines.has(key)) lines.set(key, []);
+    lines.get(key)!.push({ p, gen });
+  }
+  for (const group of lines.values()) {
+    if (group.length < 2) continue;
+    const ids = group.map((g) => g.p.newness).sort((a, b) => b - a);
+    group.sort((a, b) => b.gen - a.gen || b.p.newness - a.p.newness);
+    group.forEach((g, i) => (g.p.newness = ids[i]));
+  }
 }

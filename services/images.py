@@ -60,16 +60,24 @@ def _tokens(text: str) -> list[str]:
     return re.findall(r"[a-z]+|\d+", text.lower())
 
 
+# Слова, без которых статья всё ещё про ту же модель (iPhone 15 Pro Max -> статья iPhone 15 Pro)
+_OPTIONAL = {"max", "plus", "ultra", "pro", "mini", "lite", "fe", "neo", "e", "s", "x", "g"}
+
+
 def title_matches(model: str, title: str) -> bool:
-    """Заголовок статьи должен содержать бренд/линейку и все числа модели."""
+    """Заголовок статьи должен содержать бренд/линейку, все числа модели и все значимые слова.
+
+    Пропустить можно одно уточняющее слово (Max, Plus, Ultra…), но не название линейки:
+    «OnePlus Nord 5» не совпадает со статьёй «OnePlus 5».
+    """
     want = _tokens(model)
     have = set(_tokens(title))
-    if not want:
+    if not want or want[0] not in have:
         return False
-    numbers = [t for t in want if t.isdigit()]
-    words = [t for t in want if not t.isdigit()]
-    return want[0] in have and all(n in have for n in numbers) and \
-        sum(w in have for w in words) >= max(1, len(words) - 1)
+    if any(t.isdigit() and t not in have for t in want):
+        return False
+    missing = [t for t in want if not t.isdigit() and t not in have]
+    return len(missing) == 0 or (len(missing) == 1 and missing[0] in _OPTIONAL)
 
 
 def resize_wiki_thumb(url: str, width: int) -> str:

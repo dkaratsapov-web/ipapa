@@ -1,6 +1,6 @@
 import { LayoutGroup, motion } from "framer-motion";
 import { useMemo, useState, type ReactNode } from "react";
-import type { Store } from "../data";
+import { Store } from "../data";
 import { plural } from "../format";
 import type { Product } from "../types";
 import { IconBack, IconBox } from "./Icons";
@@ -8,7 +8,7 @@ import { ProductCard } from "./ProductCard";
 
 type Sort = "default" | "cheap" | "expensive";
 const SORTS: { id: Sort; label: string }[] = [
-  { id: "default", label: "Сначала в наличии" },
+  { id: "default", label: "Сначала новые" },
   { id: "cheap", label: "Сначала дешёвые" },
   { id: "expensive", label: "Сначала дорогие" },
 ];
@@ -38,7 +38,7 @@ export function CategoryScreen({
     const price = (p: Product) => p.minPrice || Number.MAX_SAFE_INTEGER;
     if (sort === "cheap") return [...list].sort((a, b) => price(a) - price(b));
     if (sort === "expensive") return [...list].sort((a, b) => (b.minPrice || 0) - (a.minPrice || 0));
-    return [...list].sort((a, b) => Number(b.inStock) - Number(a.inStock) || Number(!a.minPrice) - Number(!b.minPrice));
+    return [...list].sort(Store.byNewest);
   }, [store, id, sub, sort, onlyStock]);
 
   return (

@@ -2,7 +2,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { haptic } from "../telegram";
-import { IconClose } from "./Icons";
+import { IconBack, IconChevronRight, IconClose } from "./Icons";
 
 /**
  * Галерея товара: листание свайпом (scroll-snap), точки и счётчик, просмотр на весь экран.
@@ -62,6 +62,36 @@ export function Gallery({ photos, alt, focus }: { photos: string[]; alt: string;
       </div>
       {photos.length > 1 && (
         <>
+          <AnimatePresence>
+            {index > 0 && (
+              <motion.button
+                key="prev"
+                className="gallery-arrow is-prev"
+                onClick={() => scrollTo(index - 1)}
+                aria-label="Предыдущее фото"
+                initial={{ opacity: 0, x: 8 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: 8 }}
+                whileTap={{ scale: 0.88 }}
+              >
+                <IconBack size={20} />
+              </motion.button>
+            )}
+            {index < photos.length - 1 && (
+              <motion.button
+                key="next"
+                className="gallery-arrow is-next"
+                onClick={() => scrollTo(index + 1)}
+                aria-label="Следующее фото"
+                initial={{ opacity: 0, x: -8 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -8 }}
+                whileTap={{ scale: 0.88 }}
+              >
+                <IconChevronRight size={20} />
+              </motion.button>
+            )}
+          </AnimatePresence>
           <div className="gallery-dots" aria-hidden="true">
             {photos.slice(0, 10).map((src, i) => (
               <motion.i key={src} animate={{ width: i === index ? 18 : 6, opacity: i === index ? 1 : 0.35 }} transition={{ type: "spring", stiffness: 500, damping: 34 }} />
@@ -125,6 +155,16 @@ function Viewer({ photos, start, alt, onClose }: { photos: string[]; start: numb
           </div>
         ))}
       </div>
+      {index > 0 && (
+        <button className="gallery-arrow is-prev" onClick={() => track.current?.scrollTo({ left: (index - 1) * track.current.clientWidth, behavior: "smooth" })} aria-label="Предыдущее фото">
+          <IconBack size={20} />
+        </button>
+      )}
+      {index < photos.length - 1 && (
+        <button className="gallery-arrow is-next" onClick={() => track.current?.scrollTo({ left: (index + 1) * track.current.clientWidth, behavior: "smooth" })} aria-label="Следующее фото">
+          <IconChevronRight size={20} />
+        </button>
+      )}
       <button className="icon-btn viewer-close" onClick={() => onClose(index)} aria-label="Закрыть" autoFocus>
         <IconClose />
       </button>

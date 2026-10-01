@@ -13,6 +13,7 @@ import aiosqlite
 
 from services import tradein
 
+from services.specs_format import humanize
 from services.specs import accessory_category_ids, device_model, load_model_images, load_specs
 
 log = logging.getLogger(__name__)
@@ -100,7 +101,9 @@ async def build_catalog(conn: aiosqlite.Connection) -> dict[str, Any]:
             item["v"] = vs
         found = specs.get(model)
         if found:
-            item["specs"], item["specs_src"] = found
+            nice = humanize(found[0], name)  # коротко, по-русски и только для своей модели
+            if nice:
+                item["specs"], item["specs_src"] = nice, found[1]
         products.append(item)
 
     async with conn.execute(

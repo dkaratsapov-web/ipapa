@@ -1,6 +1,6 @@
 import { LayoutGroup, motion } from "framer-motion";
 import { useMemo, useState } from "react";
-import { DEVICES, type Store } from "../data";
+import { DEVICES, Store } from "../data";
 import { plural } from "../format";
 import type { DeviceKey, Product } from "../types";
 import { Chip } from "./CategoryScreen";
@@ -10,7 +10,7 @@ import { ScreenHeader } from "./ScreenHeader";
 
 type Sort = "default" | "cheap" | "expensive";
 const SORTS: { id: Sort; label: string }[] = [
-  { id: "default", label: "Сначала в наличии" },
+  { id: "default", label: "Сначала новые" },
   { id: "cheap", label: "Сначала дешёвые" },
   { id: "expensive", label: "Сначала дорогие" },
 ];
@@ -36,7 +36,7 @@ export function DeviceScreen({ store, deviceKey, onProduct, onBack }: { store: S
     const price = (p: Product) => p.minPrice || Number.MAX_SAFE_INTEGER;
     if (sort === "cheap") return [...list].sort((a, b) => price(a) - price(b));
     if (sort === "expensive") return [...list].sort((a, b) => (b.minPrice || 0) - (a.minPrice || 0));
-    return [...list].sort((a, b) => Number(b.inStock) - Number(a.inStock) || Number(!a.minPrice) - Number(!b.minPrice));
+    return [...list].sort(Store.byNewest);
   }, [store, deviceKey, used, os, sort, onlyStock]);
 
   const reset = () => setLimit(PAGE);

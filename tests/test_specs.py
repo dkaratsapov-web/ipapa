@@ -340,7 +340,7 @@ async def test_bot_card_shows_specs(env, conn):
          json.dumps([["Процессор", "Apple A19 Pro"], ["ОС", "iOS 26"], ["Вес", "204 g"]])))
     await conn.commit()
     card = (await click(kb.ProdCb(id=1001, cat=15, page=0))).texts()[0]
-    assert "<b>Характеристики</b>\n• Процессор: Apple A19 Pro\n• Вес: 204 g\n" in card
+    assert "<b>Характеристики</b>\n• Процессор: Apple A19 Pro\n• Вес: 204 г\n" in card
     assert '<a href="https://en.wikipedia.org/wiki/iPhone_17_Pro">По данным Википедии</a>' in card
     assert card.index("114 700 ₽") < card.index("Характеристики") < card.index("Обновлено")
     card = (await click(kb.ProdCb(id=1002, cat=15, page=0))).texts()[0]  # другая модель

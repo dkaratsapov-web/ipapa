@@ -88,6 +88,8 @@ export interface Product {
   /** «Apple» или «другие» внутри типа устройства — по ОС */
   apple: boolean;
   used: boolean;
+  /** «новизна» модели: больше — новее (см. rankNewness в data.ts) */
+  newness: number;
 }
 
 export type DeviceKey = "phone" | "tablet" | "laptop" | "watch" | "audio" | "console" | "tv" | "home" | "acc" | "other";
