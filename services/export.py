@@ -104,6 +104,9 @@ async def build_catalog(conn: aiosqlite.Connection) -> dict[str, Any]:
             nice = humanize(found[0], name)  # коротко, по-русски и только для своей модели
             if nice:
                 item["specs"], item["specs_src"] = nice, found[1]
+                year = re.search(r"(19|20)\d{2}$", dict(nice).get("Дата выхода", ""))
+                if year:
+                    item["year"] = int(year[0])  # год выхода — для сортировки «сначала новые»
         products.append(item)
 
     async with conn.execute(

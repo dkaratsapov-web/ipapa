@@ -32,6 +32,8 @@ jobs:
           cache-dependency-path: webapp/package-lock.json
       - run: npm ci
       - run: npm run build
+        env:
+          VITE_METRIKA_ID: ${{ vars.METRIKA_ID }}
       - uses: actions/upload-pages-artifact@v3
         with:
           path: webapp/dist

@@ -12,13 +12,14 @@ from config import Config
 from db.repo import Repo
 from services.jobs import Jobs
 from services.reports import changes_report, daily_digest
+from services.stats import full_report
 
 NO_PREVIEW = LinkPreviewOptions(is_disabled=True)
 ADMIN_HELP = (
     "<b>Команды администратора</b>\n"
     "/sync — синхронизировать сейчас\n"
     "/changes [N] — изменения цен за N часов (по умолчанию 24)\n"
-    "/stats — статистика\n"
+    "/stats [N] — статистика за N дней (по умолчанию 7)\n"
     "/digest — прислать ежедневную сводку сейчас\n"
     "/leads — последние заявки из мини-аппа"
 )
@@ -60,16 +61,17 @@ def build_router(admin_ids: frozenset[int]) -> Router:
             await message.answer(text, link_preview_options=NO_PREVIEW)
 
     @router.message(Command("stats"))
-    async def cmd_stats(message: Message, repo: Repo, config: Config) -> None:
-        users, active = await repo.count_users()
-        subs = await repo.count_subscriptions()
+    async def cmd_stats(message: Message, command: CommandObject, repo: Repo, config: Config) -> None:
+        days = 7
+        if command.args and command.args.strip().isdigit():
+            days = max(1, min(90, int(command.args.strip())))
+        for text in await full_report(repo.conn, days):
+            await message.answer(text, link_preview_options=NO_PREVIEW)
         products, variations = await repo.product_counts()
         ok = await repo.last_sync("success")
         last = await repo.last_sync()
         lines = [
-            "📊 <b>Статистика</b>",
-            f"Пользователей: {users} (активных {active})",
-            f"Подписок: {subs}",
+            "⚙️ <b>Техническое</b>",
             f"Товаров в базе: {products}, вариантов: {variations}",
             f"Последняя успешная синхронизация: {fmt_dt(ok['finished_at'] if ok else None, config.tz)}",
         ]

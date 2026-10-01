@@ -3,6 +3,7 @@ import { useDeferredValue, useEffect, useMemo, useRef, useState } from "react";
 import type { Store } from "../data";
 import { plural, rub } from "../format";
 import type { Product } from "../types";
+import { track } from "../analytics";
 import { IconClose, IconSearch } from "./Icons";
 import { Img } from "./Img";
 
@@ -64,7 +65,11 @@ export function SearchScreen({
             placeholder="Например, айфон 17 про 256"
             enterKeyHint="search"
             aria-label="Поиск по каталогу"
-            onKeyDown={(e) => e.key === "Enter" && input.current?.blur()}
+            onKeyDown={(e) => {
+              if (e.key !== "Enter") return;
+              track.search(query);
+              input.current?.blur();
+            }}
           />
           <AnimatePresence>
             {query && (
@@ -121,7 +126,10 @@ export function SearchScreen({
             <motion.button
               key={p.id}
               className="row"
-              onClick={() => onProduct(p)}
+              onClick={() => {
+                track.search(deferred);
+                onProduct(p);
+              }}
               initial={i < 8 ? { opacity: 0, x: 16 } : false}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: Math.min(i, 8) * 0.025, type: "spring", stiffness: 420, damping: 34 }}

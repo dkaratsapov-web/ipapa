@@ -26,6 +26,8 @@ export interface RawProduct {
   specs_src?: string;
   /** все фото по порядку (первое — главное), если их больше одного */
   gal?: string[];
+  /** год выхода модели (из характеристик) */
+  year?: number;
 }
 
 export interface TradeInVariant {
@@ -90,6 +92,7 @@ export interface Product {
   used: boolean;
   /** «новизна» модели: больше — новее (см. rankNewness в data.ts) */
   newness: number;
+  year: number | null;
 }
 
 export type DeviceKey = "phone" | "tablet" | "laptop" | "watch" | "audio" | "console" | "tv" | "home" | "acc" | "other";

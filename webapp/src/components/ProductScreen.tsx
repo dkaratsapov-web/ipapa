@@ -1,8 +1,9 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { useMemo, useState, type KeyboardEvent } from "react";
+import { useEffect, useMemo, useState, type KeyboardEvent } from "react";
 import { isColorAttr, swatch } from "../colors";
 import type { Store } from "../data";
 import { rub, updatedLabel } from "../format";
+import { track } from "../analytics";
 import { lists, useLists } from "../state";
 import { botName, haptic, openExternal, shareProduct } from "../telegram";
 import type { Product, Variation } from "../types";
@@ -59,6 +60,10 @@ export function ProductScreen({
   onCompare: () => void;
 }) {
   const saved = useLists();
+  useEffect(() => {
+    track.view(id, store.byId.get(id)?.name ?? "");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [id]);
   const product = store.byId.get(id)!;
   const [current, setCurrent] = useState<Variation | undefined>(() => defaultVariation(product, vid));
   const sorted = useMemo(
@@ -144,6 +149,7 @@ export function ProductScreen({
               onClick={() => {
                 haptic.tap();
                 const on = lists.toggleFavorite(product.id);
+                if (on) track.favorite(product.id);
                 toast(on ? "Добавлено в избранное" : "Убрано из избранного");
               }}
               aria-pressed={isFavorite}
@@ -231,7 +237,10 @@ export function ProductScreen({
             aria-pressed={inCompare}
             onClick={() => {
               if (!lists.toggleCompare(product.id)) toast("В сравнении уже 4 товара — уберите один");
-              else if (!inCompare) toast("Добавлено к сравнению");
+              else if (!inCompare) {
+                track.compare(product.id);
+                toast("Добавлено к сравнению");
+              }
             }}
           >
             {inCompare && <motion.span className="chip-bg" layoutId={`cmp-${product.id}`} />}
@@ -348,6 +357,7 @@ export function ProductScreen({
             onClick={() => {
               haptic.success();
               lists.addToCart(cartId);
+              track.cart(cartId);
               toast("Добавлено в корзину");
             }}
           >

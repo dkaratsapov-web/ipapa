@@ -144,6 +144,10 @@ async def save(conn: aiosqlite.Connection, tg_id: int, username: str | None, lea
         (tg_id, username, lead.kind, json.dumps(lead.data, ensure_ascii=False), lead.phone, utcnow()),
     )
     await conn.commit()
+    from services.stats import log_event
+    await log_event(conn, tg_id, "lead", value=lead.kind)
+    for pid, _qty in lead.data.get("items", []):
+        await log_event(conn, tg_id, "order_item", pid)
     return cur.lastrowid
 
 

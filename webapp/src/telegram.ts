@@ -1,3 +1,4 @@
+import { takeBatch } from "./analytics";
 /** Тонкая обёртка над Telegram WebApp SDK; вне Telegram все вызовы безопасны. */
 interface TgWebApp {
   initData: string;
@@ -99,7 +100,7 @@ function batchPayload(sub: number[], unsub: number[]): string {
  */
 export function saveSubscriptions(sub: number[], unsub: number[]): { sub: number[]; unsub: number[] } | null {
   if (keyboardMode) {
-    tg!.sendData(JSON.stringify({ a: "batch", sub, unsub }));
+    tg!.sendData(JSON.stringify({ a: "batch", sub, unsub, ev: takeBatch() ?? undefined }));
     return { sub, unsub };
   }
   if (!botName) return null;
@@ -185,7 +186,7 @@ function leadPayload(lead: Lead): string | null {
  */
 export function sendLead(lead: Lead, labels: { device?: string; problem?: string }): "sent" | "long" | "unavailable" {
   if (keyboardMode) {
-    const data: Record<string, unknown> = { a: "lead", ...lead };
+    const data: Record<string, unknown> = { a: "lead", ...lead, ev: takeBatch() ?? undefined };
     if (lead.kind === "repair") Object.assign(data, { device: labels.device, problem: labels.problem });
     if (lead.kind === "tradein")
       Object.assign(data, { model: lead.modelName, variant: lead.variantLabel, condition: lead.conditionLabel });

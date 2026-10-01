@@ -142,6 +142,9 @@ async def on_web_app_data(message: Message, bot: Bot, config: Config, repo: Repo
     """{"a": "batch", "sub": [..], "unsub": [..]}, {"a": "sub"|"unsub", "id": N} или {"a": "lead", ...}."""
     try:
         data = json.loads(message.web_app_data.data)
+        if isinstance(data, dict) and data.get("ev"):
+            from services.stats import log_app_batch
+            await log_app_batch(repo.conn, message.from_user.id, data.get("ev"))
         if data.get("a") == "lead":
             from bot.handlers.leads import accept_lead
             from services.leads import from_web_app

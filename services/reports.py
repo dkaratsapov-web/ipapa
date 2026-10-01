@@ -51,4 +51,6 @@ async def daily_digest(repo: Repo, tz: ZoneInfo) -> list[str]:
         lines += [f"• {escape(item_title(ev))}" for ev in gone[:30]]
         if len(gone) > 30:
             lines.append(f"… и ещё {len(gone) - 30}")
+    from services.stats import digest_lines
+    lines += await digest_lines(repo.conn)
     return split_messages(lines)

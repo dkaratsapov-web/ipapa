@@ -46,8 +46,8 @@ async def test_admin_commands(env, conn):
     send_text, _ = env
     await send_text("/start", USER)
     s = await send_text("/stats", ADMIN)
-    assert "Подписок: 0" in s.texts()[0]
-    assert "Пользователей: 2 (активных 2)" in s.texts()[0]
+    report = s.texts()[0]
+    assert "Всего: 2, активных: 2" in report and "Всего: 0 у 0 пользователей" in report
 
     await conn.execute("UPDATE products SET price = 11970000 WHERE id = 5001")
     await conn.commit()

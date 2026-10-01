@@ -180,6 +180,7 @@ function buildProduct(raw: RawProduct, catNames: (ids: number[]) => string[]): P
     gallery: raw.gal?.length ? raw.gal : raw.img ? [raw.img] : [],
     ...classify(raw.name, catNames(raw.cats)),
     newness: raw.id,
+    year: raw.year ?? null,
   };
 }
 
@@ -333,22 +334,35 @@ function coverOf(items: Product[]): string {
  */
 export function modelGeneration(name: string): { line: string; gen: number | null } {
   const n = name.toLowerCase().split(",")[0].replace(/[″"()]/g, " ");
-  const year = n.match(/\b(20[12]\d)\b/);
-  const chip = n.match(/\b(?:m([1-9])|a(1[0-9]|[2-9]\d))\b/);
+  const year = nameYear(name);
   const tokens = n.split(/\s+/).filter(Boolean);
   const line: string[] = [];
   let first: number | null = null;
   for (const t of tokens) {
     const m = t.match(/^([a-zа-я]*)(\d+)/);
     if (m) {
-      if (m[1]) line.push(m[1]);
+      if (m[1] && !/^[ma]$/.test(m[1])) line.push(m[1]); // чип (M4, A18) — не часть линейки
       first = Number(m[2]);
       break;
     }
     line.push(t);
   }
-  const gen = year ? Number(year[1]) : chip ? (chip[1] ? 100 + Number(chip[1]) : Number(chip[2])) : first;
-  return { line: line.slice(0, 3).join(" "), gen };
+  return { line: line.slice(0, 3).join(" "), gen: year ?? first };
+}
+
+/** Чипы Apple -> год выпуска (сопоставимо с годом в названии). */
+const M_CHIP_YEAR: Record<number, number> = { 1: 2020, 2: 2022, 3: 2024, 4: 2025, 5: 2026 };
+
+/** Год модели из названия: «(2023)», «2025», или по чипу (M4 -> 2025, A18 -> 2024). */
+function nameYear(name: string): number | null {
+  const n = name.toLowerCase();
+  const y = n.match(/\b(20[12]\d)\b/);
+  if (y) return Number(y[1]);
+  const m = n.match(/\bm([1-9])\b/);
+  if (m && /mac|ipad/.test(n)) return M_CHIP_YEAR[Number(m[1])] ?? null;
+  const a = n.match(/\ba(1[4-9]|2\d)(?:\s+pro|\s+bionic)?\b/);
+  if (a && /mac|ipad/.test(n)) return 2006 + Number(a[1]);
+  return null;
 }
 
 /**
@@ -356,6 +370,26 @@ export function modelGeneration(name: string): { line: string; gen: number | nul
  * порядок поправляем по поколению (Redmi Note 17 новее Note 14, даже если 14 добавили позже).
  */
 function rankNewness(products: Product[]): void {
+  // 1. Год выхода: из характеристик, иначе — как у ближайшего по ID товара с известным годом
+  //    (ID растёт по мере добавления товаров в магазин)
+  const dated = products.filter((p) => p.year).sort((a, b) => a.id - b.id);
+  const yearOf = (p: Product): number => {
+    if (p.year) return p.year;
+    const fromName = nameYear(p.name);
+    if (fromName) return fromName;
+    if (!dated.length) return 0;
+    let lo = 0;
+    let hi = dated.length - 1;
+    while (lo < hi) {
+      const mid = (lo + hi) >> 1;
+      if (dated[mid].id < p.id) lo = mid + 1;
+      else hi = mid;
+    }
+    const near = [dated[lo], dated[lo - 1]].filter(Boolean).sort((a, b) => Math.abs(a.id - p.id) - Math.abs(b.id - p.id));
+    return near[0].year!;
+  };
+  for (const p of products) p.newness = yearOf(p) * 1e6 + p.id;
+  // 2. Внутри линейки — по поколению
   const lines = new Map<string, { p: Product; gen: number }[]>();
   for (const p of products) {
     const { line, gen } = modelGeneration(p.name);

@@ -6,6 +6,7 @@ from typing import Any, Iterable
 import aiosqlite
 
 from db.database import utcnow
+from services.stats import log_event
 from services.specs import accessory_category_ids, device_model, load_specs
 
 # Карточка «родительского» товара с минимальной ценой по активным вариантам.
@@ -159,6 +160,8 @@ class Repo:
             (tg_id, product_id, utcnow()),
         )
         await self.conn.commit()
+        if cur.rowcount > 0:
+            await log_event(self.conn, tg_id, "sub_add", product_id)
         return cur.rowcount > 0
 
     async def remove_subscription(self, tg_id: int, sub_id: int) -> None:
@@ -172,6 +175,7 @@ class Repo:
             "DELETE FROM subscriptions WHERE tg_id = ? AND product_id = ?", (tg_id, product_id)
         )
         await self.conn.commit()
+        await log_event(self.conn, tg_id, "sub_del", product_id)
 
     async def user_subscriptions(self, tg_id: int) -> list[aiosqlite.Row]:
         return await self._all(

@@ -16,6 +16,7 @@ from config import Config
 from db.repo import Repo
 from services.parsing import search_terms
 from services.specs_format import humanize
+from services.stats import log_event
 
 log = logging.getLogger(__name__)
 
@@ -51,6 +52,7 @@ async def main_menu(bot: Bot, config: Config, repo: Repo, tg_id: int) -> InlineK
 
 
 async def cmd_start(message: Message, bot: Bot, config: Config, repo: Repo) -> None:
+    await log_event(repo.conn, message.from_user.id, "start")
     await message.answer(WELCOME, reply_markup=await main_menu(bot, config, repo, message.chat.id))
     await offer_app(message, bot, config, repo)
 
@@ -123,6 +125,7 @@ async def render_product(target: Message | CallbackQuery, repo: Repo, config: Co
     preview = (LinkPreviewOptions(url=image, prefer_large_media=True, show_above_text=True)
                if image else NO_PREVIEW)
     user_id = target.from_user.id
+    await log_event(repo.conn, user_id, "bot_view", product["id"])
     subs = await repo.subscribed_ids(user_id)
     subscribed = product["id"] in subs or any(v["id"] in subs for v in variations)
     url = ""
@@ -201,6 +204,7 @@ async def cb_unsub(call: CallbackQuery, callback_data: kb.UnsubCb, repo: Repo,
 # ---------- поиск (любой текст) ----------
 
 async def on_search(message: Message, repo: Repo) -> None:
+    await log_event(repo.conn, message.from_user.id, "bot_search", value=message.text)
     terms = search_terms(message.text)
     rows = await repo.search(terms, limit=kb.PAGE_SIZE + 1)
     if not rows:
