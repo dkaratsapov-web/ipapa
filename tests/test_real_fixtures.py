@@ -38,3 +38,18 @@ async def test_real_data_sync_and_export(conn, tmp_path):
     path = tmp_path / "catalog.json"
     await export_catalog(conn, str(path))
     assert json.loads(path.read_text(encoding="utf-8"))["products"]
+
+
+async def test_gallery_export(conn):
+    site = FakeSite("real")
+    api = StoreApiClient("https://shop.test/v1", min_interval=0, backoff=0, per_page=50,
+                         transport=httpx.MockTransport(site.handler))
+    await SyncService(conn, api).run()
+    await api.close()
+    catalog = {p["id"]: p for p in (await build_catalog(conn))["products"]}
+    raw = {p["id"]: p for p in site.products}
+    multi = [pid for pid, p in raw.items() if len({i["src"] for i in p["images"]}) > 1]
+    assert multi, "в фикстурах есть товары с несколькими фото"
+    for pid in multi:
+        gal = catalog[pid]["gal"]
+        assert gal[0] == catalog[pid]["img"] and len(gal) == len(set(gal)) >= 2

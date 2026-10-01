@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import type { Store } from "../data";
 import { plural, rub, updatedLabel } from "../format";
-import type { Product } from "../types";
+import type { DeviceKey, Product } from "../types";
 import { IconChevronRight, IconSearch, IconSwap, IconWrench } from "./Icons";
 import { Img } from "./Img";
 import { ProductCard } from "./ProductCard";
@@ -54,13 +54,16 @@ export function Home({
   onProduct,
   onSearch,
   onScreen,
+  onDevice,
 }: {
   store: Store;
   onCategory: (id: number) => void;
   onProduct: (p: Product) => void;
   onSearch: () => void;
   onScreen: (name: "tradein" | "service") => void;
+  onDevice: (key: DeviceKey) => void;
 }) {
+  const devices = store.devices();
   const featured = store.featured(8);
   const deals = store.deals(6);
   const cats = store.topCategories();
@@ -121,10 +124,42 @@ export function Home({
         </motion.button>
       </div>
 
+      <section className="section" aria-labelledby="dev-title">
+        <div className="section-head">
+          <h2 className="section-title" id="dev-title">
+            Устройства
+          </h2>
+        </div>
+        <div className="device-grid">
+          {devices.map((d, i) => (
+            <motion.button
+              key={d.key}
+              className="device-tile"
+              onClick={() => onDevice(d.key)}
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.08 + Math.min(i, 8) * 0.035, type: "spring", stiffness: 380, damping: 30 }}
+              whileTap={{ scale: 0.96 }}
+              aria-label={`${d.label}, ${d.count} ${plural(d.count, "товар", "товара", "товаров")}`}
+            >
+              <b>{d.label}</b>
+              {d.os && (
+                <span className="device-os" aria-hidden="true">
+                  <span>{d.os[0]}</span>
+                  <span>{d.os[1]}</span>
+                </span>
+              )}
+              <span className="device-count">{d.count} {plural(d.count, "товар", "товара", "товаров")}</span>
+              <Img src={d.cover} alt="" frameClass="device-img" />
+            </motion.button>
+          ))}
+        </div>
+      </section>
+
       <section className="section" aria-labelledby="cat-title">
         <div className="section-head">
           <h2 className="section-title" id="cat-title">
-            Каталог
+            Бренды и разделы
           </h2>
         </div>
         <div className="cat-grid">

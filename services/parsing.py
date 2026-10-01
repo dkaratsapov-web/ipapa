@@ -3,7 +3,7 @@ from __future__ import annotations
 
 import html
 import re
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import Any
 
 
@@ -102,6 +102,7 @@ class ProductRow:
     sale_price: int
     in_stock: bool
     category_ids: list[int]
+    gallery: list[str] = field(default_factory=list)  # все фото товара (средний размер)
 
 
 def parse_product(raw: dict[str, Any]) -> ProductRow:
@@ -125,6 +126,7 @@ def parse_product(raw: dict[str, Any]) -> ProductRow:
         sale_price=parse_price(prices.get("sale_price"), minor),
         in_stock=bool(raw.get("is_in_stock")),
         category_ids=[int(c["id"]) for c in raw.get("categories") or [] if "id" in c],
+        gallery=list(dict.fromkeys(u for u in (pick_image(i) for i in images) if u)),
     )
 
 

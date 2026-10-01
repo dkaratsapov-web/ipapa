@@ -281,6 +281,12 @@ async def load_specs(conn: aiosqlite.Connection, models: Iterable[str] | None = 
     return {r[0]: (json.loads(r[1]), r[2]) for r in rows}
 
 
+async def load_model_images(conn: aiosqlite.Connection) -> dict[str, str]:
+    """Фото моделей из Википедии: {модель: url}."""
+    async with conn.execute("SELECT model, image FROM model_specs WHERE image IS NOT NULL AND image != ''") as cur:
+        return {r[0]: r[1] for r in await cur.fetchall()}
+
+
 # ---------- подбор ----------
 
 class SpecsMatcher:
@@ -333,6 +339,16 @@ class SpecsMatcher:
                 return real, wiki_url(real), specs
         return None
 
+    async def page_image(self, title: str) -> str:
+        """Главное фото статьи (миниатюра Wikimedia шириной 800)."""
+        data = await self._get({"action": "query", "prop": "pageimages", "titles": title,
+                                "piprop": "thumbnail", "pithumbsize": 800, "redirects": 1, "format": "json"})
+        for page in ((data or {}).get("query", {}).get("pages") or {}).values():
+            src = (page.get("thumbnail") or {}).get("source")
+            if src:
+                return src
+        return ""
+
     async def run(self, limit: int = 60) -> int:
         """Подобрать характеристики моделям без них. Возвращает число найденных моделей."""
         accessories = await accessory_category_ids(self.conn)
@@ -360,17 +376,33 @@ class SpecsMatcher:
             if self.offline:  # сбой сети — не считаем промахом, повторим в следующий раз
                 break
             title, url, specs = result or ("", "", [])
+            image = await self.page_image(title) if specs else ""
+            if self.offline:
+                break
             await self.conn.execute(
-                """INSERT INTO model_specs (model, title, url, specs, checked_at) VALUES (?, ?, ?, ?, ?)
+                """INSERT INTO model_specs (model, title, url, specs, image, checked_at) VALUES (?, ?, ?, ?, ?, ?)
                    ON CONFLICT(model) DO UPDATE SET title = excluded.title, url = excluded.url,
-                       specs = excluded.specs, checked_at = excluded.checked_at""",
-                (key, title, url, json.dumps(specs, ensure_ascii=False), utcnow()),
+                       specs = excluded.specs, image = excluded.image, checked_at = excluded.checked_at""",
+                (key, title, url, json.dumps(specs, ensure_ascii=False), image, utcnow()),
             )
             if specs:
                 found += 1
                 log.info("Характеристики для «%s»: %s (%d полей)", model, title, len(specs))
             else:
                 log.info("Характеристики для «%s» не найдены", model)
+        # Фото для моделей, найденных до появления этой функции (image IS NULL)
+        if not self.offline and len(todo) < limit:
+            async with self.conn.execute(
+                "SELECT model, title FROM model_specs WHERE image IS NULL AND title != '' LIMIT ?",
+                (limit - len(todo),),
+            ) as cur:
+                backfill = await cur.fetchall()
+            for key, title in backfill:
+                image = await self.page_image(title)
+                if self.offline:
+                    break
+                await self.conn.execute("UPDATE model_specs SET image = ? WHERE model = ?", (image, key))
+                found += bool(image)
         await self.conn.commit()
         return found
 

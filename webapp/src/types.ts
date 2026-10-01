@@ -24,6 +24,8 @@ export interface RawProduct {
   /** характеристики из Википедии: [название, значение] */
   specs?: [string, string][];
   specs_src?: string;
+  /** все фото по порядку (первое — главное), если их больше одного */
+  gal?: string[];
 }
 
 export interface TradeInVariant {
@@ -81,7 +83,14 @@ export interface Product {
   search: string;
   specs: [string, string][];
   specsSrc: string;
+  gallery: string[];
+  device: DeviceKey;
+  /** «Apple» или «другие» внутри типа устройства — по ОС */
+  apple: boolean;
+  used: boolean;
 }
+
+export type DeviceKey = "phone" | "tablet" | "laptop" | "watch" | "audio" | "console" | "tv" | "home" | "acc" | "other";
 
 export type Screen =
   | { name: "home" }
@@ -94,4 +103,5 @@ export type Screen =
   | { name: "compare" }
   | { name: "more" }
   | { name: "service" }
-  | { name: "tradein" };
+  | { name: "tradein" }
+  | { name: "device"; key: DeviceKey };

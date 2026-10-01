@@ -2,6 +2,8 @@
 from __future__ import annotations
 
 import asyncio
+import math
+import re
 import json
 import logging
 import os
@@ -11,9 +13,22 @@ import aiosqlite
 
 from services import tradein
 
-from services.specs import accessory_category_ids, device_model, load_specs
+from services.specs import accessory_category_ids, device_model, load_model_images, load_specs
 
 log = logging.getLogger(__name__)
+_DIMS = re.compile(r"-(\d+)x(\d+)\.\w+(?:\?|$)")
+
+
+def _ratio(url: str) -> float | None:
+    """Пропорции фото по имени файла WordPress (…-600x935.jpg); None — неизвестно."""
+    m = _DIMS.search(url or "")
+    return int(m[1]) / int(m[2]) if m else None
+
+
+def _badness(url: str) -> float:
+    """Насколько фото далеко от квадрата (баннеры 3:1 и полоски 1:3 плохо смотрятся в карточке)."""
+    r = _ratio(url)
+    return 0.4 if r is None else abs(math.log(r))
 
 
 async def build_catalog(conn: aiosqlite.Connection) -> dict[str, Any]:
@@ -44,7 +59,7 @@ async def build_catalog(conn: aiosqlite.Connection) -> dict[str, Any]:
         """SELECT p.id, p.type, p.name, p.permalink,
                   COALESCE(NULLIF(p.image_url, ''), m.image_url, ''),
                   COALESCE(NULLIF(p.image_thumb, ''), m.thumb_url, ''),
-                  p.category_ids, p.price, p.regular_price, p.in_stock, p.sku
+                  p.category_ids, p.price, p.regular_price, p.in_stock, p.sku, p.gallery
              FROM products p LEFT JOIN image_matches m ON m.product_id = p.id
             WHERE p.type != 'variation' AND p.is_active = 1 ORDER BY p.name"""
     ) as cur:
@@ -52,8 +67,23 @@ async def build_catalog(conn: aiosqlite.Connection) -> dict[str, Any]:
 
     accessories = await accessory_category_ids(conn)
     specs = await load_specs(conn)
+    model_images = await load_model_images(conn)
     products = []
-    for pid, ptype, name, url, img, thumb, cats, price, reg, stock, sku in rows:
+    for pid, ptype, name, url, img, thumb, cats, price, reg, stock, sku, gallery in rows:
+        vs = variations.get(pid, []) if ptype == "variable" else []
+        model = device_model(name, cats, accessories)
+        # Галерея: фото товара, фото цветов, при нехватке — фото модели из Википедии
+        photos = list(dict.fromkeys([img, *json.loads(gallery or "[]"), *(v[5] for v in vs)]))
+        photos = [u for u in photos if u]
+        if len(photos) < 2 and model_images.get(model):
+            photos.append(model_images[model])
+        # Главное фото — самое «квадратное», если исходное — баннер или узкая полоска
+        if photos and _badness(img) > 0.45:
+            best = min(photos, key=_badness)
+            if _badness(best) < _badness(img) - 0.2:
+                img, thumb = best, best
+                photos.remove(best)
+                photos.insert(0, best)
         item: dict[str, Any] = {
             "id": pid, "name": name, "url": url, "img": img, "thumb": thumb,
             "cats": [int(c) for c in cats.strip("|").split("|") if c],
@@ -61,13 +91,14 @@ async def build_catalog(conn: aiosqlite.Connection) -> dict[str, Any]:
         }
         if sku:
             item["sku"] = sku
+        if len(photos) > 1:
+            item["gal"] = photos  # все фото по порядку, первое — главное
         if ptype == "variable":
-            vs = variations.get(pid, [])
             for v in vs:  # картинка варианта нужна, только если отличается
                 if v[5] == img:
                     v[5] = v[6] = ""
             item["v"] = vs
-        found = specs.get(device_model(name, cats, accessories))
+        found = specs.get(model)
         if found:
             item["specs"], item["specs_src"] = found
         products.append(item)

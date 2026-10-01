@@ -194,6 +194,10 @@ class Wiki:
             if title not in self.pages:
                 return httpx.Response(200, json={"error": {"code": "missingtitle"}})
             return httpx.Response(200, json={"parse": {"title": title, "wikitext": {"*": self.pages[title]}}})
+        if p.get("prop") == "pageimages":
+            title = p["titles"]
+            thumb = {"source": f"https://upload.wikimedia.org/thumb/{title.replace(' ', '_')}.jpg/800px-x.jpg"}
+            return httpx.Response(200, json={"query": {"pages": {"1": {"title": title, "thumbnail": thumb}}}})
         return httpx.Response(400)
 
     def searched(self) -> list[str]:
@@ -237,6 +241,11 @@ async def test_matcher(sync, conn, repo):
     assert url == "https://en.wikipedia.org/wiki/iPhone_15_Pro" and dict(specs)["Процессор"] == "Apple A17 Pro"
     _, url = await repo.specs_for_model("macbook air 13")
     assert url == "https://en.wikipedia.org/wiki/MacBook_Air_(Apple_silicon)"   # после редиректа
+
+    # фото модели из статьи — дополнительное фото в галерее товара с одним фото
+    from services.specs import load_model_images
+    images = await load_model_images(conn)
+    assert images["iphone 15 pro"].endswith("800px-x.jpg")
     assert await repo.specs_for_model("dji ronin rsc 2") is None                  # промах
     assert await repo.specs_for_product(await repo.get_product(9005)) is None     # аксессуар
 

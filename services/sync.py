@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import asyncio
+import json
 import html
 import logging
 import time
@@ -176,14 +177,14 @@ class SyncService:
         all_items = [*products, *variations]
         await self.conn.executemany(
             """INSERT INTO products (id, parent_id, type, name, variation_label, sku, permalink,
-                   image_url, image_thumb, price, regular_price, sale_price, in_stock, is_active,
-                   category_ids, search_text, first_seen_at, updated_at)
-               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1, ?, ?, ?, ?)
+                   image_url, image_thumb, gallery, price, regular_price, sale_price, in_stock,
+                   is_active, category_ids, search_text, first_seen_at, updated_at)
+               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1, ?, ?, ?, ?)
                ON CONFLICT(id) DO UPDATE SET
                    parent_id = excluded.parent_id, type = excluded.type, name = excluded.name,
                    variation_label = excluded.variation_label, sku = excluded.sku,
                    permalink = excluded.permalink, image_url = excluded.image_url,
-                   image_thumb = excluded.image_thumb,
+                   image_thumb = excluded.image_thumb, gallery = excluded.gallery,
                    price = excluded.price, regular_price = excluded.regular_price,
                    sale_price = excluded.sale_price, in_stock = excluded.in_stock,
                    is_active = 1, category_ids = excluded.category_ids,
@@ -244,5 +245,5 @@ class SyncService:
                                                             item.variation_label, item.sku))))
         cats = "|" + "|".join(map(str, category_ids)) + "|" if category_ids else ""
         return (item.id, item.parent_id, item.type, item.name, item.variation_label, item.sku,
-                item.permalink, item.image_url, item.image_thumb, item.price, item.regular_price, item.sale_price,
+                item.permalink, item.image_url, item.image_thumb, json.dumps(item.gallery), item.price, item.regular_price, item.sale_price,
                 int(item.in_stock), cats, search_text, now, now)

@@ -1,6 +1,7 @@
 import { AnimatePresence, motion, useDragControls, type PanInfo } from "framer-motion";
 import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { CategoryScreen } from "./components/CategoryScreen";
+import { DeviceScreen } from "./components/DeviceScreen";
 import { Home, HomeSkeleton } from "./components/Home";
 import { Preloader } from "./components/Preloader";
 import { IconWifiOff } from "./components/Icons";
@@ -271,8 +272,11 @@ export default function App() {
             onProduct={openProduct}
             onSearch={() => switchTab("search")}
             onScreen={(name: "tradein" | "service") => push({ name })}
+            onDevice={(key) => push({ name: "device", key })}
           />
         );
+      case "device":
+        return <DeviceScreen store={store} deviceKey={screen.key} onProduct={openProduct} onBack={back} />;
       case "category":
         return <CategoryScreen store={store} id={screen.id} onProduct={openProduct} onBack={back} />;
       case "product":

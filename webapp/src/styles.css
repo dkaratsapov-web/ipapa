@@ -1981,3 +1981,231 @@ input[type="search"]::-webkit-search-cancel-button {
   height: 78%;
   object-fit: contain;
 }
+
+/* ---------- переключатель «Новые / Б/У» ---------- */
+
+.segmented {
+  display: flex;
+  margin: 2px 16px 10px;
+  padding: 4px;
+  border-radius: 14px;
+  background: var(--bg-soft);
+}
+
+.seg {
+  position: relative;
+  flex: 1;
+  height: 38px;
+  border-radius: 10px;
+  font-weight: 800;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.seg > span:not(.seg-bg) {
+  position: relative;
+}
+
+.seg.is-active {
+  color: var(--ink);
+}
+
+.seg-bg {
+  position: absolute;
+  inset: 0;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(7, 7, 9, 0.12);
+}
+
+/* ---------- устройства на главной ---------- */
+
+.device-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  padding: 0 16px;
+}
+
+.device-tile {
+  position: relative;
+  min-height: 132px;
+  border-radius: var(--radius);
+  background: var(--bg-soft);
+  padding: 14px;
+  text-align: left;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.device-tile b {
+  font-size: 17px;
+  font-weight: 800;
+  position: relative;
+  z-index: 1;
+}
+
+.device-tile .device-os {
+  margin-top: 4px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  position: relative;
+  z-index: 1;
+}
+
+.device-tile .device-os span {
+  font-size: 11.5px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--ink-2);
+}
+
+.device-tile .device-count {
+  margin-top: auto;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--muted);
+  position: relative;
+  z-index: 1;
+}
+
+.device-img {
+  position: absolute !important;
+  right: -6px;
+  bottom: -6px;
+  width: 58%;
+  height: 72%;
+}
+
+.device-img img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: right bottom;
+  mix-blend-mode: multiply;
+}
+
+/* ---------- галерея товара ---------- */
+
+.gallery {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  overscroll-behavior-x: contain;
+}
+
+.gallery::-webkit-scrollbar {
+  display: none;
+}
+
+.gallery-slide {
+  position: relative;
+  flex: 0 0 100%;
+  height: 100%;
+  scroll-snap-align: center;
+  cursor: zoom-in;
+}
+
+/* перекрывает общее правило .pd-media img */
+.pd-media .gallery-slide img {
+  position: absolute;
+  inset: 16% 11% 10%;
+  width: 78%;
+  height: 74%;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+}
+
+.gallery-dots {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 12px;
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  pointer-events: none;
+}
+
+.gallery-dots i {
+  height: 6px;
+  width: 6px;
+  border-radius: 999px;
+  background: var(--ink);
+}
+
+.gallery-count {
+  position: absolute;
+  right: 14px;
+  bottom: 10px;
+  font-size: 12px;
+  font-weight: 800;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.85);
+  pointer-events: none;
+}
+
+.viewer {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: #fff;
+}
+
+.viewer-track {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.viewer-track::-webkit-scrollbar {
+  display: none;
+}
+
+.viewer-slide {
+  position: relative;
+  flex: 0 0 100%;
+  height: 100%;
+  scroll-snap-align: center;
+  overflow: auto;
+  touch-action: pan-x pan-y pinch-zoom;
+}
+
+.viewer-slide img {
+  position: absolute;
+  inset: 4%;
+  width: 92%;
+  height: 92%;
+  object-fit: contain;
+}
+
+.viewer-close {
+  position: absolute;
+  top: calc(14px + var(--safe-t));
+  right: 14px;
+  background: var(--bg-soft);
+}
+
+.viewer-count {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: calc(18px + var(--safe-b));
+  text-align: center;
+  font-weight: 800;
+  color: var(--muted);
+}

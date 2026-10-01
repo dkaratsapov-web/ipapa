@@ -7,6 +7,7 @@ import { lists, useLists } from "../state";
 import { botName, haptic, openExternal, shareProduct } from "../telegram";
 import type { Product, Variation } from "../types";
 import { AnimatedPrice } from "./AnimatedPrice";
+import { Gallery } from "./Gallery";
 import { IconBack, IconBag, IconBell, IconCheck, IconChevron, IconCompare, IconExternal, IconHeart, IconShare } from "./Icons";
 
 /** Вариант по умолчанию: в наличии и самый дешёвый. */
@@ -154,17 +155,7 @@ export function ProductScreen({
             </motion.button>
           </span>
         </div>
-        <AnimatePresence initial={false} mode="popLayout">
-          <motion.img
-            key={image}
-            src={image}
-            alt={product.name}
-            initial={{ opacity: 0, scale: 0.9, x: 30 }}
-            animate={{ opacity: 1, scale: 1, x: 0 }}
-            exit={{ opacity: 0, scale: 0.95, x: -30 }}
-            transition={{ type: "spring", stiffness: 260, damping: 26 }}
-          />
-        </AnimatePresence>
+        <Gallery photos={product.gallery.length ? product.gallery : [image].filter(Boolean)} alt={product.name} focus={current?.img} />
       </div>
 
       <motion.div

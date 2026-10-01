@@ -1,4 +1,42 @@
-import type { Catalog, Category, Product, RawProduct, TradeIn, Variation } from "./types";
+import type { Catalog, Category, DeviceKey, Product, RawProduct, TradeIn, Variation } from "./types";
+
+/** Типы устройств и разбивка по ОС: [ОС Apple, ОС остальных] */
+export const DEVICES: { key: DeviceKey; label: string; os?: [string, string] }[] = [
+  { key: "phone", label: "Смартфоны", os: ["iOS", "Android"] },
+  { key: "tablet", label: "Планшеты", os: ["iPadOS", "Android"] },
+  { key: "laptop", label: "Ноутбуки", os: ["macOS", "Windows"] },
+  { key: "watch", label: "Часы", os: ["watchOS", "Другие"] },
+  { key: "audio", label: "Наушники", os: ["AirPods", "Другие"] },
+  { key: "console", label: "Игровые приставки" },
+  { key: "tv", label: "ТВ-приставки" },
+  { key: "home", label: "Dyson" },
+  { key: "acc", label: "Аксессуары" },
+];
+
+const APPLE_CATS = ["iphone", "ipad", "macbook", "apple watch", "airpods", "новинки apple", "apple tv"];
+const PHONE_CATS = ["iphone", "android-смартфоны", "samsung", "xiaomi", "honor", "huawei", "google", "oneplus", "realme",
+  "nothing", "vivo", "tecno", "sony", "redmagic"];
+
+/** Тип устройства по категориям сайта (с родителями) и названию. */
+function classify(name: string, cats: string[]): { device: DeviceKey; apple: boolean; used: boolean } {
+  const n = name.toLowerCase();
+  const has = (c: string) => cats.includes(c);
+  const used = cats.some((c) => c.startsWith("б/у"));
+  const apple = APPLE_CATS.some(has) || /\b(apple|iphone|ipad|macbook|imac|airpods)\b/.test(n);
+  let device: DeviceKey;
+  if (has("тв-приставки") || /apple tv/.test(n)) device = "tv";
+  else if (has("аксессуары") || /^(адаптер|защитное|стекло|чехол|силиконовый чехол|кабель|переходник|airtag)/.test(n)) device = "acc";
+  else if (has("airpods") || /airpods|buds|наушник|earbuds|headphone|freebuds/.test(n)) device = "audio";
+  else if (has("apple watch") || /watch|\bband\b|часы/.test(n)) device = "watch";
+  else if (has("ipad") || /ipad|\bpad\b|\btab\b|планшет|matepad/.test(n)) device = "tablet";
+  else if (has("macbook") || /macbook|ноутбук|laptop|matebook|magicbook|imac|mac mini/.test(n)) device = "laptop";
+  else if (has("игровые приставки") || /playstation|xbox|nintendo|steam deck|dualsense/.test(n)) device = "console";
+  else if (has("dyson") || /dyson/.test(n)) device = "home";
+  else if (PHONE_CATS.some(has) || /iphone|galaxy|redmi|xiaomi|honor|huawei|pixel|oneplus|realme|nothing|vivo|tecno|poco|redmagic|xperia|смартфон/.test(n))
+    device = "phone";
+  else device = "other";
+  return { device, apple: !!apple, used };
+}
 
 const DEFAULT_DATA_URL =
   "https://raw.githubusercontent.com/dkaratsapov-web/ipapa/webapp-data/catalog.json";
@@ -98,7 +136,7 @@ function sortAttrNames(names: string[]): string[] {
   return [...names].sort((a, b) => rank(a) - rank(b));
 }
 
-function buildProduct(raw: RawProduct): Product {
+function buildProduct(raw: RawProduct, catNames: (ids: number[]) => string[]): Product {
   const variations: Variation[] = (raw.v ?? []).map(([id, label, price, regular, stock, img, thumb]) => ({
     id,
     parentId: raw.id,
@@ -110,6 +148,14 @@ function buildProduct(raw: RawProduct): Product {
     img: img || raw.img,
     thumb: thumb || img || raw.thumb,
   }));
+  // На сайте бывают дубли вариантов с одинаковым описанием — оставляем лучший (в наличии, дешевле)
+  const best = new Map<string, Variation>();
+  for (const v of variations) {
+    const prev = best.get(v.label);
+    const better = !prev || (v.inStock && !prev.inStock) || (v.inStock === prev.inStock && v.price > 0 && (prev.price === 0 || v.price < prev.price));
+    if (better) best.set(v.label, v);
+  }
+  if (best.size < variations.length) variations.splice(0, variations.length, ...best.values());
   const priced = variations.length ? variations.map((v) => v.price).filter((p) => p > 0) : [raw.price].filter((p) => p > 0);
   const discounts = variations.length
     ? variations.map((v) => (v.price > 0 && v.regular > v.price ? v.regular - v.price : 0))
@@ -131,6 +177,8 @@ function buildProduct(raw: RawProduct): Product {
     search: normalize([raw.name, raw.sku ?? "", ...variations.map((v) => v.label)].join(" ")),
     specs: raw.specs ?? [],
     specsSrc: raw.specs_src ?? "",
+    gallery: raw.gal?.length ? raw.gal : raw.img ? [raw.img] : [],
+    ...classify(raw.name, catNames(raw.cats)),
   };
 }
 
@@ -143,7 +191,20 @@ export class Store {
   readonly tradein: TradeIn | null;
 
   constructor(catalog: Catalog) {
-    this.products = catalog.products.map(buildProduct);
+    const byId = new Map(catalog.categories.map((c) => [c.id, c]));
+    // названия категорий товара вместе с родителями, в нижнем регистре
+    const catNames = (ids: number[]) => {
+      const out: string[] = [];
+      for (let id of ids) {
+        for (let guard = 0; byId.has(id) && guard < 5; guard++) {
+          const c = byId.get(id)!;
+          out.push(c.name.toLowerCase());
+          id = c.parent;
+        }
+      }
+      return out;
+    };
+    this.products = catalog.products.map((p) => buildProduct(p, catNames));
     for (const p of this.products) {
       this.byId.set(p.id, p);
       p.variations.forEach((v) => this.variationById.set(v.id, v));
@@ -172,11 +233,23 @@ export class Store {
     return this.products.filter((p) => p.cats.some((c) => ids.has(c)));
   }
 
-  /** Обложка категории — картинка самого дорогого товара в наличии. */
+  /** Обложка категории — фото дорогого товара в наличии, без баннеров и коллажей. */
   cover(id: number): string {
-    const items = this.inCategory(id).filter((p) => p.thumb);
-    const best = [...items].sort((a, b) => Number(b.inStock) - Number(a.inStock) || b.minPrice - a.minPrice)[0];
-    return best?.thumb ?? "";
+    return coverOf(this.inCategory(id));
+  }
+
+  /** Новые (или Б/У) товары типа устройства; apple: true/false — разбивка по ОС. */
+  inDevice(key: DeviceKey, opts: { used?: boolean; apple?: boolean } = {}): Product[] {
+    return this.products.filter(
+      (p) => p.device === key && p.used === !!opts.used && (opts.apple === undefined || p.apple === opts.apple),
+    );
+  }
+
+  devices(): { key: DeviceKey; label: string; os?: [string, string]; count: number; cover: string }[] {
+    return DEVICES.map((d) => {
+      const items = this.inDevice(d.key);
+      return { ...d, count: items.length, cover: coverOf(items) };
+    }).filter((d) => d.count > 0);
   }
 
   search(query: string, limit = 60): Product[] {
@@ -229,4 +302,20 @@ const PRIORITY = ["iphone", "новинки", "macbook", "ipad", "apple watch", 
 function CATEGORY_ORDER(name: string): number {
   const i = PRIORITY.findIndex((p) => name.toLowerCase().startsWith(p));
   return i === -1 ? 100 : i;
+}
+
+/** Пропорции фото по имени файла WordPress (…-600x935.jpg). */
+function ratio(url: string): number | null {
+  const m = url.match(/-(\d+)x(\d+)\.\w+(\?|$)/);
+  return m ? Number(m[1]) / Number(m[2]) : null;
+}
+
+function coverOf(items: Product[]): string {
+  const score = (p: Product) => {
+    const r = ratio(p.thumb);
+    const shape = r === null ? 0.3 : Math.abs(Math.log(r)); // ближе к квадрату — лучше
+    return (p.inStock ? 0 : 2) + shape * 2 - Math.log10(1 + p.minPrice / 100) / 10;
+  };
+  const best = items.filter((p) => p.thumb).sort((a, b) => score(a) - score(b))[0];
+  return best?.thumb ?? "";
 }

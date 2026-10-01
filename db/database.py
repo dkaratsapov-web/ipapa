@@ -24,6 +24,7 @@ CREATE TABLE IF NOT EXISTS products (
     permalink       TEXT NOT NULL DEFAULT '',
     image_url       TEXT NOT NULL DEFAULT '',
     image_thumb     TEXT NOT NULL DEFAULT '',
+    gallery         TEXT NOT NULL DEFAULT '[]',  -- JSON-список всех фото товара
     price           INTEGER NOT NULL DEFAULT 0,  -- копейки
     regular_price   INTEGER NOT NULL DEFAULT 0,
     sale_price      INTEGER NOT NULL DEFAULT 0,
@@ -107,6 +108,8 @@ def parse_ts(value: str) -> datetime:
 # Колонки, добавленные после первой версии схемы: (таблица, колонка, определение)
 MIGRATIONS = [
     ("products", "image_thumb", "TEXT NOT NULL DEFAULT ''"),
+    ("products", "gallery", "TEXT NOT NULL DEFAULT '[]'"),
+    ("model_specs", "image", "TEXT"),  # фото модели из Википедии; NULL — ещё не искали
 ]
 
 
