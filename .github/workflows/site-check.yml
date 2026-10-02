@@ -1,0 +1,23 @@
+# Временная проверка: установлен ли на автоимпорт-69.рф код Яндекс Тег менеджера.
+name: site-check
+
+on:
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Главная страница
+        run: |
+          URL="https://xn---69-5cdk0b2aocjmsg.xn--p1ai/"
+          curl -sSL -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/126 Safari/537.36" --max-time 30 -D headers.txt "$URL" -o page.html || true
+          echo "=== HTTP заголовки"; cat headers.txt
+          echo "=== Размер: $(wc -c < page.html) байт"
+          echo "=== Генератор/CMS"; grep -oiE '<meta[^>]+generator[^>]*>|tilda|wp-content|bitrix|wix|nethouse|ucoz|insales|lpgenerator|flexbe|craftum|taplink' page.html | sort | uniq -c | head -20
+          echo "=== Упоминания тег-менеджера/метрики"
+          grep -oiE '.{0,200}(tagmanager|tag-manager|tm\.yandex|mc\.yandex|metrika|ym\(|2969284|111166439|googletagmanager).{0,300}' page.html | head -40
+          echo "=== Все внешние скрипты"
+          grep -oiE '<script[^>]+src=[^>]+>' page.html | head -60
+          echo "=== HEAD целиком (первые 300 строк)"
+          sed -n '/<head/,/<\/head>/p' page.html | head -300
