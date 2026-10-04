@@ -79,7 +79,8 @@ def build_router(admin_ids: frozenset[int]) -> Router:
             lines.append(f"⚠️ Последняя попытка {fmt_dt(last['finished_at'], config.tz)} "
                          f"завершилась ошибкой: {escape(last['error'] or '')}")
         lines.append(f"Интервал синхронизации: {config.sync_interval_min} мин, "
-                     f"сводка в {config.digest_time.strftime('%H:%M')}")
+                     + (f"сводка в {config.digest_time.strftime('%H:%M')}" if config.digest_time
+                        else "ежедневная сводка выключена"))
         await message.answer("\n".join(lines))
 
     @router.message(Command("digest"))

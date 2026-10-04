@@ -85,15 +85,17 @@ async def main() -> None:
         next_run_time=datetime.now(config.tz),  # сразу при старте
         id="sync", max_instances=1, coalesce=True,
     )
-    scheduler.add_job(
-        jobs.send_digest,
-        CronTrigger(hour=config.digest_time.hour, minute=config.digest_time.minute),
-        id="digest", misfire_grace_time=3600, coalesce=True,
-    )
+    if config.digest_time:  # ежедневная сводка администраторам — только если задан DIGEST_TIME
+        scheduler.add_job(
+            jobs.send_digest,
+            CronTrigger(hour=config.digest_time.hour, minute=config.digest_time.minute),
+            id="digest", misfire_grace_time=3600, coalesce=True,
+        )
     scheduler.start()
 
-    log.info("Бот запущен: синхронизация каждые %d мин, сводка в %s (%s)",
-             config.sync_interval_min, config.digest_time.strftime("%H:%M"), config.tz_name)
+    digest = config.digest_time.strftime("%H:%M") if config.digest_time else "выключена"
+    log.info("Бот запущен: синхронизация каждые %d мин, сводка: %s (%s)",
+             config.sync_interval_min, digest, config.tz_name)
     async def stop_after(minutes: int) -> None:
         await asyncio.sleep(minutes * 60)
         log.info("Истекло RUN_DURATION_MIN=%d — останавливаемся", minutes)

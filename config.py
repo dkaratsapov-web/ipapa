@@ -15,8 +15,12 @@ def _parse_ids(raw: str) -> frozenset[int]:
     return frozenset(int(x) for x in raw.replace(" ", "").split(",") if x)
 
 
-def _parse_time(raw: str) -> time:
-    hh, mm = raw.strip().split(":")
+def _parse_time(raw: str) -> time | None:
+    """«10:00» -> time; пусто или «off» — сводка по расписанию выключена."""
+    raw = raw.strip()
+    if not raw or raw.lower() in ("off", "no", "0", "false"):
+        return None
+    hh, mm = raw.split(":")
     return time(int(hh), int(mm))
 
 
@@ -25,7 +29,7 @@ class Config:
     bot_token: str
     admin_ids: frozenset[int] = field(default_factory=frozenset)
     sync_interval_min: int = 60
-    digest_time: time = time(10, 0)
+    digest_time: time | None = None  # None — сводка только по /digest
     tz_name: str = "Europe/Moscow"
     db_path: str = "data/ipapa.db"
     log_path: str = "data/bot.log"
@@ -58,7 +62,7 @@ def load_config() -> Config:
         bot_token=token,
         admin_ids=_parse_ids(os.getenv("ADMIN_IDS", "")),
         sync_interval_min=int(os.getenv("SYNC_INTERVAL_MIN", "60")),
-        digest_time=_parse_time(os.getenv("DIGEST_TIME", "10:00")),
+        digest_time=_parse_time(os.getenv("DIGEST_TIME", "")),
         tz_name=os.getenv("TZ", "Europe/Moscow"),
         db_path=os.getenv("DB_PATH", "data/ipapa.db"),
         log_path=os.getenv("LOG_PATH", "data/bot.log"),

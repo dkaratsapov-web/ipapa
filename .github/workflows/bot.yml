@@ -42,7 +42,7 @@ jobs:
           BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
           ADMIN_IDS: ${{ secrets.ADMIN_IDS }}
           SYNC_INTERVAL_MIN: ${{ vars.SYNC_INTERVAL_MIN || '60' }}
-          DIGEST_TIME: ${{ vars.DIGEST_TIME || '10:00' }}
+          DIGEST_TIME: ${{ vars.DIGEST_TIME || '' }}
           TZ: Europe/Moscow
           DB_PATH: data/ipapa.db
           LOG_PATH: data/bot.log
