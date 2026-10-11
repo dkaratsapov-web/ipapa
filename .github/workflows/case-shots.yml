@@ -1,0 +1,39 @@
+# Скриншоты мини-аппа для кейса -> ветка case-assets (запуск вручную).
+name: case-shots
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  shots:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Сборка мини-аппа
+        working-directory: webapp
+        run: npm ci && npx vite build --base=/
+      - name: Playwright
+        run: |
+          mkdir -p /tmp/pw && cd /tmp/pw && npm init -y >/dev/null && npm i playwright@1 >/dev/null
+          npx playwright install --with-deps chromium >/dev/null
+      - name: Скриншоты
+        run: |
+          (cd webapp && npx vite preview --port 4173 --strictPort --base=/ &) ; sleep 4
+          cp scripts/case_shots.mjs /tmp/pw/ && cd /tmp/pw && node case_shots.mjs http://localhost:4173/ "$GITHUB_WORKSPACE/shots"
+      - name: Коммит в ветку case-assets
+        run: |
+          cp -r shots /tmp/out
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout --orphan case-assets
+          git rm -rfq .
+          cp -r /tmp/out shots
+          git add -A
+          git commit -qm "Скриншоты для кейса $(date -u +%FT%TZ)"
+          git push -f origin case-assets
