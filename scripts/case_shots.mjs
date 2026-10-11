@@ -45,7 +45,7 @@ await step("device", async () => {
   await page.locator('[aria-label^="Смартфоны,"]').first().click();
   await page.waitForTimeout(1200);
   await page.locator(`${top} .chip`, { hasText: "iOS" }).first().click();
-  await shot("04-smartphones", 1600);
+  await shot("04-smartphones", 5000);
 });
 await step("product", async () => {
   await open();
@@ -69,6 +69,7 @@ await step("product", async () => {
   await page.locator(`${top} button`, { hasText: "Сравнить" }).first().click();
   await page.locator(`${top} .buybar .btn-primary`).first().click().catch(() => {});
   await page.waitForTimeout(500);
+  await page.waitForTimeout(3500); // всплывающее «Добавлено в корзину» успевает скрыться
   await page.locator(`${top} button`, { hasText: "Открыть сравнение" }).first().click();
   await shot("08-compare", 1500);
 });

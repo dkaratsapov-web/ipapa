@@ -32,7 +32,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git checkout --orphan case-assets
-          git rm -rfq .
+          git rm -rfq . && git clean -fdxq
           rm -rf shots && cp -r /tmp/out shots
           git add -A
           git commit -qm "Скриншоты для кейса $(date -u +%FT%TZ)"
