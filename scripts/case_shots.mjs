@@ -43,6 +43,8 @@ await step("home", async () => {
 });
 await step("device", async () => {
   await page.locator('[aria-label^="Смартфоны,"]').first().click();
+  await page.waitForTimeout(1200);
+  await page.locator(`${top} .chip`, { hasText: "iOS" }).first().click();
   await shot("04-smartphones", 1600);
 });
 await step("product", async () => {
@@ -53,24 +55,22 @@ await step("product", async () => {
   await shot("05-search", 600);
   await page.locator(".row").first().click();
   await shot("06-product", 1800);
-  await scroll(520);
-  await shot("07-product-options", 900);
   const specs = page.locator(`${top} .specs`).first();
   await specs.evaluate((el) => el.scrollIntoView({ block: "start" }));
-  await shot("08-product-specs", 900);
+  await shot("07-product-specs", 900);
   await page.locator(`${top} button`, { hasText: "Сравнить" }).first().click();
   await page.locator(`${top} [aria-label="В избранное"]`).first().click().catch(() => {});
-  await page.locator(`${top} .buybar .btn-dark`).first().click().catch(() => {});
+  await page.locator(`${top} .buybar .btn-primary`).first().click().catch(() => {});
   await page.waitForTimeout(600);
   await page.keyboard.press("Escape");
   await page.waitForTimeout(900);
   await page.locator(".row").nth(1).click();
   await page.waitForTimeout(1500);
   await page.locator(`${top} button`, { hasText: "Сравнить" }).first().click();
-  await page.locator(`${top} .buybar .btn-dark`).first().click().catch(() => {});
+  await page.locator(`${top} .buybar .btn-primary`).first().click().catch(() => {});
   await page.waitForTimeout(500);
   await page.locator(`${top} button`, { hasText: "Открыть сравнение" }).first().click();
-  await shot("09-compare", 1500);
+  await shot("08-compare", 1500);
 });
 await step("cart", async () => {
   await page.keyboard.press("Escape");
@@ -78,7 +78,7 @@ await step("cart", async () => {
   await page.keyboard.press("Escape");
   await page.waitForTimeout(500);
   await page.locator(".tab").nth(3).click();
-  await shot("10-cart", 1300);
+  await shot("09-cart", 1300);
 });
 await step("tradein", async () => {
   await open();
@@ -87,11 +87,11 @@ await step("tradein", async () => {
   await page.locator(`${top} .ti-models button, ${top} .ti-models [role=radio]`).first().click().catch(() => {});
   await page.waitForTimeout(500);
   await page.locator(`${top} .ti-conds button, ${top} .ti-conds [role=radio]`).first().click().catch(() => {});
-  await shot("11-tradein", 1200);
+  await shot("10-tradein", 1200);
 });
 await step("service", async () => {
   await open();
   await page.locator(".promo:not(.promo-dark)").first().click();
-  await shot("12-service", 1400);
+  await shot("11-service", 1400);
 });
 await browser.close();
